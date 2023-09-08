@@ -1,9 +1,8 @@
 {
-  "dependencies": {
-    "http-server": "^14.1.1",
-    "phaser": "^3.60.0"
-  },
-  "scripts": {
-    "start": "node_modules\\.bin\\http-server -a localhost -p 8000 -c-1"
-  }
+  "name": "basketball-quiz-game",
+  "version": "1.0.0",
+  "description": "Hello World!",
+  "main": "main.js",
+  "author": "Caleb Vang",
+  "license": "MIT"
 }
