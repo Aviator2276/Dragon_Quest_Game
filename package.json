@@ -6,7 +6,8 @@
   "author": "Caleb Vang",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^26.2.0"
+    "electron": "^26.2.0",
+    "electron-reloader": "^1.2.3"
   },
   "scripts": {
     "start": "electron ."

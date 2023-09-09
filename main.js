@@ -3,14 +3,16 @@ const path = require('path')
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
-  win.loadFile('index.html')
+  win.loadFile('startGame.html')
+  //win.setFullScreen(true) <--------------- UNCOMMENT BEFORE PRODUCTION
 }
 
 app.whenReady().then(() => {
@@ -28,3 +30,7 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+try {
+  require('electron-reloader')(module)
+} catch (_) {}
