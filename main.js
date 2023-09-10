@@ -12,7 +12,7 @@ function createWindow () {
   })
 
   win.loadFile('startGame.html')
-  //win.setFullScreen(true) <--------------- UNCOMMENT BEFORE PRODUCTION
+  win.setFullScreen(true) //<--------------- UNCOMMENT BEFORE PRODUCTION
 }
 
 app.whenReady().then(() => {
