@@ -1,5 +1,6 @@
 body {
-    background-color: grey;
+    overflow: hidden;
+    background-color: #1D3557;
     height: 100vh !important;
     margin: 0;
     padding: 0;
