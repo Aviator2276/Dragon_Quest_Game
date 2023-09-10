@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome!</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <link rel="stylesheet" href="site.css">
+        <style>
+            main {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+            }
+            .trans {
+                position: absolute;
+                border-radius: 50%;
+                filter: blur(1px);
+                z-index: 2;
+                animation: transitionIn 1.6s forwards;
+            }
+            #transition {
+                width: 10px;
+                height: 10px;
+                top: 50%;
+                left: 50%;
+                background-color: white;
+            }
+            @keyframes transitionIn {
+                100% {
+                    transform: scale(0, 0);
+                    display: none;
+                }
+                60% {
+                    transform: scale(50, 50);
+                }
+                0% {
+                    transform: scale(2000, 2000);
+                }
+            }
+            @keyframes transitionOut {
+                0% {
+                    transform: scale(0, 0);
+                    display: none;
+                }
+                40% {
+                    transform: scale(50, 50);
+                }
+                100% {
+                    transform: scale(2000, 2000);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <span id="transition" class="trans"></span>
+        <span id="hyperSpace"></span>
+        <main>
+            <h1 class="prompt" id="Mesg">TEST TEST TEST</h1>
+        </main>
+        <script src="teamConfig.js"></script> 
+    </body>
+</html>
