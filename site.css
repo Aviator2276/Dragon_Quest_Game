@@ -27,7 +27,7 @@ body {
     text-align: center;
     font-size: 8vw;
     padding: 2%;
-    animation: promptInit 3.5s forwards;
+    animation: promptInit 3.5s forwards, promptInfinite 8s infinite;
     animation-delay: 1.4s;
     pointer-events: none;
 }
@@ -47,6 +47,27 @@ body {
     100% {
         font-size: 2vw;
     }
+}
+@keyframes promptInfinite {
+  0% {font-size: 2vw;}
+  5% {font-size: 2.1vw;}
+  10% { font-size: 2vw;}
+  15% {font-size: 2vw;}
+  20% {font-size: 2.1vw;}
+  25% { font-size: 2vw;}
+  30% {font-size: 2vw;}
+  35% {font-size: 2.1vw;}
+  40% { font-size: 2vw;}
+  50% {font-size: 2vw;}
+  55% {font-size: 2.1vw;}
+  60% { font-size: 2vw;}
+  65% {font-size: 2vw;}
+  70% {font-size: 2.1vw;}
+  75% { font-size: 2vw;}
+  80% {font-size: 2vw;}
+  85% {font-size: 2.1vw;}
+  90% { font-size: 2vw;}
+  100% {font-size: 2vw;}
 }
 .trans {
     position: absolute;
