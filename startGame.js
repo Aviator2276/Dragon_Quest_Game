@@ -22,8 +22,8 @@ function transformDotToLine(dot) {
 
     const squareTrans = document.getElementById('transition');
 
-    const dotX = parseFloat(dot.style.left) + 5; // 5 is half of dot's width
-    const dotY = parseFloat(dot.style.top) + 5; // 5 is half of dot's height
+    const dotX = parseFloat(dot.style.left) + 5;
+    const dotY = parseFloat(dot.style.top) + 5;
     
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;

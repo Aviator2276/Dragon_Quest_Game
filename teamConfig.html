@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <title>Welcome!</title>
         <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-        <link rel="stylesheet" href="site.css">
+        <link rel="preload" href="site.css" as="style" />
+        <link rel="stylesheet" href="site.css" />
+        <link rel="preload" href="teamConfig.js" as="script" />
         <style>
             .selArea {
                 position: absolute;
@@ -92,7 +94,6 @@
             @keyframes transitionIn {
                 100% {
                     transform: scale(0, 0);
-                    display: none;
                 }
                 60% {
                     transform: scale(50, 50);
@@ -104,13 +105,12 @@
             @keyframes transitionOut {
                 0% {
                     transform: scale(0, 0);
-                    display: none;
                 }
                 40% {
                     transform: scale(50, 50);
                 }
                 100% {
-                    transform: scale(2000, 2000);
+                    transform: scale(100, 100);
                 }
             }
         </style>
@@ -127,6 +127,6 @@
         <main>
             <h1 class="prompt" id="Mesg">Select how many teams are playing?</h1>
         </main>
-        <script src="teamConfig.js"></script> 
+        <script src="teamConfig.js" async></script> 
     </body>
 </html>
