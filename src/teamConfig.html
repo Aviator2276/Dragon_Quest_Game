@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome!</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <link rel="preload" href="site.css" as="style" />
+        <link rel="stylesheet" href="site.css" />
+        <link rel="preload" href="teamConfig.js" as="script" />
+        <style>
+            main {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+        <span id="transition" class="trans"></span>
+        <span id="hyperSpace"></span>
+        <div class="selArea">
+            <button id="oneTeam" class="teamSel">1</button>
+            <button id="twoTeam" class="teamSel">2</button>
+            <button id="threeTeam" class="teamSel">3</button>
+            <button id="fourTeam" class="teamSel">4</button>
+        </div>
+        <main>
+            <h1 class="prompt" id="Mesg">Select how many teams are playing?</h1>
+        </main>
+        <script src="teamConfig.js" async></script> 
+    </body>
+</html>

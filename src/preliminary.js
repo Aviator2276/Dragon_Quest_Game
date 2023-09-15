@@ -42,17 +42,9 @@ function transformDotToLine(dot) {
     
     const line = document.createElement('div');
     line.classList.add('line');
-    line.style.transformOrigin = '0% 50%';
-    
-    line.style.position = 'absolute';
     line.style.left = `${dotX}px`;
     line.style.top = `${dotY}px`;
     line.style.transform = `rotate(${angle}rad)`;
-    line.style.width = '0';
-    line.style.height = '10px';
-    line.style.zIndex = '10';
-    line.style.background = 'white';
-    line.style.borderRadius = '5px';
     
     document.getElementById('hyperSpace').appendChild(line);
     
@@ -69,7 +61,7 @@ function generateRandomDots(numDots) {
 }
 
 function nextPage() {
-    setTimeout(() => generateRandomDots(500), 200);
+    setTimeout(() => generateRandomDots(800), 200);
     setTimeout(() => window.open('preliminary.html','_self',false), 2200);
 }
 

@@ -11,7 +11,7 @@ function createWindow () {
     }
   })
 
-  win.loadFile('startGame.html')
+  win.loadFile('src/startGame.html')
   win.setFullScreen(true) //<--------------- UNCOMMENT BEFORE PRODUCTION
 }
 

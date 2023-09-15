@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome!</title>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <link rel="stylesheet" href="site.css">
+        <style>
+            main {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+        <span id="transition" class="trans"></span>
+        <span id="hyperSpace"></span>
+        <div class="selArea">
+            <button id="oneTeam" class="teamSel">English & French</button>
+            <button id="twoTeam" class="teamSel">Chinese & Spanish</button>
+            <button id="threeTeam" class="teamSel">English & Chinese</button>
+            <button id="fourTeam" class="teamSel">English & Russian</button>
+        </div>
+        <main>
+            <h1 class="prompt" id="Mesg">Which two languages have the most words?</h1>
+        </main>
+        <script src="preliminary.js" async></script> 
+    </body>
+</html>

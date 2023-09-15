@@ -22,6 +22,7 @@ body {
     font-family: Aldrich;
     background-color: white;
     border: 5px solid black;
+    border-radius: 20px;
     z-index: 1;
     color: #48463B;
     text-align: center;
@@ -69,7 +70,105 @@ body {
   90% { transform: scale(.5);}
   100% {transform: scale(.5);}
 }
+.selArea {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 100%;
+}
+.teamSel {
+  height: 50%;
+  width: 50%;
+  font-family: Aldrich;
+  background-color: white;
+  color: white;
+  text-align: center;
+  font-size: 6vw;
+  transition: .3s;
+}
+#oneTeam {
+  background-color: #A81307;
+}
+#twoTeam {
+  background-color: #E65428;
+}
+#threeTeam {
+  background-color: #FCC601;
+}
+#fourTeam {
+  background-color: #265C92;
+}
+.hidePrompt {
+  opacity: 0%;
+  width: 0%;
+  height: 0%;
+}
+.oneSel{
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 5 !important;
+
+}
+.twoSel {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 5 !important;
+
+}
+.threeSel {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 5 !important;
+
+}
+.fourSel {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 5 !important;
+  
+}
 .trans {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 2;
+  animation: transitionIn 1.6s forwards;
+}
+#transition {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+}
+@keyframes transitionIn {
+  0% {
+    transform: scale(1000, 1000);
+  }
+  60% {
+    transform: scale(50, 50);
+  }
+  100% {
+      transform: scale(0, 0);
+  }
+}
+@keyframes transitionOut {
+  0% {
+      transform: scale(0, 0);
+  }
+  40% {
+      transform: scale(50, 50);
+  }
+  100% {
+      transform: scale(100, 100);
+  }
+}
+.transStart {
     position: absolute;
     border-radius: 50%;
     filter: blur(1px);
@@ -91,6 +190,15 @@ body {
     position: absolute;
     animation: grow 2s forwards;
     z-index: 10;
+}
+.line {
+  position: absolute;
+  transform-origin: 0% 50%;
+  width: 0;
+  height: 10px;
+  z-index: 2;
+  background-color: white;
+  border-radius: 5px;
 }
 @keyframes wavyTextStartInfinite {
     0%,70%,100% {
