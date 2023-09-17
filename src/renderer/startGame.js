@@ -1,4 +1,4 @@
-import * as renderer from "./renderer.js";
+import * as renderer from "./transition.js";
 
 const startGame = document.querySelector("#startGame");
 

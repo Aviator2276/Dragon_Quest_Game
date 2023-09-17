@@ -20,7 +20,7 @@ body {
 
 .hidden {
   display: none;
-  pointer-events: none;
+  z-index: -1;
 }
 .prompt {
     font-family: Roboto;
@@ -32,6 +32,7 @@ body {
     text-align: center;
     font-size: 8vw;
     padding: 2%;
+    margin: 0;
     animation-delay: 1.4s;
     animation: promptInit 3.5s forwards;
     pointer-events: none;
@@ -115,14 +116,14 @@ body {
 .selected{
   height: 100% !important;
   width: 100% !important;
-  z-index: 2 !important;
+  z-index: 2;
 }
 
 .confirmShow {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  z-index: 3;
+  z-index: 4;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -130,7 +131,7 @@ body {
   animation: confirmShow .5s forwards;
 }
 .confirmButtonShow {
-  z-index: 2;
+  z-index: 4;
   height: 100%;
   width: 50%;
   font-family: Aldrich;
@@ -219,7 +220,7 @@ body {
   transform-origin: 0% 50%;
   width: 0;
   height: 10px;
-  z-index: 2;
+  z-index: 10;
   background-color: white;
   border-radius: 5px;
 }
