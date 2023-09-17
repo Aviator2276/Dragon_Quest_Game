@@ -6,7 +6,6 @@
         <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
         <link rel="preload" href="site.css" as="style" />
         <link rel="stylesheet" href="site.css" />
-        <link rel="preload" href="teamConfig.js" as="script" />
         <style>
             main {
                 height: 100%;
@@ -14,6 +13,9 @@
                 justify-content: center;
                 align-items: center;
                 pointer-events: none;
+            }
+            .prompt {
+                animation: promptInit 2.5s forwards !important;
             }
         </style>
     </head>
@@ -26,9 +28,14 @@
             <button id="threeTeam" class="teamSel">3</button>
             <button id="fourTeam" class="teamSel">4</button>
         </div>
+        <div id="confirmSelect" class="hidden">
+            <button id="confirmed">YES</button>
+            <button id="notConfirmed">NO</button>
+        </div>
         <main>
-            <h1 class="prompt" id="Mesg">Select how many teams are playing?</h1>
+                <h1 class="prompt" id="Mesg">Select how many teams are playing?</h1>
+                <h1 id="confirmMesg">Confirm Selection?</h1>            
         </main>
-        <script src="teamConfig.js" async></script> 
+        <script type="module" src="teamConfig.js" async></script> 
     </body>
 </html>
