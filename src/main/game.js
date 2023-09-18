@@ -1,3 +1,4 @@
+var csv = require('jquery-csv');
 let gameState;
 
 let answerKey;
@@ -11,11 +12,11 @@ function initializeGame() {
     gameState = "startGame";
     totalTeam = 0;
     currentTeam = 1;
-    try {
+    /*try {
         answerKey = new Database(path.join(__dirname, '../../db/answerKey.csv'))
     } catch (err) {
-        console.log("Failed to load database.", err)
-    }
+        console.log("Failed to load database: \n", err)
+    }*/
 }
 
 
