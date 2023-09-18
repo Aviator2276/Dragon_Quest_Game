@@ -7,14 +7,14 @@ function createWindow () {
     height: 1080,
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, 'src/main/preload.js')
+      preload: path.join(__dirname, './src/main/preload.js')
     }
   })
 
-  const { initializeGame } = require('src/main/game.js');
+  const { initializeGame } = require('./game.js');
   initializeGame();
 
-  win.loadFile('src/static/startGame.html')
+  win.loadFile('./src/static/startGame.html')
   //win.setFullScreen(true) //<--------------- UNCOMMENT BEFORE PRODUCTION
 }
 

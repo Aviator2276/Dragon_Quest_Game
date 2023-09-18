@@ -7,11 +7,18 @@ let prelimQuestion;
 let speedQuestion;
 let leaderboard;
 
-export function initializeGame() {
-    /*
+function initializeGame() {
+    gameState = "startGame";
+    totalTeam = 0;
+    currentTeam = 1;
     try {
         answerKey = new Database(path.join(__dirname, '../../db/answerKey.csv'))
     } catch (err) {
         console.log("Failed to load database.", err)
-    }*/
+    }
 }
+
+
+module.exports = {
+    initializeGame,
+};
