@@ -1,3 +1,4 @@
+import * as game from "../main/game.js";
 import * as renderer from "./transition.js";
 
 const promptMesg = document.getElementById('Mesg');
@@ -17,6 +18,7 @@ function addClassToElements(className, ...elements) {
 }
 
 function nextPage() {
+    game.changeGameState("teamSelected");
     setTimeout(() => renderer.generateRandomDots(800), 200);
     //setTimeout(() => window.open('teamShow.html','_self',false), 2200);
 }

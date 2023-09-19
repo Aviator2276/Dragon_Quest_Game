@@ -7,12 +7,10 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^26.2.0",
-    "electron-reloader": "^1.2.3"
+    "electron-reloader": "^1.2.3",
+    "jquery-csv": "^1.0.21"
   },
   "scripts": {
     "start": "electron ."
-  },
-  "dependencies": {
-    "jquery-csv": "^1.0.21"
   }
 }

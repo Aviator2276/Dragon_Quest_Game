@@ -1,7 +1,9 @@
-var csv = require('jquery-csv');
+var fs = require('fs');
+var csvTool = require('jquery-csv');
+let database = './db/answerKey.csv';
 let gameState;
 
-let answerKey;
+let answerKey = [];
 let totalTeam;
 let currentTeam;
 let prelimQuestion;
@@ -12,11 +14,22 @@ function initializeGame() {
     gameState = "startGame";
     totalTeam = 0;
     currentTeam = 1;
-    /*try {
-        answerKey = new Database(path.join(__dirname, '../../db/answerKey.csv'))
-    } catch (err) {
-        console.log("Failed to load database: \n", err)
-    }*/
+    leaderboard = 0;
+    fs.readFile(database, 'UTF-8', (err, fileContent) => {
+    if (err) { console.log(err); }
+    csvTool.toArrays(fileContent, {}, (err, data) => {
+        if (err) { console.log(err); }
+        for (let i = 0, len = data.length; i < len; i++) {
+            answerKey[i] = data[i];
+        }
+        prelimQuestion = answerKey.slice(0, 5);
+        speedQuestion = answerKey.slice(5, 25);
+    });
+    });
+}
+
+export function changeGameState(changeTo) {
+    gameState = changeTo;
 }
 
 
