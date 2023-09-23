@@ -2,9 +2,10 @@
   "name": "basketball-quiz-game",
   "version": "1.0.0",
   "description": "Hello World!",
-  "main": "./src/main/main.js",
+  "main": "./src/main/main.mjs",
   "author": "Caleb Vang",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
     "electron": "^26.2.0",
     "electron-reloader": "^1.2.3",

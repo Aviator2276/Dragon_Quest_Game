@@ -1,5 +1,7 @@
+//const { changeGameState } = require('../main/game.js');
+//const { generateRandomDots } = require('./renderer.js');
 import * as game from "../main/game.js";
-import * as renderer from "./transition.js";
+import * as renderer from "./renderer.mjs";
 
 const startGame = document.querySelector("#startGame");
 

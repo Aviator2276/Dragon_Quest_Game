@@ -1,5 +1,8 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+import { app, BrowserWindow} from 'electron';
+import { path } from 'path';
+//
+import electronReloader from 'electron-reloader';
+import { initializeGame } from './game.mjs';
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -7,11 +10,10 @@ function createWindow () {
     height: 1080,
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, './preload.js')
+      preload: path.join(__dirname, './preload.mjs')
     }
   })
 
-  const { initializeGame } = require('./game.js');
   initializeGame();
 
   win.loadFile('./src/static/startGame.html')
@@ -35,5 +37,5 @@ app.on('window-all-closed', () => {
 })
 
 try {
-  require('electron-reloader')(module)
+  //electronReloader(module);
 } catch (_) {}

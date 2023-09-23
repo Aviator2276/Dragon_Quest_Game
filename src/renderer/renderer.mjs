@@ -1,4 +1,4 @@
-export function createRandomDot() {
+function createRandomDot() {
     const dot = document.createElement('div');
     dot.classList.add('dot');
     
@@ -14,7 +14,7 @@ export function createRandomDot() {
         transformDotToLine(dot);
     }, 1200);
 }
-export function transformDotToLine(dot) {
+function transformDotToLine(dot) {
     dot.classList.remove('dot');
     dot.classList.add('line');
 
@@ -43,8 +43,14 @@ export function transformDotToLine(dot) {
         line.remove();
     }, 10000);
 }
-export function generateRandomDots(numDots) {
+function generateRandomDots(numDots) {
     for (let i = 0; i < numDots; i++) {
         createRandomDot();
     }
 }
+
+module.exports = {
+    createRandomDot,
+    transformDotToLine,
+    generateRandomDots,
+};
