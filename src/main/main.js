@@ -1,8 +1,8 @@
 import { app, BrowserWindow} from 'electron';
 import { path } from 'path';
-//
-import electronReloader from 'electron-reloader';
-import { initializeGame } from './game.mjs';
+//import electronReloader from 'electron-reloader';
+//import { initializeGame } from './game.mjs';
+
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -37,5 +37,5 @@ app.on('window-all-closed', () => {
 })
 
 try {
-  //electronReloader(module);
+  electronReloader(module);
 } catch (_) {}

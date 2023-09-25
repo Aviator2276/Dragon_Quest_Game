@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Hello World!",
   "main": "./src/main/main.mjs",
-  "author": "Caleb Vang",
+  "author": "Caleb V.",
   "license": "MIT",
-  "type": "module",
   "devDependencies": {
     "electron": "^26.2.0",
     "electron-reloader": "^1.2.3",
