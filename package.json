@@ -2,7 +2,7 @@
   "name": "basketball-quiz-game",
   "version": "1.0.0",
   "description": "Hello World!",
-  "main": "./src/main/main.mjs",
+  "main": "./src/main/main.js",
   "author": "Caleb V.",
   "license": "MIT",
   "devDependencies": {

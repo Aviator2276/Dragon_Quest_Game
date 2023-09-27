@@ -1,7 +1,9 @@
-import { app, BrowserWindow} from 'electron';
-import { path } from 'path';
+//ximport { app, BrowserWindow} from 'electron';
+//import { path } from 'path';
 //import electronReloader from 'electron-reloader';
-//import { initializeGame } from './game.mjs';
+import { initializeGame } from './game.mjs';
+const { app, BrowserWindow } = require('electron')
+const path = require('path')
 
 
 function createWindow () {
@@ -37,5 +39,5 @@ app.on('window-all-closed', () => {
 })
 
 try {
-  electronReloader(module);
+  require('electron-reloader')(module)
 } catch (_) {}
