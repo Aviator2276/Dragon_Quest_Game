@@ -27,7 +27,7 @@ function transformDotToLine(dot) {
     const centerY = window.innerHeight / 2;
     
     const angle = Math.atan2(centerY - dotY, centerX - dotX) + Math.PI;
-    const distance = Math.sqrt(Math.pow(centerX - dotX, 2) + Math.pow(centerY - dotY, 2)) + 1000;
+    //const distance = Math.sqrt(Math.pow(centerX - dotX, 2) + Math.pow(centerY - dotY, 2)) + 1000;
     
     const line = document.createElement('div');
     line.classList.add('line');
@@ -43,14 +43,15 @@ function transformDotToLine(dot) {
         line.remove();
     }, 10000);
 }
-function generateRandomDots(numDots) {
+export function generateRandomDots(numDots) {
     for (let i = 0; i < numDots; i++) {
         createRandomDot();
     }
 }
-
+/*
 module.exports = {
     createRandomDot,
     transformDotToLine,
     generateRandomDots,
 };
+*/

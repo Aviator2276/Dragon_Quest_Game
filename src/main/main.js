@@ -1,7 +1,8 @@
-//ximport { app, BrowserWindow} from 'electron';
+//import { app, BrowserWindow} from 'electron';
 //import { path } from 'path';
 //import electronReloader from 'electron-reloader';
-import { initializeGame } from './game.mjs';
+//import { initializeGame } from './game.js';
+const { initializeGame } = require('./game.js');
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
@@ -12,7 +13,8 @@ function createWindow () {
     height: 1080,
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, './preload.mjs')
+      nodeIntegration: true,
+      preload: path.join(__dirname, './preload.js')
     }
   })
 

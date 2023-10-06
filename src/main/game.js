@@ -1,7 +1,7 @@
-import fs from 'fs';
-import csvTool from 'jquery-csv';
-//const fs = require('fs');
-//const csvTool = require('jquery-csv');
+//import fs from 'fs';
+//import csvTool from 'jquery-csv';
+const fs = require('fs');
+const csvTool = require('jquery-csv');
 let database = './db/answerKey.csv';
 let gameState;
 
@@ -30,12 +30,12 @@ function initializeGame() {
     });
 }
 
+
 function changeGameState(changeTo) {
     gameState = changeTo;
     console.log*(gameState);
 }
-
-
+ 
 module.exports = {
     initializeGame,
     changeGameState,

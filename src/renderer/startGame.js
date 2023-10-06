@@ -1,7 +1,7 @@
-//const { changeGameState } = require('../main/game.js');
-//const { generateRandomDots } = require('./renderer.js');
-import * as game from "../main/game.js";
-import * as renderer from "./renderer.mjs";
+const { changeGameState } = require('../main/game.js');
+const { generateRandomDots } = require('./renderer.js');
+//import * as game from "../main/game.js";
+//import * as renderer from "./renderer.js";
 
 const startGame = document.querySelector("#startGame");
 
@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
     setTimeout(() => element.classList.add('infinite'), 2300);
 });
 startGame.onclick = () => {
-    game.changeGameState("teamConfig");
-    renderer.generateRandomDots(800);
+    changeGameState("teamConfig");
+    generateRandomDots(800);
     setTimeout(() => window.open('teamConfig.html','_self',false), 2200);
 };
