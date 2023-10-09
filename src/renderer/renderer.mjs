@@ -43,7 +43,7 @@ function transformDotToLine(dot) {
         line.remove();
     }, 10000);
 }
-export function generateRandomDots(numDots) {
+function generateRandomDots(numDots) {
     for (let i = 0; i < numDots; i++) {
         createRandomDot();
     }

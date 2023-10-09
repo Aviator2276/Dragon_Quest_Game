@@ -1,10 +1,11 @@
 {
-  "name": "basketball-quiz-game",
+  "name": "dragon-quest-game",
   "version": "1.0.0",
-  "description": "Hello World!",
+  "description": "",
   "main": "./src/main/main.js",
   "author": "Caleb V.",
   "license": "MIT",
+  "type":"commonjs",
   "devDependencies": {
     "electron": "^26.2.0",
     "electron-reloader": "^1.2.3",

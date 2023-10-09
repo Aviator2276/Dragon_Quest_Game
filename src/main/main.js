@@ -1,11 +1,5 @@
-//import { app, BrowserWindow} from 'electron';
-//import { path } from 'path';
-//import electronReloader from 'electron-reloader';
-//import { initializeGame } from './game.js';
-const { initializeGame } = require('./game.js');
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
-
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -13,12 +7,12 @@ function createWindow () {
     height: 1080,
     autoHideMenuBar: true,
     webPreferences: {
+      // WARNING: This is very dangerous if any remote content is displayed.
+      // Since this is all local, it is okay. Please review before production.
       nodeIntegration: true,
       preload: path.join(__dirname, './preload.js')
     }
   })
-
-  initializeGame();
 
   win.loadFile('./src/static/startGame.html')
   //win.setFullScreen(true) //<--------------- UNCOMMENT BEFORE PRODUCTION

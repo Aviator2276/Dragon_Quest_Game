@@ -1,6 +1,3 @@
-const { changeGameState } = require('../main/game.js');
-//const { generateRandomDots } = require('./renderer.js');
-//import * as game from "../main/game.js";
 import * as renderer from "./renderer.js";
 
 const promptMesg = document.getElementById('Mesg');
@@ -20,7 +17,6 @@ function addClassToElements(className, ...elements) {
 }
 
 function nextPage() {
-    changeGameState("teamSelected");
     setTimeout(() => renderer.generateRandomDots(800), 200);
     //setTimeout(() => window.open('teamShow.html','_self',false), 2200);
 }
