@@ -1,5 +1,6 @@
 const fs = require('fs');
 const csvTool = require('jquery-csv');
+let database = './db/answerKey.csv';
 let gameState;
 
 let answerKey = [];
@@ -9,7 +10,7 @@ let prelimQuestion;
 let speedQuestion;
 let leaderboard;
 
-function initializeGame() {
+export function initializeGame() {
   gameState = "startGame";
   totalTeam = 0;
   currentTeam = 1;
@@ -25,15 +26,10 @@ function initializeGame() {
       speedQuestion = answerKey.slice(5, 25);
   });
   });
-  console.log(accepting);
+  console.log("accepting");
 }
 
-function changeGameState(changeTo) {
+export function changeGameState(changeTo) {
     gameState = changeTo;
     console.log*(gameState);
 }
-
-module.exports = {
-  initializeGame,
-  changeGameState
-};

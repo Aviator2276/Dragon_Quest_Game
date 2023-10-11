@@ -1,4 +1,4 @@
-import * as renderer from "./renderer.js";
+import * as renderer from "./renderer.mjs";
 
 const promptMesg = document.getElementById('Mesg');
 const oneTeam = document.getElementById('oneTeam');

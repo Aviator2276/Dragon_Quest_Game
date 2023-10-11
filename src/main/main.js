@@ -10,6 +10,7 @@ function createWindow () {
       // WARNING: This is very dangerous if any remote content is displayed.
       // Since this is all local, it is okay. Please review before production.
       nodeIntegration: true,
+      contextIsolation: false,
       preload: path.join(__dirname, './preload.js')
     }
   })
