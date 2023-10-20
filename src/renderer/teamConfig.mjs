@@ -1,3 +1,4 @@
+import * as gameLogic from "./game.js";
 import * as renderer from "./renderer.mjs";
 
 const promptMesg = document.getElementById('Mesg');
@@ -15,6 +16,8 @@ const notConfirm = document.getElementById('notConfirmed');
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
+
+gameLogic.readTable();
 
 function nextPage() {
     setTimeout(() => renderer.generateRandomDots(800), 200);

@@ -5,13 +5,16 @@
   "main": "./src/main/main.js",
   "author": "Caleb V.",
   "license": "MIT",
-  "type":"commonjs",
+  "type": "commonjs",
   "devDependencies": {
+    "csv-parser": "^3.0.0",
     "electron": "^26.2.0",
-    "electron-reloader": "^1.2.3",
-    "jquery-csv": "^1.0.21"
+    "electron-reloader": "^1.2.3"
   },
   "scripts": {
     "start": "electron ."
+  },
+  "dependencies": {
+    "needle": "^3.2.0"
   }
 }

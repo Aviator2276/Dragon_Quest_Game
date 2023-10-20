@@ -1,13 +1,15 @@
 const fs = require('fs');
-const csvTool = require('jquery-csv');
-let database = './db/answerKey.csv';
-let gameState;
+const csv = require('csv-parser');
+const needle = require("needle");
+const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
+let database = './db/data.csv';
 
-let answerKey = [];
+let gameState;
 let totalTeam;
 let currentTeam;
-let prelimQuestion;
-let speedQuestion;
+let answerKey = [];
+let prelimQuestion = [];
+let speedQuestion = [];
 let leaderboard;
 
 export function initializeGame() {
@@ -15,18 +17,54 @@ export function initializeGame() {
   totalTeam = 0;
   currentTeam = 1;
   leaderboard = 0;
-  fs.readFile(database, 'UTF-8', (err, fileContent) => {
-  if (err) { console.log(err); }
-  csvTool.toArrays(fileContent, {}, (err, data) => {
-      if (err) { console.log(err); }
-      for (let i = 0, len = data.length; i < len; i++) {
-          answerKey[i] = data[i];
-      }
-      prelimQuestion = answerKey.slice(0, 5);
-      speedQuestion = answerKey.slice(5, 25);
-  });
-  });
-  console.log("accepting");
+}
+
+async function getDatabase(answerKey) {
+  /* Get LOCAL database
+  fs.createReadStream(database)
+    .pipe(csv({headers: false}))
+    .on("data", (data) => {
+        answerKey.push(data);
+    })
+    .on("done", (err) => {
+        if (err) console.log("An error has occurred");
+        else 
+            prelimQuestion = answerKey.slice(0, 50);
+            speedQuestion = answerKey.slice(50, 100);
+    })
+    .on("end", function () {
+        console.log("finished");
+    });*/
+  // Get ONLINE database
+  const customPromise = new Promise((resolve, reject) => {needle
+    .get(urlDatabase)
+    .pipe(csv({headers: false}))
+    .on("data", (data) => {
+        answerKey.push(data);
+    })
+    .on("done", (err) => {
+        if (err) reject(new Error("An error has occurred"));
+        else
+            resolve(answerKey);
+            console.log("finished");
+            //console.log(prelimQuestion);
+    });
+    });
+    
+    return customPromise;
+}
+
+getDatabase(answerKey).then(data => {
+    prelimQuestion = data.slice(0, 50);
+    speedQuestion = data.slice(50, 100);
+    console.log(prelimQuestion);
+})
+    .catch(err => {
+    console.log(err)
+})
+
+export function readTable() {
+    console.log(prelimQuestion);
 }
 
 export function changeGameState(changeTo) {
