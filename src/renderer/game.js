@@ -7,7 +7,6 @@ let database = './db/data.csv';
 let gameState;
 let totalTeam;
 let currentTeam;
-let answerKey = [];
 let prelimQuestion = [];
 let speedQuestion = [];
 let leaderboard;
@@ -17,9 +16,10 @@ export function initializeGame() {
   totalTeam = 0;
   currentTeam = 1;
   leaderboard = 0;
+  getDatabase();
 }
 
-async function getDatabase(answerKey) {
+async function getDatabase() {
   /* Get LOCAL database
   fs.createReadStream(database)
     .pipe(csv({headers: false}))
@@ -36,38 +36,35 @@ async function getDatabase(answerKey) {
         console.log("finished");
     });*/
   // Get ONLINE database
-  const customPromise = new Promise((resolve, reject) => {needle
+  const promise = () => new Promise((resolve, reject) => {
+    let answerKeyRaw = [];
+    needle
     .get(urlDatabase)
     .pipe(csv({headers: false}))
     .on("data", (data) => {
-        answerKey.push(data);
+        answerKeyRaw.push(data);
     })
     .on("done", (err) => {
         if (err) reject(new Error("An error has occurred"));
         else
-            resolve(answerKey);
-            console.log("finished");
+            resolve(answerKeyRaw);
             //console.log(prelimQuestion);
+    }).on("end", function () {
+        console.log("finished");
     });
     });
     
-    return customPromise;
+    const answerKey = await promise();
+    prelimQuestion = answerKey.slice(0, 50);
+    speedQuestion = answerKey.slice(50, 100);
+    console.log(prelimQuestion);
 }
 
-getDatabase(answerKey).then(data => {
-    prelimQuestion = data.slice(0, 50);
-    speedQuestion = data.slice(50, 100);
-    console.log(prelimQuestion);
-})
-    .catch(err => {
-    console.log(err)
-})
-
 export function readTable() {
-    console.log(prelimQuestion);
+    console.log(prelimQuestion[1]);
 }
 
 export function changeGameState(changeTo) {
     gameState = changeTo;
-    console.log*(gameState);
+    console.log(gameState);
 }
