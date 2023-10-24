@@ -57,11 +57,12 @@ async function getDatabase() {
     const answerKey = await promise();
     prelimQuestion = answerKey.slice(0, 50);
     speedQuestion = answerKey.slice(50, 100);
-    console.log(prelimQuestion);
+    console.log(answerKey);
 }
 
 export function readTable() {
     console.log(prelimQuestion[1]);
+    console.log(answerKey);
 }
 
 export function changeGameState(changeTo) {

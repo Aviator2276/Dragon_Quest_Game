@@ -17,7 +17,6 @@ function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
-gameLogic.readTable();
 
 function nextPage() {
     setTimeout(() => renderer.generateRandomDots(800), 200);
