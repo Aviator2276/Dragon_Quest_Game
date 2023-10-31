@@ -16,27 +16,13 @@ export function initializeGame() {
   totalTeam = 0;
   currentTeam = 1;
   leaderboard = 0;
-  getDatabase();
 }
 
 async function getDatabase() {
   /* Get LOCAL database
-  fs.createReadStream(database)
-    .pipe(csv({headers: false}))
-    .on("data", (data) => {
-        answerKey.push(data);
-    })
-    .on("done", (err) => {
-        if (err) console.log("An error has occurred");
-        else 
-            prelimQuestion = answerKey.slice(0, 50);
-            speedQuestion = answerKey.slice(50, 100);
-    })
-    .on("end", function () {
-        console.log("finished");
-    });*/
+  */
   // Get ONLINE database
-  const promise = () => new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let answerKeyRaw = [];
     needle
     .get(urlDatabase)
@@ -45,24 +31,35 @@ async function getDatabase() {
         answerKeyRaw.push(data);
     })
     .on("done", (err) => {
-        if (err) reject(new Error("An error has occurred"));
+        if (err) reject(new Error("An error has occurred when retrieving online database. Trying local database"));
         else
             resolve(answerKeyRaw);
-            //console.log(prelimQuestion);
     }).on("end", function () {
-        console.log("finished");
+        console.log("Online Database Success");
+    })/*.catch(() => {
+        fs.createReadStream(database)
+        .pipe(csv({headers: false}))
+        .on("data", (data) => {
+            answerKey.push(data);
+        })
+        .on("done", (err) => {
+            if (err) console.log("An error has occurred");
+            else 
+                prelimQuestion = answerKey.slice(0, 50);
+                speedQuestion = answerKey.slice(50, 100);
+        })
+        .on("end", function () {
+            console.log("finished");
+        });
+    });*/
     });
-    });
-    
-    const answerKey = await promise();
-    prelimQuestion = answerKey.slice(0, 50);
-    speedQuestion = answerKey.slice(50, 100);
-    console.log(answerKey);
 }
 
-export function readTable() {
-    console.log(prelimQuestion[1]);
-    console.log(answerKey);
+export async function readTable() {
+    const answerKey = await getDatabase();
+    prelimQuestion = answerKey.slice(0, 50);
+    speedQuestion = answerKey.slice(50, 100);
+    console.log(prelimQuestion);
 }
 
 export function changeGameState(changeTo) {
