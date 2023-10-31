@@ -12,16 +12,13 @@ let speedQuestion = [];
 let leaderboard;
 
 export function initializeGame() {
-  gameState = "startGame";
+  gameState = 1;
   totalTeam = 0;
   currentTeam = 1;
   leaderboard = 0;
 }
 
 async function getDatabase() {
-  /* Get LOCAL database
-  */
-  // Get ONLINE database
   return new Promise((resolve, reject) => {
     let answerKeyRaw = [];
     needle
