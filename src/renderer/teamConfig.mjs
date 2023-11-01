@@ -20,7 +20,7 @@ function addClassToElements(className, ...elements) {
 
 function nextPage() {
     setTimeout(() => renderer.generateRandomDots(800), 200);
-    //setTimeout(() => window.open('teamShow.html','_self',false), 2200);
+    setTimeout(() => window.open('teamShow.html','_self',false), 2200);
 }
 
 function confirmSelection(selectTeam) {
@@ -30,6 +30,12 @@ function confirmSelection(selectTeam) {
     setTimeout(() => confirmMesg.classList.add('prompt'), 400);
     setTimeout(() => confirmMesg.classList.remove('hidden'), 400);
     
+    selectTeam === "fourTeam" ? gameLogic.changeTotalTeam(4)
+    : selectTeam === "threeTeam" ? gameLogic.changeTotalTeam(3)
+    : selectTeam === "twoTeam" ? gameLogic.changeTotalTeam(2)
+    : gameLogic.changeTotalTeam(1);
+    gameLogic.getGameInfo();
+
     confirm.onclick = () => {
         nextPage();
     };

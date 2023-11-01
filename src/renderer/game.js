@@ -7,15 +7,17 @@ let database = './db/data.csv';
 let gameState;
 let totalTeam;
 let currentTeam;
+let leaderboard;
 let prelimQuestion = [];
 let speedQuestion = [];
-let leaderboard;
 
 export function initializeGame() {
   gameState = 1;
   totalTeam = 0;
   currentTeam = 1;
-  leaderboard = 0;
+  leaderboard = [0,0,0,0];
+  console.log(readTable(1));
+  console.log
 }
 
 async function getDatabase() {
@@ -52,14 +54,34 @@ async function getDatabase() {
     });
 }
 
-export async function readTable() {
+export async function readTable(tableSelect) {
     const answerKey = await getDatabase();
     prelimQuestion = answerKey.slice(0, 50);
     speedQuestion = answerKey.slice(50, 100);
-    console.log(prelimQuestion);
+    if (tableSelect === 0) {
+        return answerKey;
+    } else if (tableSelect === 1) {
+        return prelimQuestion;
+    } else if (tableSelect === 2) {
+        return speedQuestion;
+    } else {
+        return "Error retrieving database.";
+    }
+}
+
+export function changeTotalTeam(total) {
+    totalTeam = total;
 }
 
 export function changeGameState(changeTo) {
     gameState = changeTo;
-    console.log(gameState);
+}
+
+export function getGameInfo() {
+    console.log(
+        "Game State: " + gameState + "\n" +
+        "Total Teams Registered: " + totalTeam + "\n" +
+        "Current Team Selected: " + currentTeam + "\n" +
+        "Leaderborad: " + leaderboard + "\n"
+    );
 }

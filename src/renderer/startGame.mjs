@@ -4,7 +4,6 @@ import * as renderer from "./renderer.mjs";
 const startGame = document.querySelector("#startGame");
 
 gameLogic.initializeGame();
-gameLogic.readTable();
 
 window.addEventListener('load', function () {
     const element = document.getElementById('wavyTextStart');
