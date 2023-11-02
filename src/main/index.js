@@ -7,10 +7,11 @@ if (require('electron-squirrel-startup')) {
 }
 
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+  const window = new BrowserWindow({
     width: 1920,
     height: 1080,
     autoHideMenuBar: true,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -18,11 +19,12 @@ const createWindow = () => {
     },
   });
 
-  mainWindow.loadFile(path.join(__dirname, '../static/index.html'));
+  window.loadFile(path.join(__dirname, '../static/index.html'));
   if (isDev) {
-    //mainWindow.webContents.openDevTools();
+    //window.webContents.openDevTools();
   }
-  //mainWindow.setFullScreen(true)  //<--------------- UNCOMMENT BEFORE PRODUCTION
+  window.on("ready-to-show", window.show)
+  //window.setFullScreen(true)  //<--------------- UNCOMMENT BEFORE PRODUCTION
 };
 
 app.on('ready', createWindow);
