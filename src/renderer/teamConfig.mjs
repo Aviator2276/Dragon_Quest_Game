@@ -20,7 +20,7 @@ function addClassToElements(className, ...elements) {
 
 function nextPage() {
     setTimeout(() => renderer.generateRandomDots(800), 200);
-    setTimeout(() => window.open('teamShow.html','_self',false), 2200);
+    setTimeout(() => window.open('teamSel.html','_self',false), 2200);
 }
 
 function confirmSelection(selectTeam) {
@@ -48,20 +48,24 @@ function confirmSelection(selectTeam) {
 oneTeam.onclick = () => {
     addClassToElements('hidePrompt', twoTeam, threeTeam, fourTeam, promptMesg);
     oneTeam.classList.add('selected');
+    confirmMesg.innerHTML = "Confirm 1 Team Selection";
     setTimeout(() => confirmSelection(oneTeam), 500);
 };
 twoTeam.onclick = () => {
     addClassToElements('hidePrompt', oneTeam, threeTeam, fourTeam, promptMesg);
     twoTeam.classList.add('selected');
+    confirmMesg.innerHTML = "Confirm 2 Team Selection";
     setTimeout(() => confirmSelection(twoTeam), 500);
 };
 threeTeam.onclick = () => {
     addClassToElements('hidePrompt', oneTeam, twoTeam, fourTeam, promptMesg);
     threeTeam.classList.add('selected');
+    confirmMesg.innerHTML = "Confirm 3 Team Selection";
     setTimeout(() => confirmSelection(threeTeam), 500);
 };
 fourTeam.onclick = () => {
     addClassToElements('hidePrompt', oneTeam, twoTeam, threeTeam, promptMesg);
     fourTeam.classList.add('selected');
+    confirmMesg.innerHTML = "Confirm 4 Team Selection";
     setTimeout(() => confirmSelection(fourTeam), 500);
 };

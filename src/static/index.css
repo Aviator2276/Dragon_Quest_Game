@@ -30,11 +30,11 @@ body {
     z-index: 1;
     color: #48463B;
     text-align: center;
-    font-size: 8vw;
+    font-size: 7.5vw;
     padding: 2%;
     margin: 0;
     animation-delay: 1.4s;
-    animation: promptInit 3.5s forwards;
+    animation: promptInit 3.5s forwards, promptInfinite 4s linear forwards;
     pointer-events: none;
 }
 @keyframes promptInit {
