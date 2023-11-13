@@ -1,9 +1,9 @@
 body {
-    overflow: hidden;
-    background-color: #1D3557;
-    height: 100vh !important;
-    margin: 0;
-    padding: 0;
+  overflow: hidden;
+  background-color: #1D3557;
+  height: 100vh !important;
+  margin: 0;
+  padding: 0;
 }
 @font-face {
     font-family: BebasNeue;
@@ -18,7 +18,7 @@ body {
     src: url(../assets/fonts/Roboto-Regular.ttf);
 }
 
-/* Index HTML */
+/* Game Start Stage */
 #startGame {
   position: absolute;
   display: block;
@@ -30,7 +30,7 @@ body {
   background-color: white;
   opacity: 0%;
 }
-main {
+.startMain {
   position: absolute;
   text-align: center;
   width: 100%;
@@ -115,7 +115,7 @@ main {
   }
 }
 /* Team Config HTML*/
-main {
+.teamConfigMain {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -130,24 +130,9 @@ main {
   z-index: 5;
   margin-bottom: 40% !important;
 }
-/* Game HTML*/
-main {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-}
-.prompt {
-  animation: promptInit 2.5s forwards !important;
-}
-#confirmMesg {
-  z-index: 5;
-  margin-bottom: 40% !important;
-}
+
 /* Team Selection HTML*/
-body {
+.teamSelectStage {
   position: absolute;
   text-align: center;
   width: 100%;

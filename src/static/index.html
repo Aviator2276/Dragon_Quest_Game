@@ -6,11 +6,11 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <section class="gameStartStage">
+        <section class="startStage">
             <span id="transition"></span>
             <span id="hyperSpace"></span>
             <button id="startGame"></button>
-            <main>
+            <main class="startMain">
                 <div class="wavyTextStart" id="wavyTextStart">
                     <span style="--i:1" class="title-word title-word-1">S</span>
                     <span style="--i:2" class="title-word title-word-2">T</span>
@@ -76,7 +76,7 @@
                 <button id="confirmed">YES</button>
                 <button id="notConfirmed">NO</button>
             </div>
-            <main>
+            <main class = "teamConfigMain">
                 <h1 class="prompt" id="Mesg">Select how many teams are playing?</h1>
                 <h1 id="confirmMesg" class="hidden">Confirm Selection?</h1>            
             </main>
@@ -131,7 +131,7 @@
                 </div>
             </div> 
         </section>
-        
+
         <script type="module" src="../renderer/startGame.mjs" async></script>
     </body>
 </html>
