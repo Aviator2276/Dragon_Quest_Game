@@ -59,7 +59,7 @@ body {
 .space {
   padding: 3%;
 }
-.wavyTextStart span {
+/*.wavyTextStart span {
   font-family: 'Aldrich';
   font-size: 12vw;
   text-align: center;
@@ -72,7 +72,7 @@ body {
   animation: wavyTextStartInit 1.5s, color-animation 3s linear infinite;
   animation-fill-mode: both;
   animation-delay: calc(.1s * var(--i));
-}
+}*/
 .infinite span {
   animation: wavyTextStartInfinite 2s infinite, color-animation 3s linear infinite;
   animation-delay: calc(.1s * var(--i));
