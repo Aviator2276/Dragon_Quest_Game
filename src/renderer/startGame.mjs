@@ -1,14 +1,9 @@
 import * as gameLogic from "./game.js";
-import * as renderer from "./renderer.mjs";
 
-const startGame = document.querySelector("#startGame");
-
-gameLogic.initializeGame();
-
-window.addEventListener('load', function () {
+export function onLoad() {
     const element = document.getElementById('wavyTextStart');
     setTimeout(() => element.classList.add('infinite'), 2300);
-});
+}
 
 startGame.onclick = () => {
     gameLogic.changeGameState("startGame");

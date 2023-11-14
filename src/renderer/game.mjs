@@ -1,3 +1,7 @@
+import * as renderer from "./renderer.mjs";
+import * as startStage from "./startGame.mjs";
+import * as teamConfigStage from "./teamConfig.mjs";
+import * as teamSelectStage from "./teamSel.mjs";
 //const fs = require('fs');
 //const csv = require('csv-parser');
 //const needle = require("needle");
@@ -23,18 +27,19 @@ let leaderboard;
 let prelimQuestion = [];
 let speedQuestion = [];
 
-const startPage = document.getElementById('startStage');
-const teamConfigPage = document.getElementById('teamConfigStage');
-const teamSelectPage = document.getElementById('teamSelectStage');
+const startGame = document.querySelector("#startGame");
+
+initializeGame();
 
 while (gameStage != "endStage") {
+    getGameInfo();
     if (gameStage === "startStage") {
         loadPage("startStage");
     } else if (gameStage === "teamConfigStage") {
         leavePage("startStage", false);
         loadPage("teamConfigStage");
-    } else if (gameStage === "speedStage") {
-        leavePage("startStage", false);
+    } else if (gameStage === "teamSelectStage") {
+        leavePage("teamConfigStage", false);
         loadPage("teamConfigStage");
     }
 }
@@ -50,16 +55,16 @@ function leavePage(gameStage, reloadPage) {
 }
 
 function loadPage(gameStage) {
-    document.getElementById(gameStage).classList.add('pageShow');
+    document.getElementById(gameStage).classList.remove('pageHide');
+    gameStage.loadPage();
 }
 
-export function initializeGame() {
-  gameState = 1;
+function initializeGame() {
+  gameStage = "startStage";
   totalTeam = 0;
   currentTeam = 1;
   leaderboard = [0,0,0,0];
-  console.log(readTable(1));
-  console.log
+  addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
 }
 
 async function getDatabase() {
@@ -111,9 +116,6 @@ export async function readTable(tableSelect) {
     }
 }
 
-export function changeTotalTeam(total) {
-    totalTeam = total;
-}
 
 export function getGameInfo() {
     console.log(

@@ -1,7 +1,3 @@
-
-
-
-
 function createRandomDot() {
     const dot = document.createElement('div');
     dot.classList.add('dot');
@@ -183,3 +179,8 @@ var removeConfetti; //call to stop the confetti animation and remove all confett
 		}
 	}
 })();
+
+
+startGame.onclick = () => {
+	gameLogic.changeGameState("startGame");
+}
