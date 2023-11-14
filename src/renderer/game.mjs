@@ -1,15 +1,33 @@
-const fs = require('fs');
-const csv = require('csv-parser');
-const needle = require("needle");
-const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
+//const fs = require('fs');
+//const csv = require('csv-parser');
+//const needle = require("needle");
+//const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
 let database = './db/data.csv';
 
-let gameState;
+/*
+Stages in order:
+1. startStage
+2. teamConfigStage 
+  3. teamSelectStage <In Loop>
+  4. prelimStage <In Loop>
+  5. speedStage <In Loop>
+  6. leaderboardStage <In Loop>
+7. winnerStage
+8. endStage
+*/
+
+let gameStage;
 let totalTeam;
 let currentTeam;
 let leaderboard;
 let prelimQuestion = [];
 let speedQuestion = [];
+
+while (gameStage != "endStage") {
+    if (gameStage === "startStage") {
+        
+    }
+}
 
 export function initializeGame() {
   gameState = 1;
@@ -73,13 +91,9 @@ export function changeTotalTeam(total) {
     totalTeam = total;
 }
 
-export function changeGameState(changeTo) {
-    gameState = changeTo;
-}
-
 export function getGameInfo() {
     console.log(
-        "Game State: " + gameState + "\n" +
+        "Game State: " + gameStage + "\n" +
         "Total Teams Registered: " + totalTeam + "\n" +
         "Current Team Selected: " + currentTeam + "\n" +
         "Leaderborad: " + leaderboard + "\n"

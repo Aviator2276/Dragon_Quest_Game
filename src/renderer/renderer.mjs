@@ -1,3 +1,7 @@
+
+
+
+
 function createRandomDot() {
     const dot = document.createElement('div');
     dot.classList.add('dot');
