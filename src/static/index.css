@@ -1,3 +1,5 @@
+/*apply to multiple stages*/
+
 body {
   overflow: hidden;
   background-color: #1D3557;
@@ -16,6 +18,10 @@ body {
 @font-face {
     font-family: Roboto;
     src: url(../assets/fonts/Roboto-Regular.ttf);
+}
+
+.pageHide {
+  display: none;
 }
 
 /* Game Start Stage */
@@ -138,23 +144,6 @@ body {
   width: 100%;
   top: 0%;
 }
-.description {
-  font-family: 'Aldrich';
-  font-size: 4vw;
-  padding: 8% 0%;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-  color: white;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: black;
-  text-transform: uppercase;
-  animation: wavyTextStartInit 4s;
-  animation-fill-mode: both;
-}
-.space {
-  padding: 3%;
-}
 .wavyTextStart span {
   padding-top: 10%;
   font-family: 'Aldrich';
@@ -169,59 +158,11 @@ body {
   animation-fill-mode: both;
   animation-delay: calc(.1s * var(--i));
 }
-.infinite span {
-  animation: wavyTextStartInfinite 2s infinite, color-animation 3s linear infinite;
-  animation-delay: calc(.1s * var(--i));
-}
-.title-word-1 {
-  --color-1: #A81307;
-  --color-2: #E65428;
-  --color-3: #FCC601;
-  --color-4: #265C92;
-}
-.title-word-2 {
-  --color-1: #A81307;
-  --color-2: #E65428;
-  --color-3: #FCC601;
-  --color-4: #265C92;
-}
-.title-word-3 {
-  --color-1: #A81307;
-  --color-2: #E65428;
-  --color-3: #FCC601;
-  --color-4: #265C92;
-}
-.title-word-4 {
-  --color-1: #A81307;
-  --color-2: #E65428;
-  --color-3: #FCC601;
-  --color-4: #265C92;
-}
-@keyframes color-animation {
-  0%    {color: var(--color-1)}
-  24%   {color: var(--color-1)}
-  25%   {color: var(--color-2)}
-  49%   {color: var(--color-2)}
-  50%   {color: var(--color-3)}
-  74%   {color: var(--color-3)}
-  75%  {color: var(--color-4)}
-  99%  {color: var(--color-4)}
-  100%  {color: var(--color-1)}
-}
-@keyframes wavyTextStartInit {
-  0% {
-      transform: translateY(2000px);
-  }
-  100% {
-      transform: translateY(0);
-  }
-}
-
 .hidden {
   display: none;
   z-index: -1;
 }
-.prompt {
+/*.prompt {
     font-family: Roboto;
     background-color: white;
     border: 5px solid black;
@@ -235,7 +176,7 @@ body {
     animation-delay: 1.4s;
     animation: promptInit 3.5s forwards, promptInfinite 4s linear forwards;
     pointer-events: none;
-}
+}*/
 @keyframes promptInit {
   0% {
       transform: scale(.1);
@@ -397,13 +338,6 @@ body {
     filter: blur(1px);
     z-index: 10;
     animation: transition 1.55s;
-}
-#transition {
-    width: 10px;
-    height: 10px;
-    top: 50%;
-    left: 50%;
-    background-color: white;
 }
 .dot {
     width: 10px;
