@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <section class="startStage">
+        <section class="startStage" id="startStage">
             <span id="transition"></span>
             <span id="hyperSpace"></span>
             <button id="startGame"></button>
@@ -63,7 +63,7 @@
             </div> 
         </section>
 
-        <section class="teamConfigStage">
+        <section class="teamConfigStage" id="teamConfigStage">
             <span id="transition" class="trans"></span>
             <span id="hyperSpace"></span>
             <div class="selArea" id="optionArea">
@@ -81,8 +81,7 @@
                 <h1 id="confirmMesg" class="hidden">Confirm Selection?</h1>            
             </main>
         </section>
-
-        <section class="teamSelectStage">
+        <section class="teamSelectStage" id="teamSelectStage">
             <span id="transition"></span>
             <span id="hyperSpace"></span>
             <div class="wavyTextStart" id="wavyTextStart">
@@ -91,7 +90,7 @@
                 <span style="--i:3" class="title-word title-word-3">A</span>
                 <span style="--i:4" class="title-word title-word-4">M</span>
                 <span class="space"></span>
-                <span style="--i:5" class="title-word title-word-1">1</span>
+                <span style="--i:5" class="title-word title-word-1">1</span> 
             </div>
             <p class="description">Get Ready</p>
             <div class="backwrap gradient">
@@ -133,7 +132,6 @@
         </section>
         <script type="module" src="../renderer/startGame.mjs"></script>
         <script type="module" src="../renderer/game.mjs" async></script>
-
         <script type="module" src="../renderer/startGame.mjs" async></script>
     </body>
 </html>
