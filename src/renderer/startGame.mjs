@@ -9,6 +9,7 @@ window.addEventListener('load', function () {
     const element = document.getElementById('wavyTextStart');
     setTimeout(() => element.classList.add('infinite'), 2300);
 });
+
 startGame.onclick = () => {
     gameLogic.changeGameState("startGame");
     renderer.generateRandomDots(800);

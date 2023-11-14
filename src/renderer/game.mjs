@@ -23,10 +23,34 @@ let leaderboard;
 let prelimQuestion = [];
 let speedQuestion = [];
 
+const startPage = document.getElementById('startStage');
+const teamConfigPage = document.getElementById('teamConfigStage');
+const teamSelectPage = document.getElementById('teamSelectStage');
+
 while (gameStage != "endStage") {
     if (gameStage === "startStage") {
-        
+        loadPage("startStage");
+    } else if (gameStage === "teamConfigStage") {
+        leavePage("startStage", false);
+        loadPage("teamConfigStage");
+    } else if (gameStage === "speedStage") {
+        leavePage("startStage", false);
+        loadPage("teamConfigStage");
     }
+}
+
+function leavePage(gameStage, reloadPage) {
+    renderer.generateRandomDots(800);
+    if (reloadPage) {
+        transition.classList.add('transStart');
+        setTimeout(() => location.reload(), 700);
+    } else {
+        document.getElementById(gameStage).classList.add('pageHide');
+    }
+}
+
+function loadPage(gameStage) {
+    document.getElementById(gameStage).classList.add('pageShow');
 }
 
 export function initializeGame() {
