@@ -45,12 +45,37 @@ export async function readTable(tableSelect) {
     const answerKey = await getDatabase();
     prelimQuestion = answerKey.slice(0, 50);
     speedQuestion = answerKey.slice(50, 100);
+    let prelimQuestionRandom = [];
+    let speedQuestionRandom = [];
+
+    for (let i = 0; i < 50; i++) {
+        let myIndex = (Math.random * (50-i));
+        prelimQuestionRandom[i][0] = prelimQuestion[myIndex][0];
+        prelimQuestion[i].splice(0, 1);
+        for (j = 0; j < 4; j++) {
+           let  myJndex = (Math.random*(50-j))
+            prelimQuestionRandom[i][j] = prelimQuestion[myIndex][myJndex];
+            prelimQuestion[i].splice(myJndex, 1);
+        }
+    }
+
+    for (let i = 0; i < 50; i++) {
+        let myIndex = (Math.random * (50-i));
+        speedQuestionRandom[i][0] = speedQuestion[myIndex][0];
+        speedQuestion[i].splice(0, 1);
+        for (j = 0; j < 4; j++) {
+            let myJndex = (Math.random*(50-j))
+            speedQuestionRandom[i][j] = speedQuestion[myIndex][myJndex];
+            speedQuestion[i].splice(myJndex, 1);
+        }
+    }
+
     if (tableSelect === 0) {
         return answerKey;
     } else if (tableSelect === 1) {
-        return prelimQuestion;
+        return prelimQuestionRandom;
     } else if (tableSelect === 2) {
-        return speedQuestion;
+        return speedQuestionRandom;
     } else {
         return "Error retrieving database.";
     }
