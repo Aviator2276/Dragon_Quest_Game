@@ -45,37 +45,46 @@ export async function readTable(tableSelect) {
     const answerKey = await getDatabase();
     prelimQuestion = answerKey.slice(0, 50);
     speedQuestion = answerKey.slice(50, 100);
-    let prelimQuestionRandom = [];
-    let speedQuestionRandom = [];
 
     for (let i = 0; i < 50; i++) {
-        let myIndex = (Math.random * (50-i));
-        prelimQuestionRandom[i][0] = prelimQuestion[myIndex][0];
-        prelimQuestion[i].splice(0, 1);
-        for (j = 0; j < 4; j++) {
-           let  myJndex = (Math.random*(50-j))
-            prelimQuestionRandom[i][j] = prelimQuestion[myIndex][myJndex];
-            prelimQuestion[i].splice(myJndex, 1);
+        let rando = Math.floor(Math.random() * (50 - i)) + i;
+        let temp = prelimQuestion[rando];
+        prelimQuestion[rando] = prelimQuestion[i];
+
+        for (let j = 1; j <= 4; i++) {
+            let rando2 = Math.floor(Math.random() * (4-j)) + j;
+            let temp2 = temp[rando];
+            temp[rando2] = temp[j];
+            temp[j] = temp2;
         }
+
+        prelimQuestion[i] = temp;
     }
 
     for (let i = 0; i < 50; i++) {
-        let myIndex = (Math.random * (50-i));
-        speedQuestionRandom[i][0] = speedQuestion[myIndex][0];
-        speedQuestion[i].splice(0, 1);
-        for (j = 0; j < 4; j++) {
-            let myJndex = (Math.random*(50-j))
-            speedQuestionRandom[i][j] = speedQuestion[myIndex][myJndex];
-            speedQuestion[i].splice(myJndex, 1);
+        let rando = Math.floor(Math.random() * (50 - i)) + i;
+        let temp = speedQuestion[rando];
+        speedQuestion[rando] = speedQuestion[i];
+
+        for (let j = 1; j <= 4; j++) {
+            let rando2 = Math.floor(Math.random() * (4-j)) + j;
+            let temp2 = temp[rando];
+            temp[rando2] = temp[i];
+            temp[i] = temp2;
         }
+
+        speedQuestion[i] = temp;
     }
+
+    console.log(prelimQuestion);
+    console.log(speedQuestion);
 
     if (tableSelect === 0) {
         return answerKey;
     } else if (tableSelect === 1) {
-        return prelimQuestionRandom;
+        return prelimQuestion;
     } else if (tableSelect === 2) {
-        return speedQuestionRandom;
+        return speedQuestion;
     } else {
         return "Error retrieving database.";
     }
