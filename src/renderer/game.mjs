@@ -57,7 +57,7 @@ function leavePage(gameStage, reloadPage) {
 
 function loadPage(pageLoadVar) {
     document.getElementById(pageLoadVar).classList.remove('pageHide');
-    pageLoadVar.onLoad();
+    abcdefg
 }
 
 function initializeGame() {

@@ -43,8 +43,9 @@ async function getDatabase() {
 
 export async function readTable(tableSelect) {
     const answerKey = await getDatabase();
-    prelimQuestion = answerKey.slice(0, 50);
-    speedQuestion = answerKey.slice(50, 100);
+    let prelimQuestion = answerKey.slice(0, 50);
+    let speedQuestion = answerKey.slice(50, 100);
+    
 
     for (let i = 0; i < 50; i++) {
         let rando = Math.floor(Math.random() * (50 - i)) + i;
@@ -88,4 +89,13 @@ export async function readTable(tableSelect) {
     } else {
         return "Error retrieving database.";
     }
+}
+
+function checkCorrect(question, answer) {
+    const answerKey = readTable(0);
+    let correctAnswer = new Map(0);
+    for (let i = 0; i < 100; i++) {
+        correctAnswer.set(prelimQuestion[i][0], prelimQuestion[i][1])
+    }
+    return(correctAnswer.get(question) == answer);
 }
