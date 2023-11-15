@@ -1,10 +1,14 @@
+let isLoaded = false;
+
 export function onLoad() {
     const element = document.getElementById('wavyTextStart');
     setTimeout(() => element.classList.add('infinite'), 2300);
+    isLoaded = true;
 }
 
 startGame.onclick = () => {
-    gameLogic.changeGameState("startGame");
-    renderer.generateRandomDots(800);
-    setTimeout(() => window.open('teamConfig.html','_self',false), 2200);
+    if (isLoaded = true) {
+        setTimeout(() => gameLogic.changeGameState("teamConfigStage"), 2200);
+        isLoaded = false;
+    }
 }

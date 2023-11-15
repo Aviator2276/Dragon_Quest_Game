@@ -49,6 +49,10 @@ export function generateRandomDots(numDots) {
     }
 }
 
+export function addClassToElements(className, ...elements) {
+    elements.forEach(element => element.classList.add(className));
+}
+
 var maxParticleCount = 100; //set max confetti count
 var particleSpeed = 1; //set the particle animation speed
 export var startConfetti; //call to start confetti animation
