@@ -1,14 +1,18 @@
+import * as gameLogic from "./game.mjs";
+import * as renderer from "./renderer.mjs";
 let isLoaded = false;
+let startGame = document.getElementById('startGame');
 
 export function onLoad() {
     const element = document.getElementById('wavyTextStart');
-    setTimeout(() => element.classList.add('infinite'), 2300);
+    setTimeout(() => element.classList.add('infiniteWave'), 2300);
     isLoaded = true;
 }
 
 startGame.onclick = () => {
     if (isLoaded = true) {
-        setTimeout(() => gameLogic.changeGameState("teamConfigStage"), 2200);
+        renderer.generateRandomDots(400);
+        setTimeout(() => gameLogic.updateGame("teamConfigStage"), 2200);
         isLoaded = false;
     }
 }
