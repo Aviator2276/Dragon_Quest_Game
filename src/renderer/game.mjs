@@ -25,15 +25,15 @@ let gameStage;
 let totalTeam;
 let currentTeam;
 let leaderboard;
-let prelimQuestion = [];
-let speedQuestion = [];
+//let prelimQuestion = [];
+//let speedQuestion = [];
 
 const startGame = document.querySelector("#startGame");
 console.log(dbAccess.readTable(1));
 initializeGame();
+consoleLogGameInfo();
 
 while (gameStage != "endStage") {
-    getGameInfo();
     if (gameStage === "startStage") {
         loadPage("startStage");
     } else if (gameStage === "teamConfigStage") {
@@ -46,7 +46,7 @@ while (gameStage != "endStage") {
 }
 
 function leavePage(gameStage, reloadPage) {
-    renderer.generateRandomDots(800);
+    renderer.generateRandomDots(400);
     if (reloadPage) {
         transition.classList.add('transStart');
         setTimeout(() => location.reload(), 700);
@@ -55,9 +55,9 @@ function leavePage(gameStage, reloadPage) {
     }
 }
 
-function loadPage(gameStage) {
-    document.getElementById(gameStage).classList.remove('pageHide');
-    gameStage.loadPage();
+function loadPage(pageLoadVar) {
+    document.getElementById(pageLoadVar).classList.remove('pageHide');
+    pageLoadVar.onLoad();
 }
 
 function initializeGame() {
@@ -65,8 +65,10 @@ function initializeGame() {
   totalTeam = 0;
   currentTeam = 1;
   leaderboard = [0,0,0,0];
-  addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
+  renderer.addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
 }
+
+
 
 /*
 async function getDatabase() {
@@ -120,7 +122,7 @@ export async function readTable(tableSelect) {
 */
 
 
-export function getGameInfo() {
+function consoleLogGameInfo() {
     console.log(
         "Game State: " + gameStage + "\n" +
         "Total Teams Registered: " + totalTeam + "\n" +
