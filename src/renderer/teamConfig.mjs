@@ -1,4 +1,4 @@
-import * as gameLogic from "./game.js";
+//import * as gameLogic from "./game.js";
 import * as renderer from "./renderer.mjs";
 
 const promptMesg = document.getElementById('Mesg');
@@ -30,11 +30,11 @@ function confirmSelection(selectTeam) {
     setTimeout(() => confirmMesg.classList.add('prompt'), 400);
     setTimeout(() => confirmMesg.classList.remove('hidden'), 400);
     
-    selectTeam === "fourTeam" ? gameLogic.changeTotalTeam(4)
+    /*selectTeam === "fourTeam" ? gameLogic.changeTotalTeam(4)
     : selectTeam === "threeTeam" ? gameLogic.changeTotalTeam(3)
     : selectTeam === "twoTeam" ? gameLogic.changeTotalTeam(2)
     : gameLogic.changeTotalTeam(1);
-    gameLogic.getGameInfo();
+    gameLogic.getGameInfo();*/
 
     confirm.onclick = () => {
         nextPage();

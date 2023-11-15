@@ -21,7 +21,7 @@ const createWindow = () => {
 
   window.loadFile(path.join(__dirname, '../static/index.html'));
   if (isDev) {
-    //window.webContents.openDevTools();
+    window.webContents.openDevTools();
   }
   window.on("ready-to-show", window.show)
   //window.setFullScreen(true)  //<--------------- UNCOMMENT BEFORE PRODUCTION

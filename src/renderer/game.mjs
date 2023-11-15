@@ -1,4 +1,5 @@
 import * as renderer from "./renderer.mjs";
+import * as dbAccess from "./dbAccess.js";
 import * as startStage from "./startGame.mjs";
 import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
@@ -28,7 +29,7 @@ let prelimQuestion = [];
 let speedQuestion = [];
 
 const startGame = document.querySelector("#startGame");
-
+console.log(dbAccess.readTable(1));
 initializeGame();
 
 while (gameStage != "endStage") {
@@ -67,6 +68,7 @@ function initializeGame() {
   addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
 }
 
+/*
 async function getDatabase() {
   return new Promise((resolve, reject) => {
     let answerKeyRaw = [];
@@ -97,7 +99,7 @@ async function getDatabase() {
         .on("end", function () {
             console.log("finished");
         });
-    });*/
+    });
     });
 }
 
@@ -115,6 +117,7 @@ export async function readTable(tableSelect) {
         return "Error retrieving database.";
     }
 }
+*/
 
 
 export function getGameInfo() {

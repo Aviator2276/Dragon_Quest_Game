@@ -1,5 +1,3 @@
-import * as gameLogic from "./game.js";
-
 export function onLoad() {
     const element = document.getElementById('wavyTextStart');
     setTimeout(() => element.classList.add('infinite'), 2300);
