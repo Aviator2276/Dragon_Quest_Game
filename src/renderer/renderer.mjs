@@ -1,3 +1,5 @@
+import * as gameLogic from "./game.mjs";
+
 function createRandomDot() {
     const dot = document.createElement('div');
     dot.classList.add('dot');
@@ -8,7 +10,8 @@ function createRandomDot() {
     dot.style.left = `${randomX}px`;
     dot.style.top = `${randomY}px`;
     
-    document.getElementById('hyperSpace').appendChild(dot);
+    let hyperSpaceDiv = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0]
+	hyperSpaceDiv.appendChild(dot);
     
     setTimeout(() => {
         transformDotToLine(dot);
@@ -41,7 +44,7 @@ function transformDotToLine(dot) {
     squareTrans.classList.add('transStart')
     setTimeout(() => {
         line.remove();
-    }, 10000);
+    }, 3000);
 }
 export function generateRandomDots(numDots) {
     for (let i = 0; i < numDots; i++) {

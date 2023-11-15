@@ -36,6 +36,7 @@ export function updateGame(changeGameState) {
         loadPage("teamConfigStage");
     } else if (gameStage === "teamSelectStage") {
         leavePage("teamConfigStage", false);
+        loadPage("teamSelectStage");
     } else {
         console.log("Error");
     }
@@ -63,6 +64,12 @@ function initializeGame() {
   renderer.addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
 }
 
+export function changeTotalTeam(changeTo) {
+    totalTeam = changeTo;
+}
+export function getGameStage() {
+    return gameStage;
+}
 function consoleLogGameInfo() {
     console.log(
         "Game State: " + gameStage + "\n" +

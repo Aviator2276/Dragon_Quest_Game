@@ -1,4 +1,4 @@
-//import * as gameLogic from "./game.js";
+import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
 
 const promptMesg = document.getElementById('Mesg');
@@ -19,8 +19,8 @@ function addClassToElements(className, ...elements) {
 
 
 function nextPage() {
-    setTimeout(() => renderer.generateRandomDots(800), 200);
-    setTimeout(() => window.open('teamSel.html','_self',false), 2200);
+    renderer.generateRandomDots(800)
+    setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 
 function confirmSelection(selectTeam) {
@@ -30,11 +30,10 @@ function confirmSelection(selectTeam) {
     setTimeout(() => confirmMesg.classList.add('prompt'), 400);
     setTimeout(() => confirmMesg.classList.remove('hidden'), 400);
     
-    /*selectTeam === "fourTeam" ? gameLogic.changeTotalTeam(4)
+    selectTeam === "fourTeam" ? gameLogic.changeTotalTeam(4)
     : selectTeam === "threeTeam" ? gameLogic.changeTotalTeam(3)
     : selectTeam === "twoTeam" ? gameLogic.changeTotalTeam(2)
     : gameLogic.changeTotalTeam(1);
-    gameLogic.getGameInfo();*/
 
     confirm.onclick = () => {
         nextPage();

@@ -60,7 +60,7 @@ body {
 .space {
   padding: 3%;
 }
-/*.wavyTextStart span {
+.wavyTextStart span {
   font-family: 'Aldrich';
   font-size: 12vw;
   text-align: center;
@@ -73,7 +73,7 @@ body {
   animation: wavyTextStartInit 1.5s, color-animation 3s linear infinite;
   animation-fill-mode: both;
   animation-delay: calc(.1s * var(--i));
-}*/
+}
 .infiniteWave span {
   animation: wavyTextStartInfinite 2s infinite, color-animation 3s linear infinite;
   animation-delay: calc(.1s * var(--i));
@@ -163,7 +163,7 @@ body {
   display: none;
   z-index: -1;
 }
-/*.prompt {
+.prompt {
     font-family: Roboto;
     background-color: white;
     border: 5px solid black;
@@ -177,7 +177,7 @@ body {
     animation-delay: 1.4s;
     animation: promptInit 3.5s forwards, promptInfinite 4s linear forwards;
     pointer-events: none;
-}*/
+}
 @keyframes promptInit {
   0% {
       transform: scale(.1);
