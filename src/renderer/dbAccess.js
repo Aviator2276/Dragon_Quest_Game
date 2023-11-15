@@ -42,19 +42,18 @@ async function getDatabase() {
   }
 
 export async function readTable(tableSelect) {
-    const answerKey = await getDatabase();
-    let prelimQuestion = answerKey.slice(0, 50);
-    let speedQuestion = answerKey.slice(50, 100);
-    
+    let answerKey = await getDatabase();
+    let prelimQuestion = JSON.parse(JSON.stringify(answerKey.slice(0, 50)));
+    let speedQuestion = JSON.parse(JSON.stringify(answerKey.slice(50, 100)));
 
     for (let i = 0; i < 50; i++) {
         let rando = Math.floor(Math.random() * (50 - i)) + i;
         let temp = prelimQuestion[rando];
         prelimQuestion[rando] = prelimQuestion[i];
 
-        for (let j = 1; j <= 4; i++) {
-            let rando2 = Math.floor(Math.random() * (4-j)) + j;
-            let temp2 = temp[rando];
+        for (let j = 1; j < 5; j++) {
+            let rando2 = Math.floor(Math.random() * (5-j)) + j;
+            let temp2 = temp[rando2];
             temp[rando2] = temp[j];
             temp[j] = temp2;
         }
@@ -67,11 +66,11 @@ export async function readTable(tableSelect) {
         let temp = speedQuestion[rando];
         speedQuestion[rando] = speedQuestion[i];
 
-        for (let j = 1; j <= 4; j++) {
-            let rando2 = Math.floor(Math.random() * (4-j)) + j;
-            let temp2 = temp[rando];
-            temp[rando2] = temp[i];
-            temp[i] = temp2;
+        for (let j = 1; j < 5; j++) {
+            let rando2 = Math.floor(Math.random() * (5-j)) + j;
+            let temp2 = temp[rando2];
+            temp[rando2] = temp[j];
+            temp[j] = temp2;
         }
 
         speedQuestion[i] = temp;
@@ -79,6 +78,7 @@ export async function readTable(tableSelect) {
 
     console.log(prelimQuestion);
     console.log(speedQuestion);
+    console.log(answerKey);
 
     if (tableSelect === 0) {
         return answerKey;
@@ -91,11 +91,14 @@ export async function readTable(tableSelect) {
     }
 }
 
-function checkCorrect(question, answer) {
-    const answerKey = readTable(0);
-    let correctAnswer = new Map(0);
+export function checkCorrect(question, answer) {
+    let answerKey = readTable(0);
+    let correctAnswer = new Map();
+
+    console.log(answerKey);
+    
     for (let i = 0; i < 100; i++) {
-        correctAnswer.set(prelimQuestion[i][0], prelimQuestion[i][1])
+        correctAnswer.set(answerKey[i][0], answerKey[i][1]);
     }
     return(correctAnswer.get(question) == answer);
 }

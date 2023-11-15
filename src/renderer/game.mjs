@@ -21,7 +21,8 @@ let totalTeam;
 let currentTeam;
 let leaderboard;
 
-//console.log(dbAccess.readTable(1));
+dbAccess.readTable(4);
+console.log(dbAccess.checkCorrect("prelimQuestion10", "hello"));
 initializeGame();
 
 export function updateGame(changeGameState) {
