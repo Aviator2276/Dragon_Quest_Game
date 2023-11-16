@@ -3,6 +3,7 @@ import * as dbAccess from "./dbAccess.js";
 import * as startStage from "./startGame.mjs";
 import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
+import * as prelimStage from "./prelim.mjs";
 
 /*
 Stages in order:
@@ -45,7 +46,7 @@ export function updateGame(changeGameState) {
     } else if (gameStage === "prelimStage") {
         leavePage("teamSelectStage", false);
         loadPage("prelimStage");
-        teamSelectStage.onLoad();
+        prelimStage.onLoad();
     } else {
         console.log("Error");
     }
