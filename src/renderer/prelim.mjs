@@ -57,6 +57,7 @@ ansA.onclick = () => {
     ansA.classList.add('selected');
     confirmMesg.innerHTML = "Confirm 1 Team Selection";
     setTimeout(() => confirmSelection(ansA), 500);
+};
 ansB.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansB, ansD, question);
     ansB.classList.add('selected');
