@@ -53,6 +53,10 @@ function confirmSelection(selectTeam) {
 
 ansA.onclick = () => {
     console.log("clicked!");
+    console.log(ansB);
+    console.log(ansC);
+    console.log(ansD);
+    console.log(question);
     addClassToElements('hidePrompt', ansB, ansC, ansD, question);
     ansA.classList.add('selected');
     confirmMesg.innerHTML = "Confirm 1 Team Selection";
