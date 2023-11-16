@@ -237,16 +237,16 @@ body {
   font-size: 6vw;
   transition: .3s;
 }
-#oneTeam {
+#oneTeam, #ansA {
   background-color: #A81307;
 }
-#twoTeam {
+#twoTeam, #ansB {
   background-color: #E65428;
 }
-#threeTeam {
+#threeTeam, #ansC {
   background-color: #FCC601;
 }
-#fourTeam {
+#fourTeam, #ansD {
   background-color: #265C92;
 }
 .hidePrompt {

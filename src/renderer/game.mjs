@@ -21,8 +21,10 @@ let totalTeam;
 let currentTeam;
 let leaderboard;
 
+/*
 console.log(dbAccess.readTable(0));
 console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
+*/
 
 initializeGame();
 
@@ -39,6 +41,10 @@ export function updateGame(changeGameState) {
     } else if (gameStage === "teamSelectStage") {
         leavePage("teamConfigStage", false);
         loadPage("teamSelectStage");
+        teamSelectStage.onLoad();
+    } else if (gameStage === "prelimStage") {
+        leavePage("teamSelectStage", false);
+        loadPage("prelimStage");
         teamSelectStage.onLoad();
     } else {
         console.log("Error");
@@ -64,7 +70,7 @@ function initializeGame() {
   totalTeam = 1;
   currentTeam = 1;
   leaderboard = [0,0,0,0];
-  renderer.addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
+  renderer.addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'), document.getElementById('prelimStage'));
 }
 
 export function changeTotalTeam(changeTo) {
