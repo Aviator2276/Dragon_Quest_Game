@@ -10,7 +10,7 @@ function createRandomDot() {
     dot.style.left = `${randomX}px`;
     dot.style.top = `${randomY}px`;
     
-    let hyperSpaceDiv = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0]
+    let hyperSpaceDiv = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0];
 	hyperSpaceDiv.appendChild(dot);
     
     setTimeout(() => {
@@ -21,7 +21,8 @@ function transformDotToLine(dot) {
     dot.classList.remove('dot');
     dot.classList.add('line');
 
-    const squareTrans = document.getElementById('transition');
+	const hyperSpaceDiv = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0];
+    const squareTrans = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
 
     const dotX = parseFloat(dot.style.left) + 5;
     const dotY = parseFloat(dot.style.top) + 5;
@@ -38,7 +39,7 @@ function transformDotToLine(dot) {
     line.style.top = `${dotY}px`;
     line.style.transform = `rotate(${angle}rad)`;
     
-    document.getElementById('hyperSpace').appendChild(line);
+    hyperSpaceDiv.appendChild(line);
     
     line.style.animation = 'extend 2s forwards';
     squareTrans.classList.add('transStart');
