@@ -133,7 +133,7 @@ body {
 .prompt {
   animation: promptInit 2.5s forwards !important;
 }
-#confirmMesg {
+#confirmMesg, #confirmMesg2 {
   z-index: 5;
   margin-bottom: 40% !important;
 }
@@ -282,10 +282,10 @@ body {
   font-size: 6vw;
   transition: .3s;
 }
-#confirmed {
+#confirmed, #confirmed2 {
   background-color: #07a83a;
 }
-#notConfirmed {
+#notConfirmed, #notConfirmed {
   background-color: #A81307;
 }
 @keyframes confirmShow {
@@ -304,7 +304,7 @@ body {
   z-index: 2;
   animation: transitionIn 1.6s forwards;
 }
-#transition {
+#transition, #transition2 {
   z-index: 10;
   width: 10px;
   height: 10px;

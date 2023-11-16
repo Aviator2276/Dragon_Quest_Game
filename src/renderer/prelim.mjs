@@ -1,6 +1,6 @@
 import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
-import * as dbAcess from "./dbAccess.mjs";
+import * as dbAcess from "./dbAccess.js";
 
 //import elements
 const question = document.getElementById('question');
