@@ -76,10 +76,6 @@ export async function readTable(tableSelect) {
         speedQuestion[i] = temp;
     }
 
-    console.log(prelimQuestion);
-    console.log(speedQuestion);
-    console.log(answerKey);
-
     if (tableSelect === 0) {
         return answerKey;
     } else if (tableSelect === 1) {
@@ -91,11 +87,9 @@ export async function readTable(tableSelect) {
     }
 }
 
-export function checkCorrect(question, answer) {
-    let answerKey = readTable(0);
+export async function checkCorrect(question, answer) {
+    let answerKey = await readTable(0);
     let correctAnswer = new Map();
-
-    console.log(answerKey);
     
     for (let i = 0; i < 100; i++) {
         correctAnswer.set(answerKey[i][0], answerKey[i][1]);
