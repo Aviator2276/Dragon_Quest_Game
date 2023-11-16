@@ -312,6 +312,31 @@ body {
   left: 50%;
   background-color: white;
 }
+.transStart {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 10;
+  animation: transitionOut 1.55s;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  animation: grow 2s forwards;
+  z-index: 10;
+}
+.line {
+position: absolute;
+transform-origin: 0% 50%;
+width: 0;
+height: 10px;
+z-index: 10;
+background-color: white;
+border-radius: 5px;
+}
 @keyframes transitionIn {
   0% {
     transform: scale(1000, 1000);
@@ -333,31 +358,6 @@ body {
   100% {
       transform: scale(100, 100);
   }
-}
-.transStart {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(1px);
-    z-index: 10;
-    animation: transition 1.55s;
-}
-.dot {
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-    position: absolute;
-    animation: grow 2s forwards;
-    z-index: 10;
-}
-.line {
-  position: absolute;
-  transform-origin: 0% 50%;
-  width: 0;
-  height: 10px;
-  z-index: 10;
-  background-color: white;
-  border-radius: 5px;
 }
 @keyframes wavyTextStartInfinite {
     0%,70%,100% {

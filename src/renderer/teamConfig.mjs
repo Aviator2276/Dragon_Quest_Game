@@ -6,7 +6,6 @@ const oneTeam = document.getElementById('oneTeam');
 const twoTeam = document.getElementById('twoTeam');
 const threeTeam = document.getElementById('threeTeam');
 const fourTeam = document.getElementById('fourTeam');
-const transition = document.getElementById('transition');
 
 const confirmSelect = document.getElementById('confirmSelect');
 const confirmMesg = document.getElementById('confirmMesg');
@@ -17,13 +16,17 @@ function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
-
+export function onLoad() {
+    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
+    transition.classList.add('transStart');
+}
 function nextPage() {
     renderer.generateRandomDots(800)
     setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 
 function confirmSelection(selectTeam) {
+    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
     confirmSelect.classList.add('confirmShow');
     setTimeout(() => selectTeam.classList.remove('selected'), 400);
     addClassToElements('confirmButtonShow', confirm, notConfirm);
@@ -40,7 +43,8 @@ function confirmSelection(selectTeam) {
     };
     notConfirm.onclick = () => {
         transition.classList.add('transStart');
-        setTimeout(() => location.reload(), 700);
+        gameLogic.changeTotalTeam(1);
+        setTimeout(() => gameLogic.updateGame("teamConfigStage"), 700);
     }
 }
 

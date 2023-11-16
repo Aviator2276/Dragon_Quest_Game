@@ -60,7 +60,7 @@ function loadPage(pageLoad) {
 
 function initializeGame() {
   updateGame("startStage");
-  totalTeam = 0;
+  totalTeam = 1;
   currentTeam = 1;
   leaderboard = [0,0,0,0];
   renderer.addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'));
