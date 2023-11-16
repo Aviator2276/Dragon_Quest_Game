@@ -30,7 +30,7 @@ function transformDotToLine(dot) {
     const centerY = window.innerHeight / 2;
     
     const angle = Math.atan2(centerY - dotY, centerX - dotX) + Math.PI;
-    //const distance = Math.sqrt(Math.pow(centerX - dotX, 2) + Math.pow(centerY - dotY, 2)) + 1000;
+    //const distance = Math.sqrt(Math.pow(centerX - dotX, 2) + Math.pow(centerY - dotY, 2)) + 1000;Z
     
     const line = document.createElement('div');
     line.classList.add('line');
@@ -41,10 +41,12 @@ function transformDotToLine(dot) {
     document.getElementById('hyperSpace').appendChild(line);
     
     line.style.animation = 'extend 2s forwards';
-    squareTrans.classList.add('transStart')
+    squareTrans.classList.add('transStart');
+	let hyperSpaceDivTags = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0];
     setTimeout(() => {
-        line.remove();
-    }, 3000);
+        hyperSpaceDivTags.innerHTML = "";
+		squareTrans.classList.remove('transStart');
+    }, 2500);
 }
 export function generateRandomDots(numDots) {
     for (let i = 0; i < numDots; i++) {

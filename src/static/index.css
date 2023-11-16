@@ -305,6 +305,7 @@ body {
   animation: transitionIn 1.6s forwards;
 }
 #transition {
+  z-index: 10;
   width: 10px;
   height: 10px;
   top: 50%;

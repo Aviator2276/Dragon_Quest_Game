@@ -38,6 +38,7 @@ export function updateGame(changeGameState) {
     } else if (gameStage === "teamSelectStage") {
         leavePage("teamConfigStage", false);
         loadPage("teamSelectStage");
+        teamSelectStage.onLoad();
     } else {
         console.log("Error");
     }
