@@ -55,18 +55,20 @@ export async function getDatabase() {
     }
   //}
 
+const numPrelimQuestions = 50;
+const numSpeedQuestions = 50;
 
 export function randomizeQuestions(database, prelim) {
     let questions;
 
     if (prelim) {
-        questions = JSON.parse(JSON.stringify(database.slice(0, 50)));
+        questions = JSON.parse(JSON.stringify(database.slice(0, numPrelimQuestions)));
     } else {
-        questions = JSON.parse(JSON.stringify(database.slice(50, 100)));
+        questions = JSON.parse(JSON.stringify(database.slice(numPrelimQuestions, numPrelimQuestions + numSpeedQuestions)));
     }
 
-    for (let i = 0; i < 50; i++) {
-        let rando = Math.floor(Math.random() * (50 - i)) + i;
+    for (let i = 0; i < questions.length; i++) {
+        let rando = Math.floor(Math.random() * (questions.length - i)) + i;
         let temp = questions[rando];
         questions[rando] = questions[i];
 
@@ -86,7 +88,7 @@ export function randomizeQuestions(database, prelim) {
 export function getAnswerMap(database) {
     let answerMap = new Map();
     
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < database.length; i++) {
         answerMap.set(database[i][0], database[i][1]);
     }
     return answerMap;

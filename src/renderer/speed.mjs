@@ -21,14 +21,16 @@ function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
+function removeClassFromElements(className, ...elements) {
+    elements.forEach(element => element.classList.remove(className));
+}
+
 function getSpeedElement(elementClass) {
     return speedStage.getElementsByClassName(elementClass)[0];
 }
 
 export function onLoad() {
     transition.classList.add('transLoadPage');
-
-    gameLogic.nextQuestion();
     let questionAndAnswers = gameLogic.currentQuestion();
     question.innerHTML = questionAndAnswers[0];
     ansA.innerHTML = questionAndAnswers[1];
@@ -42,6 +44,13 @@ function nextPage() {
     setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 
+function resetPage() {
+    addClassToElements('hidden', showAnswer, correct, incorrect);
+    correct.style.animation = ''; 
+    incorrect.style.animation = ''; 
+    showAnswer.style.animation = '';
+}
+
 function guessAnswer(guess) {
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
     //showAnswer.classList.add('confirmShow');
@@ -51,6 +60,27 @@ function guessAnswer(guess) {
     } else {
         incorrect.classList.remove('hidden');
     }
+
+    setTimeout(() => {
+        removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
+        removeClassFromElements('transLoadPage', transition);
+        removeClassFromElements('selected', ansA, ansB, ansC, ansD);
+        correct.style.animation = ''; 
+        incorrect.style.animation = ''; 
+        showAnswer.style.animation = ''; 
+        correct.style.animation = 'correctRevealSlideOut .6s forwards';
+        incorrect.style.animation = 'correctRevealSlideOut .6s forwards';
+        showAnswer.style.animation = 'showAnswerSlideOut .6s forwards'; 
+        setTimeout(() => {
+            resetPage();
+            gameLogic.nextQuestion();
+            onload();
+        }, 600);
+        //correct.style.animation = 'correctRevealSlideOut 1s ';
+        //incorrect.style.animation = 'correctRevealSlideOut 1s ';
+        //showAnswer.style.animation = 'showAnswerSlideOut 1s ';
+
+    }, 3000);
 }
 
 ansA.onclick = () => {

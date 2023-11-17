@@ -29,11 +29,16 @@ function getPrelimElement(elementClass) {
     return prelimStage.getElementsByClassName(elementClass)[0];
 }
 
-export function onLoad() {
-    transition.classList.add('transLoadPage');
-
-    gameLogic.nextQuestion();
+export function onLoad(firstTime) {
+    if (firstTime) {
+        transition.classList.add('transLoadPage');
+    } else {
+        correct.style.animation = 'correctRevealSlideOut .6s forwards';
+        incorrect.style.animation = 'correctRevealSlideOut .6s forwards';
+        showAnswer.style.animation = 'showAnswerSlideOut .6s forwards'; 
+    }
     let questionAndAnswers = gameLogic.currentQuestion();
+    console.log(question);
     question.innerHTML = questionAndAnswers[0];
     ansA.innerHTML = questionAndAnswers[1];
     ansB.innerHTML = questionAndAnswers[2];
@@ -44,7 +49,17 @@ export function onLoad() {
 
 function nextPage() {
     renderer.generateRandomDots(400)
-    setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
+    setTimeout(() => gameLogic.updateGame("speedStage"), 2200);
+}
+
+function resetPage() {
+    removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
+    removeClassFromElements('transLoadPage', transition);
+    removeClassFromElements('selected', ansA, ansB, ansC, ansD);
+    correct.style.animation = ''; 
+    incorrect.style.animation = ''; 
+    showAnswer.style.animation = ''; 
+    addClassToElements('hidden', showAnswer, correct, incorrect);
 }
 
 function guessAnswer(guess) {
@@ -58,22 +73,10 @@ function guessAnswer(guess) {
     }
 
     setTimeout(() => {
-        removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
-        removeClassFromElements('transLoadPage', transition);
-        removeClassFromElements('selected', ansA, ansB, ansC, ansD);
-        correct.style.animation = ''; 
-        incorrect.style.animation = ''; 
-        showAnswer.style.animation = ''; 
-        correct.style.animation = 'correctRevealSlideOut .6s forwards';
-        incorrect.style.animation = 'correctRevealSlideOut .6s forwards';
-        showAnswer.style.animation = 'showAnswerSlideOut .6s forwards'; 
         setTimeout(() => {
-            addClassToElements('hidden', showAnswer, correct, incorrect);
+            resetPage();
             gameLogic.nextQuestion();
-            //gameLogic.updateGame('prelimStage');
-            correct.style.animation = ''; 
-            incorrect.style.animation = ''; 
-            showAnswer.style.animation = ''; 
+            onLoad(false);
         }, 600);
         //correct.style.animation = 'correctRevealSlideOut 1s ';
         //incorrect.style.animation = 'correctRevealSlideOut 1s ';

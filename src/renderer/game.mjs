@@ -25,7 +25,7 @@ let leaderboard;
 let answerMap;
 let prelimQuestions;
 let speedQuestions;
-let questionIndex;
+let questionIndex = 0;
 
 
 //console.log(dbAccess.callDatabase(0));
@@ -72,8 +72,9 @@ function loadPage(pageLoad) {
 }
 
 function initializeGame() {
-    leavePage("startStage");
-    updateGame("teamSelectStage");
+    //leavePage("startStage");
+    //updateGame("teamSelectStage");
+    updateGame("startStage");
     totalTeam = 1;
     currentTeam = 1;
     leaderboard = [0,0,0,0];
@@ -102,7 +103,6 @@ function loadDatabase() {
         speedQuestions = dbAccess.randomizeQuestions(database, false);
         answerMap = dbAccess.getAnswerMap(database);
     });
-    questionIndex = -1;
     setTimeout(() => console.log(prelimQuestions), 5000);
 }
 
