@@ -22,14 +22,16 @@ let totalTeam;
 let currentTeam;
 let leaderboard;
 
-/*
+
 console.log(dbAccess.readTable(0));
 console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
-*/
+
 
 initializeGame();
 
 export function updateGame(changeGameState) {
+    console.log(dbAccess.readTable(0));
+    console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
     if (changeGameState != "no") {
         gameStage = changeGameState;
     }
@@ -37,14 +39,14 @@ export function updateGame(changeGameState) {
         loadPage("startStage");
         startStage.onLoad();
     } else if (gameStage === "teamConfigStage") {
-        leavePage("startStage", false);
+        leavePage("startStage");
         loadPage("teamConfigStage");
     } else if (gameStage === "teamSelectStage") {
-        leavePage("teamConfigStage", false);
+        leavePage("teamConfigStage");
         loadPage("teamSelectStage");
         teamSelectStage.onLoad();
     } else if (gameStage === "prelimStage") {
-        leavePage("teamSelectStage", false);
+        leavePage("teamSelectStage");
         loadPage("prelimStage");
         prelimStage.onLoad();
     } else {
@@ -53,13 +55,8 @@ export function updateGame(changeGameState) {
     consoleLogGameInfo();
 }
 
-function leavePage(pageLeave, reloadPage) {
-    if (reloadPage) {
-        transition.classList.add('transStart');
-        setTimeout(() => location.reload(), 700);
-    } else {
-        document.getElementById(pageLeave).classList.add('pageHide');
-    }
+function leavePage(pageLeave) {
+    document.getElementById(pageLeave).classList.add('pageHide');
 }
 
 function loadPage(pageLoad) {

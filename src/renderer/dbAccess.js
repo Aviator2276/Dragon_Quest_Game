@@ -8,37 +8,44 @@ let prelimQuestion = [];
 let speedQuestion = [];
 
 async function getDatabase() {
-    return new Promise((resolve, reject) => {
-      let answerKeyRaw = [];
-      needle
-      .get(urlDatabase)
-      .pipe(csv({headers: false}))
-      .on("data", (data) => {
-          answerKeyRaw.push(data);
-      })
-      .on("done", (err) => {
-          if (err) reject(new Error("An error has occurred when retrieving online database. Trying local database"));
-          else
-              resolve(answerKeyRaw);
-      }).on("end", function () {
-          console.log("Online Database Success");
-      })/*.catch(() => {
-          fs.createReadStream(database)
-          .pipe(csv({headers: false}))
-          .on("data", (data) => {
-              answerKey.push(data);
-          })
-          .on("done", (err) => {
-              if (err) console.log("An error has occurred");
-              else 
-                  prelimQuestion = answerKey.slice(0, 50);
-                  speedQuestion = answerKey.slice(50, 100);
-          })
-          .on("end", function () {
-              console.log("finished");
-          });
-      });*/
-      });
+    let isConnected = !!await require('dns').promises.resolve('google.com').catch(()=>{});
+    if (isConnected) {
+        console.log("Trying Online Database.");
+        return new Promise((resolve, reject) => {
+            let answerKeyRaw = [];
+            needle
+            .get(urlDatabase)
+            .pipe(csv({headers: false}))
+            .on("data", (data) => {
+                answerKeyRaw.push(data);
+            })
+            .on("done", (err) => {
+                if (err) reject(new Error("An error has occurred when retrieving online database."));
+                else
+                    resolve(answerKeyRaw);
+            }).on("end", function () {
+                console.log("Online Database Success");
+            })
+        });
+    } else {
+        console.log("Unable to Connect. Reverting to Local Database.");
+        return new Promise((resolve, reject) => {
+            let answerKeyRaw = [];
+            fs.createReadStream(database)
+            .pipe(csv({headers: false}))
+            .on("data", (data) => {
+                answerKeyRaw.push(data);
+            })
+            .on("done", (err) => {
+                if (err) reject(new Error("An error has occurred when retrieving local database. No data available."))
+                else 
+                    resolve(answerKeyRaw);
+            })
+            .on("end", function () {
+                console.log("Local Database Success");
+            })
+        });
+    }
   }
 
 export async function readTable(tableSelect) {
