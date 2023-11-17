@@ -30,6 +30,7 @@ let prelimIndex = 0;
 let speedIndex = 0;
 
 
+
 //console.log(dbAccess.callDatabase(0));
 //console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
 //console.log(dbAccess.callDatabase(0));
@@ -117,6 +118,8 @@ function loadDatabase() {
     setTimeout(() => console.log(prelimQuestions), 5000);
 }
 
+//QUESTIONS
+
 export function getAnswer(prelim) {
     if (prelim) {
         return answerMap.get(prelimQuestions[prelimIndex][0]);
@@ -141,4 +144,29 @@ export function currentQuestion() {
     } else {
         return(console.log("ERROR: not in prelim or speed stages"));
     }
+}
+
+//SCORING
+
+const score = document.getElementById('score');
+
+export function addPoints(points) {
+    leaderboard[currentTeam - 1] += points;
+    updateTeamDisplay();
+}
+
+export function changeTeam(team) {
+    currentTeam = team;
+}
+
+export function getTeam() {
+    return team;
+}
+
+export function getTeamScore(team) {
+    return leaderboard[team - 1]
+}
+
+function updateTeamDisplay() {
+    score.innerHTML = "Score: " + getTeamScore(currentTeam);
 }

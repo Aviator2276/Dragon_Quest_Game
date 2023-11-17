@@ -16,6 +16,7 @@ const incorrect = getPrelimElement('incorrect');
 
 const transition = getPrelimElement('transition');
 
+const score = document.getElementById('score');
 
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
@@ -45,6 +46,8 @@ export function onLoad(firstTime) {
     ansC.innerHTML = questionAndAnswers[3];
     ansD.innerHTML = questionAndAnswers[4];
     correctAnswer.innerHTML = gameLogic.getAnswer(true);
+
+    score.classList.remove("pageHide");
 }
 
 function nextPage() {

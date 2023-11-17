@@ -22,7 +22,6 @@ body {
 
 .pageHide {
   display: none;
-  z-index: -1;
 }
 
 /* Game Start Stage */
@@ -570,4 +569,24 @@ border-radius: 5px;
   100% {
     transform: translateY(1500px);
   }
+}
+#score {
+  position: fixed;
+  z-index: 20;
+  width: 33vw;
+  height: 10vh;
+  line-height: 10vh;
+  background-color: white;
+  border: black solid 4px;
+  left: 0;
+}
+#time {
+  position: fixed;
+  z-index: 20;
+  width: 33vw;
+  height: 10vh;
+  line-height: 10vh;
+  background-color: white;
+  border: black solid 4px;
+  right: 0;
 }
