@@ -86,12 +86,13 @@ export function getGameStage() {
     return gameStage;
 }
 function consoleLogGameInfo() {
+    let connected = setTimeout(() => dbAccess.getConnectionState(), 500);
     console.log(
         "Game State: " + gameStage + "\n" +
         "Total Teams Registered: " + totalTeam + "\n" +
         "Current Team Selected: " + currentTeam + "\n" +
         "Leaderborad: " + leaderboard + "\n" +
-        "Connected to Internet: " + dbAccess.getConnectionState() + "\n"
+        "Connected to Internet: " + connected + "\n"
     );
 }
 function loadDatabase() {
