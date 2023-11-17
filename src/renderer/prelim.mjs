@@ -21,6 +21,10 @@ function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
+function removeClassFromElements(className, ...elements) {
+    elements.forEach(element => element.classList.remove(className));
+}
+
 function getPrelimElement(elementClass) {
     return prelimStage.getElementsByClassName(elementClass)[0];
 }
@@ -37,13 +41,13 @@ export function onLoad() {
     ansD.innerHTML = questionAndAnswers[4];
     correctAnswer.innerHTML = gameLogic.getAnswer();
 }
+
 function nextPage() {
     renderer.generateRandomDots(400)
     setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 
 function guessAnswer(guess) {
-    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
     //showAnswer.classList.add('confirmShow');
     showAnswer.classList.remove('hidden');
     if (guess.innerHTML === correctAnswer.innerHTML) {
@@ -51,29 +55,34 @@ function guessAnswer(guess) {
     } else {
         incorrect.classList.remove('hidden');
     }
+
+    setTimeout(() => {
+        removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
+        removeClassFromElements('transLoadPage', transition);
+        removeClassFromElements('selected', ansA, ansB, ansC, ansD);
+        addClassToElements('hidden', showAnswer, correct, incorrect);
+        gameLogic.nextQuestion();
+        gameLogic.updateGame('prelimStage');
+    }, 3000);
 }
 
 ansA.onclick = () => {
     addClassToElements('hidePrompt', ansB, ansC, ansD, question);
     ansA.classList.add('selected');
-    confirmMesg.innerHTML = "Confirm 1 Team Selection";
     setTimeout(() => guessAnswer(ansA), 500);
 };
 ansB.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansC, ansD, question);
     ansB.classList.add('selected');
-    confirmMesg.innerHTML = "Confirm 2 Team Selection";
     setTimeout(() => guessAnswer(ansB), 500);
 };
 ansC.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansB, ansD, question);
     ansC.classList.add('selected');
-    confirmMesg.innerHTML = "Confirm 3 Team Selection";
     setTimeout(() => guessAnswer(ansC), 500);
 };
 ansD.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansB, ansC, question);
     ansD.classList.add('selected');
-    confirmMesg.innerHTML = "Confirm 4 Team Selection";
     setTimeout(() => guessAnswer(ansD), 500);
 };
