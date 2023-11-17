@@ -61,12 +61,24 @@ function guessAnswer(guess) {
         removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
         removeClassFromElements('transLoadPage', transition);
         removeClassFromElements('selected', ansA, ansB, ansC, ansD);
-        addClassToElements('hidden', showAnswer, correct, incorrect);
-        gameLogic.nextQuestion();
-        gameLogic.updateGame('prelimStage');
-        correct.style.animation = 'showAnswerSlideOut 1s ';
-        incorrect.style.animation = 'correctRevealSlideOut 1s ';
-        showAnswer.style.animation = 'correctRevealSlideOut 1s ';
+        correct.style.animation = ''; 
+        incorrect.style.animation = ''; 
+        showAnswer.style.animation = ''; 
+        correct.style.animation = 'correctRevealSlideOut .6s forwards';
+        incorrect.style.animation = 'correctRevealSlideOut .6s forwards';
+        showAnswer.style.animation = 'showAnswerSlideOut .6s forwards'; 
+        setTimeout(() => {
+            addClassToElements('hidden', showAnswer, correct, incorrect);
+            gameLogic.nextQuestion();
+            //gameLogic.updateGame('prelimStage');
+            correct.style.animation = ''; 
+            incorrect.style.animation = ''; 
+            showAnswer.style.animation = ''; 
+        }, 600);
+        //correct.style.animation = 'correctRevealSlideOut 1s ';
+        //incorrect.style.animation = 'correctRevealSlideOut 1s ';
+        //showAnswer.style.animation = 'showAnswerSlideOut 1s ';
+
     }, 3000);
 }
 
