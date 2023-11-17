@@ -11,8 +11,8 @@ async function isConnected() {
 export function getConnectionState() {
     isConnected().then((connected) => {
         console.log(connected);
-        return connected
-    }).catch(console.log("Error: Could not connect to DNS servers"));
+        return connected;
+    });
 }
 
 export async function getDatabase() {
