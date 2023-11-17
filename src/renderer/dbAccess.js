@@ -2,14 +2,18 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const needle = require("needle");
 const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
-let database = './db/data.csv';
+const database = './db/data.csv';
 
 let prelimQuestion = [];
 let speedQuestion = [];
 
-async function getDatabase() {
+export async function isConnected() {
     let isConnected = !!await require('dns').promises.resolve('google.com').catch(()=>{});
-    if (isConnected) {
+    return isConnected;
+}
+
+async function getDatabase() {
+    if (await isConnected()) {
         console.log("Trying Online Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];

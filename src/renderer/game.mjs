@@ -82,6 +82,7 @@ function consoleLogGameInfo() {
         "Game State: " + gameStage + "\n" +
         "Total Teams Registered: " + totalTeam + "\n" +
         "Current Team Selected: " + currentTeam + "\n" +
-        "Leaderborad: " + leaderboard + "\n"
+        "Leaderborad: " + leaderboard + "\n" +
+        "Connected to Internet: " + dbAccess.isConnected() + "\n"
     );
 }
