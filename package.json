@@ -1,8 +1,8 @@
 {
-  "name": "dragon_quest_game",
-  "productName": "dragon_quest_game",
+  "name": "dragon_ball_game",
+  "productName": "Dragon Quest Ball",
   "version": "1.0.0",
-  "description": "Electron application for Dragon Quest.",
+  "description": "Dragon Ball is a fun trivia based Arcade Game.",
   "main": "src/main/index.js",
   "scripts": {
     "start": "electron-forge start",

@@ -511,7 +511,7 @@ border-radius: 5px;
   height: 33vh;
   line-height: 33vh;
   bottom: 0;
-  background-color: green;
+  background-color: #07a83a;
 }
 .incorrect {
   position: static;
@@ -519,7 +519,7 @@ border-radius: 5px;
   height: 33vh;
   line-height: 33vh;
   bottom: 0;
-  background-color: red;
+  background-color: #A81307;
 }
 @keyframes showAnswerSlide {
   0% {
