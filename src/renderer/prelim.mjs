@@ -1,6 +1,5 @@
 import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
-import * as dbAcess from "./dbAccess.js";
 
 //import elements
 const question = document.getElementById('question');
@@ -22,6 +21,7 @@ function addClassToElements(className, ...elements) {
 export function onLoad() {
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
     transition.classList.add('transStart');
+    question.innerHTML = gameLogic.nextQuestion(true);
 }
 function nextPage() {
     renderer.generateRandomDots(800)

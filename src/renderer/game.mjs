@@ -25,6 +25,7 @@ let leaderboard;
 let answerMap;
 let prelimQuestions;
 let speedQuestions;
+let currentQuestion;
 
 
 //console.log(dbAccess.callDatabase(0));
@@ -96,9 +97,18 @@ function loadDatabase() {
         speedQuestions = dbAccess.randomizeQuestions(database, false);
         answerMap = dbAccess.getAnswerMap(database);
     });
-    setTimeout(() => console.log(prelimQuestions), 2000);
+    currentQuestion = 0;
+    setTimeout(() => console.log(prelimQuestions), 5000);
 }
 
 function checkAnswer(question, answer) {
     return (answerMap.get(question) === answer);
+}
+
+function nextQuestion(prelim) {
+    if (prelim) {
+        return prelimQuestions[currentQuestion++];
+    } else {
+        return speedQuestions[currentQuestion++];
+    }
 }
