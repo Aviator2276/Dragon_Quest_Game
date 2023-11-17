@@ -4,6 +4,7 @@ import * as startStage from "./startGame.mjs";
 import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
 import * as prelimStage from "./prelim.mjs";
+import * as speedStage from "./speed.mjs";
 
 /*
 Stages in order:
@@ -25,7 +26,8 @@ let leaderboard;
 let answerMap;
 let prelimQuestions;
 let speedQuestions;
-let questionIndex = 0;
+let prelimIndex = 0;
+let speedIndex = 0;
 
 
 //console.log(dbAccess.callDatabase(0));
@@ -57,6 +59,10 @@ export function updateGame(changeGameState) {
         leavePage("teamSelectStage");
         loadPage("prelimStage");
         prelimStage.onLoad();
+    } else if (gameStage === "speedStage") {
+        leavePage("prelimStage");
+        loadPage("speedStage");
+        speedStage.onLoad();
     } else {
         console.log("Error");
     }
@@ -107,19 +113,27 @@ function loadDatabase() {
     setTimeout(() => console.log(prelimQuestions), 5000);
 }
 
-export function getAnswer() {
-    return answerMap.get(prelimQuestions[questionIndex][0]);
+export function getAnswer(prelim) {
+    if (prelim) {
+        return answerMap.get(prelimQuestions[prelimIndex][0]);
+    } else {
+        return answerMap.get(speedQuestions[speedIndex][0]);
+    }
 }
 
-export function nextQuestion() {
-    questionIndex++;
+export function nextSpeedQuestion() {
+    speedIndex++;
+}
+
+export function nextPrelimQuestion() {
+    prelimIndex++;
 }
 
 export function currentQuestion() {
     if (gameStage === "prelimStage") {
-        return prelimQuestions[questionIndex];
+        return prelimQuestions[prelimIndex];
     } else if (gameStage === "speedStage") {
-        return speedQuestions[questionIndex];
+        return speedQuestions[speedIndex];
     } else {
         return(console.log("ERROR: not in prelim or speed stages"));
     }

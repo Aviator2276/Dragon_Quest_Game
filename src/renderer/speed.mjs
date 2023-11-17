@@ -44,7 +44,7 @@ export function onLoad(firstTime) {
     ansB.innerHTML = questionAndAnswers[2];
     ansC.innerHTML = questionAndAnswers[3];
     ansD.innerHTML = questionAndAnswers[4];
-    correctAnswer.innerHTML = gameLogic.getAnswer();
+    correctAnswer.innerHTML = gameLogic.getAnswer(false);
 }
 
 function nextPage() {
@@ -73,15 +73,9 @@ function guessAnswer(guess) {
     }
 
     setTimeout(() => {
-        setTimeout(() => {
-            resetPage();
-            gameLogic.nextQuestion();
-            onLoad(false);
-        }, 600);
-        //correct.style.animation = 'correctRevealSlideOut 1s ';
-        //incorrect.style.animation = 'correctRevealSlideOut 1s ';
-        //showAnswer.style.animation = 'showAnswerSlideOut 1s ';
-
+        resetPage();
+        gameLogic.nextSpeedQuestion();
+        onLoad(false);
     }, 3000);
 }
 
