@@ -25,7 +25,7 @@ let leaderboard;
 let answerMap;
 let prelimQuestions;
 let speedQuestions;
-let currentQuestion;
+let questionIndex;
 
 
 //console.log(dbAccess.callDatabase(0));
@@ -100,18 +100,24 @@ function loadDatabase() {
         speedQuestions = dbAccess.randomizeQuestions(database, false);
         answerMap = dbAccess.getAnswerMap(database);
     });
-    currentQuestion = 0;
+    questionIndex = -1;
     setTimeout(() => console.log(prelimQuestions), 5000);
 }
 
-function checkAnswer(question, answer) {
-    return (answerMap.get(question) === answer);
+export function getAnswer() {
+    return answerMap.get(prelimQuestions[questionIndex][0]);
 }
 
-function nextQuestion(prelim) {
-    if (prelim) {
-        return prelimQuestions[currentQuestion++];
+export function nextQuestion() {
+    questionIndex++;
+}
+
+export function currentQuestion() {
+    if (gameStage === "prelimStage") {
+        return prelimQuestions[questionIndex];
+    } else if (gameStage === "speedStage") {
+        return speedQuestions[questionIndex];
     } else {
-        return speedQuestions[currentQuestion++];
+        return(console.log("ERROR: not in prelim or speed stages"));
     }
 }
