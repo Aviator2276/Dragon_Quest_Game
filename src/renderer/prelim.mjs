@@ -17,14 +17,8 @@ const incorrect = getPrelimElement('incorrect');
 const transition = getPrelimElement('transition');
 
 
-function changeClassToElements(change, className, ...elements) {
-    if (change === "add") {
-        elements.forEach(element => element.classList.add(className));
-    } else if (change === "remove") {
-        elements.forEach(element => element.classList.remove(className));
-    } else {
-        console.log("Error: Please use a correct change statement.")
-    }
+function addClassToElements(className, ...elements) {
+    elements.forEach(element => element.classList.add(className));
 }
 
 function removeClassFromElements(className, ...elements) {
@@ -58,6 +52,7 @@ function guessAnswer(guess) {
     showAnswer.classList.remove('hidden');
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
+        
     } else {
         incorrect.classList.remove('hidden');
     }
@@ -69,26 +64,29 @@ function guessAnswer(guess) {
         addClassToElements('hidden', showAnswer, correct, incorrect);
         gameLogic.nextQuestion();
         gameLogic.updateGame('prelimStage');
+        correct.style.animation = 'showAnswerSlideOut 1s ';
+        incorrect.style.animation = 'correctRevealSlideOut 1s ';
+        showAnswer.style.animation = 'correctRevealSlideOut 1s ';
     }, 3000);
 }
 
 ansA.onclick = () => {
-    changeClassToElements("add", 'hidePrompt', ansB, ansC, ansD, question);
+    addClassToElements('hidePrompt', ansB, ansC, ansD, question);
     ansA.classList.add('selected');
     setTimeout(() => guessAnswer(ansA), 500);
 };
 ansB.onclick = () => {
-    changeClassToElements("add", 'hidePrompt', ansA, ansC, ansD, question);
+    addClassToElements('hidePrompt', ansA, ansC, ansD, question);
     ansB.classList.add('selected');
     setTimeout(() => guessAnswer(ansB), 500);
 };
 ansC.onclick = () => {
-    changeClassToElements("add", 'hidePrompt', ansA, ansB, ansD, question);
+    addClassToElements('hidePrompt', ansA, ansB, ansD, question);
     ansC.classList.add('selected');
     setTimeout(() => guessAnswer(ansC), 500);
 };
 ansD.onclick = () => {
-    changeClassToElements("add", 'hidePrompt', ansA, ansB, ansC, question);
+    addClassToElements('hidePrompt', ansA, ansB, ansC, question);
     ansD.classList.add('selected');
     setTimeout(() => guessAnswer(ansD), 500);
 };
