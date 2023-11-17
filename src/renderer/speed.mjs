@@ -2,30 +2,24 @@ import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
 
 //import elements
-const prelimStage = document.getElementById("prelimStage");
-const question = getPrelimElement('question');
-const ansA = getPrelimElement('ansA');
-const ansB = getPrelimElement('ansB');
-const ansC = getPrelimElement('ansC');
-const ansD = getPrelimElement('ansD');
+const question = document.getElementById('question');
+const ansA = document.getElementById('ansA');
+const ansB = document.getElementById('ansB');
+const ansC = document.getElementById('ansC');
+const ansD = document.getElementById('ansD');
 
-const showAnswer = getPrelimElement('showAnswer');
-const correctAnswer = getPrelimElement('correctAnswer');
-const correct = getPrelimElement('correct');
-const incorrect = getPrelimElement('incorrect');
-
-const transition = getPrelimElement('transition');
+const showAnswer = document.getElementById('showAnswer');
+const correctAnswer = document.getElementById('correctAnswer');
+const correct = document.getElementById('correct');
+const incorrect = document.getElementById('incorrect');
 
 
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
-function getPrelimElement(elementClass) {
-    return prelimStage.getElementsByClassName(elementClass)[0];
-}
-
 export function onLoad() {
+    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
     transition.classList.add('transLoadPage');
 
     gameLogic.nextQuestion();

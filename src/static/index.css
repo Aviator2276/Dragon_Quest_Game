@@ -486,16 +486,16 @@ border-radius: 5px;
   }
 }
 
-#showAnswer {
+.showAnswer {
   position: absolute;
   z-index: 100;
 }
-#correctAnswer {
+.correctAnswer {
 
 }
-#correct {
+.correct {
 
 }
-#incorrect {
+.incorrect {
 
 }
