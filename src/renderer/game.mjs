@@ -23,15 +23,15 @@ let currentTeam;
 let leaderboard;
 
 
-console.log(dbAccess.readTable(0));
+console.log(dbAccess.callDatabase(0));
 console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
 
 
 initializeGame();
 
 export function updateGame(changeGameState) {
-    console.log(dbAccess.readTable(0));
-    console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
+    //console.log(dbAccess.callDatabase(0));
+    //console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
     if (changeGameState != "no") {
         gameStage = changeGameState;
     }

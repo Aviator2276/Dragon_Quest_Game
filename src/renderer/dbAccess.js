@@ -4,16 +4,13 @@ const needle = require("needle");
 const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
 const database = './db/data.csv';
 
-let prelimQuestion = [];
-let speedQuestion = [];
-
 export async function isConnected() {
     let isConnected = !!await require('dns').promises.resolve('google.com').catch(()=>{});
     return isConnected;
 }
 
 async function getDatabase() {
-    if (await isConnected()) {
+    //if (await isConnected()) {
         console.log("Trying Online Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];
@@ -31,7 +28,7 @@ async function getDatabase() {
                 console.log("Online Database Success");
             })
         });
-    } else {
+    /*} else {
         console.log("Unable to Connect. Reverting to Local Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];
@@ -48,12 +45,20 @@ async function getDatabase() {
             .on("end", function () {
                 console.log("Local Database Success");
             })
-        });
+        });*/
     }
-  }
+  //}
 
-export async function readTable(tableSelect) {
-    let answerKey = await getDatabase();
+export function callDatabase(tableSel) {
+    getDatabase().then((answerKeyResult) => {
+        console.log(answerKeyResult);
+        return answerKeyResult
+    }).catch(console.log("Error: Database unsuccessful."));
+}
+
+
+export function readTable(tableSelect, answerKey) {
+    //let answerKey = callDatabase();
     let prelimQuestion = JSON.parse(JSON.stringify(answerKey.slice(0, 50)));
     let speedQuestion = JSON.parse(JSON.stringify(answerKey.slice(50, 100)));
 
@@ -98,8 +103,8 @@ export async function readTable(tableSelect) {
     }
 }
 
-export async function checkCorrect(question, answer) {
-    let answerKey = await readTable(0);
+export function checkCorrect(question, answer) {
+    let answerKey = callDatabase(0);
     let correctAnswer = new Map();
     
     for (let i = 0; i < 100; i++) {
