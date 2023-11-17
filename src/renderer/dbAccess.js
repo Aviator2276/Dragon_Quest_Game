@@ -16,7 +16,7 @@ export function getConnectionState() {
 }
 
 export async function getDatabase() {
-    //if (await isConnected()) {
+    /*if (await isConnected()) {
         console.log("Trying Online Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];
@@ -33,8 +33,8 @@ export async function getDatabase() {
             }).on("end", function () {
                 console.log("Online Database Success");
             })
-        });
-    /*} else {
+        });*/
+    //} else {
         console.log("Unable to Connect. Reverting to Local Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];
@@ -51,7 +51,7 @@ export async function getDatabase() {
             .on("end", function () {
                 console.log("Local Database Success");
             })
-        });*/
+        });
     }
   //}
 
