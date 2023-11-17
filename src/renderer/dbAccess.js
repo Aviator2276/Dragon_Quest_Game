@@ -4,9 +4,15 @@ const needle = require("needle");
 const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
 const database = './db/data.csv';
 
-export async function isConnected() {
+async function isConnected() {
     let isConnected = !!await require('dns').promises.resolve('google.com').catch(()=>{});
     return isConnected;
+}
+export function getConnectionState() {
+    isConnected().then((connected) => {
+        console.log(connected);
+        return connected
+    }).catch(console.log("Error: Could not connect to DNS servers"));
 }
 
 export async function getDatabase() {
