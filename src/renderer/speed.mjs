@@ -2,24 +2,30 @@ import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
 
 //import elements
-const question = document.getElementById('question');
-const ansA = document.getElementById('ansA');
-const ansB = document.getElementById('ansB');
-const ansC = document.getElementById('ansC');
-const ansD = document.getElementById('ansD');
+const speedStage = document.getElementById("speedStage");
+const question = getSpeedElement('question');
+const ansA = getSpeedElement('ansA');
+const ansB = getSpeedElement('ansB');
+const ansC = getSpeedElement('ansC');
+const ansD = getSpeedElement('ansD');
 
-const showAnswer = document.getElementById('showAnswer');
-const correctAnswer = document.getElementById('correctAnswer');
-const correct = document.getElementById('correct');
-const incorrect = document.getElementById('incorrect');
+const showAnswer = getSpeedElement('showAnswer');
+const correctAnswer = getSpeedElement('correctAnswer');
+const correct = getSpeedElement('correct');
+const incorrect = getSpeedElement('incorrect');
+
+const transition = getSpeedElement('transition');
 
 
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
+function getSpeedElement(elementClass) {
+    return speedStage.getElementsByClassName(elementClass)[0];
+}
+
 export function onLoad() {
-    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
     transition.classList.add('transLoadPage');
 
     gameLogic.nextQuestion();
