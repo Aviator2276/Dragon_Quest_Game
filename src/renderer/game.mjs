@@ -22,9 +22,13 @@ let totalTeam;
 let currentTeam;
 let leaderboard;
 
+let answerMap;
+let prelimQuestions;
+let speedQuestions;
 
-console.log(dbAccess.callDatabase(0));
-console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
+
+//console.log(dbAccess.callDatabase(0));
+//console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
 
 
 initializeGame();
@@ -68,7 +72,7 @@ function initializeGame() {
   totalTeam = 1;
   currentTeam = 1;
   leaderboard = [0,0,0,0];
-  renderer.addClassToElements('pageHide', document.getElementById('teamConfigStage'), document.getElementById('teamSelectStage'), document.getElementById('prelimStage'));
+  loadDatabase();
 }
 
 export function changeTotalTeam(changeTo) {
@@ -85,4 +89,16 @@ function consoleLogGameInfo() {
         "Leaderborad: " + leaderboard + "\n" +
         "Connected to Internet: " + dbAccess.isConnected() + "\n"
     );
+}
+function loadDatabase() {
+    dbAccess.getDatabase().then((database) => {
+        prelimQuestions = dbAccess.randomizeQuestions(database, true);
+        speedQuestions = dbAccess.randomizeQuestions(database, false);
+        answerMap = dbAccess.getAnswerMap(database);
+    });
+    setTimeout(() => console.log(prelimQuestions), 2000);
+}
+
+function checkAnswer(question, answer) {
+    return (answerMap.get(question) === answer);
 }

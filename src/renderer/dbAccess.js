@@ -9,7 +9,7 @@ export async function isConnected() {
     return isConnected;
 }
 
-async function getDatabase() {
+export async function getDatabase() {
     //if (await isConnected()) {
         console.log("Trying Online Database.");
         return new Promise((resolve, reject) => {
@@ -49,66 +49,39 @@ async function getDatabase() {
     }
   //}
 
-export function callDatabase(tableSel) {
-    getDatabase().then((answerKeyResult) => {
-        console.log(answerKeyResult);
-        return answerKeyResult
-    }).catch(console.log("Error: Database unsuccessful."));
-}
 
+export function randomizeQuestions(database, prelim) {
+    let questions;
 
-export function readTable(tableSelect, answerKey) {
-    //let answerKey = callDatabase();
-    let prelimQuestion = JSON.parse(JSON.stringify(answerKey.slice(0, 50)));
-    let speedQuestion = JSON.parse(JSON.stringify(answerKey.slice(50, 100)));
-
-    for (let i = 0; i < 50; i++) {
-        let rando = Math.floor(Math.random() * (50 - i)) + i;
-        let temp = prelimQuestion[rando];
-        prelimQuestion[rando] = prelimQuestion[i];
-
-        for (let j = 1; j < 5; j++) {
-            let rando2 = Math.floor(Math.random() * (5-j)) + j;
-            let temp2 = temp[rando2];
-            temp[rando2] = temp[j];
-            temp[j] = temp2;
-        }
-
-        prelimQuestion[i] = temp;
-    }
-
-    for (let i = 0; i < 50; i++) {
-        let rando = Math.floor(Math.random() * (50 - i)) + i;
-        let temp = speedQuestion[rando];
-        speedQuestion[rando] = speedQuestion[i];
-
-        for (let j = 1; j < 5; j++) {
-            let rando2 = Math.floor(Math.random() * (5-j)) + j;
-            let temp2 = temp[rando2];
-            temp[rando2] = temp[j];
-            temp[j] = temp2;
-        }
-
-        speedQuestion[i] = temp;
-    }
-
-    if (tableSelect === 0) {
-        return answerKey;
-    } else if (tableSelect === 1) {
-        return prelimQuestion;
-    } else if (tableSelect === 2) {
-        return speedQuestion;
+    if (prelim) {
+        questions = JSON.parse(JSON.stringify(database.slice(0, 50)));
     } else {
-        return "Error retrieving database.";
+        questions = JSON.parse(JSON.stringify(database.slice(50, 100)));
     }
+
+    for (let i = 0; i < 50; i++) {
+        let rando = Math.floor(Math.random() * (50 - i)) + i;
+        let temp = questions[rando];
+        questions[rando] = questions[i];
+
+        for (let j = 1; j < 5; j++) {
+            let rando2 = Math.floor(Math.random() * (5-j)) + j;
+            let temp2 = temp[rando2];
+            temp[rando2] = temp[j];
+            temp[j] = temp2;
+        }
+
+        questions[i] = temp;
+    }
+
+    return questions;
 }
 
-export function checkCorrect(question, answer) {
-    let answerKey = callDatabase(0);
-    let correctAnswer = new Map();
+export function getAnswerMap(database) {
+    let answerMap = new Map();
     
     for (let i = 0; i < 100; i++) {
-        correctAnswer.set(answerKey[i][0], answerKey[i][1]);
+        answerMap.set(database[i][0], database[i][1]);
     }
-    return(correctAnswer.get(question) == answer);
+    return answerMap;
 }
