@@ -58,6 +58,7 @@ export function updateGame(changeGameState) {
         teamSelectStage.onLoad();
     } else if (gameStage === "prelimStage") {
         leavePage("teamSelectStage");
+        loadPage('topGUI')
         loadPage("prelimStage");
         prelimStage.onLoad();
     } else if (gameStage === "speedStage") {
@@ -98,7 +99,7 @@ export function changeTotalTeam(changeTo) {
 export function getGameStage() {
     return gameStage;
 }
-function consoleLogGameInfo() {
+export function consoleLogGameInfo() {
     let connected = setTimeout(() => dbAccess.getConnectionState(), 500);
     console.log(
         "Game State: " + gameStage + "\n" +
@@ -157,6 +158,7 @@ export function addPoints(points) {
 
 export function changeTeam(team) {
     currentTeam = team;
+    updateTeamDisplay();
 }
 
 export function getTeam() {

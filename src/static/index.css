@@ -570,23 +570,33 @@ border-radius: 5px;
     transform: translateY(1500px);
   }
 }
+#topGUI {
+  position: absolute;
+  z-index: 200;
+  width: 100vw;
+  height: 15vh;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
 #score {
-  position: fixed;
-  z-index: 20;
+  position: absolute;
   width: 33vw;
   height: 10vh;
   line-height: 10vh;
   background-color: white;
   border: black solid 4px;
   left: 0;
+  top: 0;
 }
 #time {
-  position: fixed;
-  z-index: 20;
+  position: absolute;
   width: 33vw;
   height: 10vh;
   line-height: 10vh;
   background-color: white;
   border: black solid 4px;
   right: 0;
+  top: 0;
 }

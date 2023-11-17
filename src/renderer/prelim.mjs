@@ -16,6 +16,7 @@ const incorrect = getPrelimElement('incorrect');
 
 const transition = getPrelimElement('transition');
 
+const topGUI = document.getElementById('topGUI');
 const score = document.getElementById('score');
 
 function addClassToElements(className, ...elements) {
@@ -70,7 +71,8 @@ function guessAnswer(guess) {
     showAnswer.classList.remove('hidden');
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
-        
+        gameLogic.addPoints(1);
+        gameLogic.consoleLogGameInfo();
     } else {
         incorrect.classList.remove('hidden');
     }

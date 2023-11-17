@@ -16,6 +16,9 @@ const incorrect = getSpeedElement('incorrect');
 
 const transition = getSpeedElement('transition');
 
+const topGUI = document.getElementById('topGUI');
+const score = document.getElementById('score');
+const timer = document.getElementById('time');
 
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
@@ -45,6 +48,8 @@ export function onLoad(firstTime) {
     ansC.innerHTML = questionAndAnswers[3];
     ansD.innerHTML = questionAndAnswers[4];
     correctAnswer.innerHTML = gameLogic.getAnswer(false);
+
+    timer.classList.remove('hidden');
 }
 
 function nextPage() {
@@ -69,7 +74,6 @@ function guessAnswer(guess) {
         correct.classList.remove('hidden');
         gameLogic.addPoints(1);
         gameLogic.consoleLogGameInfo();
-        
     } else {
         incorrect.classList.remove('hidden');
     }
