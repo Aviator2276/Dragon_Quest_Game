@@ -4,7 +4,7 @@ let isLoaded = false;
 let startGame = document.getElementById('startGame');
 
 export function onLoad() {
-    const element = document.getElementById('wavyTextStart');
+    let element = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('wavyTextStart')[0];
     setTimeout(() => element.classList.add('infiniteWave'), 2300);
     isLoaded = true;
 }

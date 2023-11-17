@@ -30,6 +30,8 @@ let currentQuestion;
 
 //console.log(dbAccess.callDatabase(0));
 //console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
+//console.log(dbAccess.callDatabase(0));
+//console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
 
 
 initializeGame();
@@ -46,6 +48,7 @@ export function updateGame(changeGameState) {
     } else if (gameStage === "teamConfigStage") {
         leavePage("startStage");
         loadPage("teamConfigStage");
+        teamConfigStage.onLoad();
     } else if (gameStage === "teamSelectStage") {
         leavePage("teamConfigStage");
         loadPage("teamSelectStage");
@@ -88,7 +91,7 @@ function consoleLogGameInfo() {
         "Total Teams Registered: " + totalTeam + "\n" +
         "Current Team Selected: " + currentTeam + "\n" +
         "Leaderborad: " + leaderboard + "\n" +
-        "Connected to Internet: " + dbAccess.isConnected() + "\n"
+        "Connected to Internet: " + dbAccess.getConnectionState() + "\n"
     );
 }
 function loadDatabase() {

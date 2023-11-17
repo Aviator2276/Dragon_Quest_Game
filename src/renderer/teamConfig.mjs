@@ -18,7 +18,7 @@ function addClassToElements(className, ...elements) {
 
 export function onLoad() {
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
-    transition.classList.add('transStart');
+    transition.classList.add('transLoadPage');
 }
 function nextPage() {
     renderer.generateRandomDots(800)
@@ -27,6 +27,7 @@ function nextPage() {
 
 function confirmSelection(selectTeam) {
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
+    transition.classList.remove('transLoadPage');
     confirmSelect.classList.add('confirmShow');
     setTimeout(() => selectTeam.classList.remove('selected'), 400);
     addClassToElements('confirmButtonShow', confirm, notConfirm);
@@ -42,7 +43,7 @@ function confirmSelection(selectTeam) {
         nextPage();
     };
     notConfirm.onclick = () => {
-        transition.classList.add('transStart');
+        transition.classList.add('transNextPage');
         gameLogic.changeTotalTeam(1);
         setTimeout(() => gameLogic.updateGame("teamConfigStage"), 700);
     }

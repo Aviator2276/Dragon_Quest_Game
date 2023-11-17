@@ -42,11 +42,11 @@ function transformDotToLine(dot) {
     hyperSpaceDiv.appendChild(line);
     
     line.style.animation = 'extend 2s forwards';
-    squareTrans.classList.add('transStart');
+    squareTrans.classList.add('transNextPage');
 	let hyperSpaceDivTags = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0];
     setTimeout(() => {
         hyperSpaceDivTags.innerHTML = "";
-		squareTrans.classList.remove('transStart');
+		squareTrans.classList.remove('transNextPage');
     }, 2500);
 }
 export function generateRandomDots(numDots) {

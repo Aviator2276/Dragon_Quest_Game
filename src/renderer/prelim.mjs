@@ -20,7 +20,7 @@ function addClassToElements(className, ...elements) {
 
 export function onLoad() {
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
-    transition.classList.add('transStart');
+    transition.classList.add('transLoadPage');
     question.innerHTML = gameLogic.nextQuestion(true);
 }
 function nextPage() {
