@@ -56,7 +56,7 @@ export async function getDatabase() {
   //}
 
 const numPrelimQuestions = 50;
-const numSpeedQuestions = 50;
+const numSpeedQuestions = 200;
 
 export function randomizeQuestions(database, prelim) {
     let questions;
@@ -66,6 +66,7 @@ export function randomizeQuestions(database, prelim) {
     } else {
         questions = JSON.parse(JSON.stringify(database.slice(numPrelimQuestions, numPrelimQuestions + numSpeedQuestions)));
     }
+    console.log(questions);
 
     for (let i = 0; i < questions.length; i++) {
         let rando = Math.floor(Math.random() * (questions.length - i)) + i;
