@@ -71,6 +71,10 @@ function loadPage(pageLoad) {
     document.getElementById(pageLoad).classList.remove('pageHide');
 }
 
+export function teamLogic() {
+    
+}
+
 function initializeGame() {
     //leavePage("startStage");
     //updateGame("teamSelectStage");
