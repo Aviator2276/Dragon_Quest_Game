@@ -99,6 +99,7 @@ function consoleLogGameInfo() {
 }
 function loadDatabase() {
     dbAccess.getDatabase().then((database) => {
+        console.log(database);
         prelimQuestions = dbAccess.randomizeQuestions(database, true);
         speedQuestions = dbAccess.randomizeQuestions(database, false);
         answerMap = dbAccess.getAnswerMap(database);
