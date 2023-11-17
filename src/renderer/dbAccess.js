@@ -43,20 +43,17 @@ export async function getDatabase() {
             .on("data", (data) => {
                 answerKeyRaw.push(data);
             })
-            .on("done", (err) => {
+            .on("end", (err) => {
                 if (err) reject(new Error("An error has occurred when retrieving local database. No data available."))
                 else 
                     resolve(answerKeyRaw);
-            })
-            .on("end", function () {
-                console.log("Local Database Success");
             })
         });
     }
   //}
 
 const numPrelimQuestions = 50;
-const numSpeedQuestions = 200;
+const numSpeedQuestions = 50;
 
 export function randomizeQuestions(database, prelim) {
     let questions;
@@ -66,7 +63,6 @@ export function randomizeQuestions(database, prelim) {
     } else {
         questions = JSON.parse(JSON.stringify(database.slice(numPrelimQuestions, numPrelimQuestions + numSpeedQuestions)));
     }
-    console.log(questions);
 
     for (let i = 0; i < questions.length; i++) {
         let rando = Math.floor(Math.random() * (questions.length - i)) + i;
