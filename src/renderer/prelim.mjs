@@ -17,8 +17,14 @@ const incorrect = getPrelimElement('incorrect');
 const transition = getPrelimElement('transition');
 
 
-function addClassToElements(className, ...elements) {
-    elements.forEach(element => element.classList.add(className));
+function changeClassToElements(change, className, ...elements) {
+    if (change === "add") {
+        elements.forEach(element => element.classList.add(className));
+    } else if (change === "remove") {
+        elements.forEach(element => element.classList.remove(className));
+    } else {
+        console.log("Error: Please use a correct change statement.")
+    }
 }
 
 function getPrelimElement(elementClass) {
@@ -54,25 +60,25 @@ function guessAnswer(guess) {
 }
 
 ansA.onclick = () => {
-    addClassToElements('hidePrompt', ansB, ansC, ansD, question);
+    changeClassToElements("add", 'hidePrompt', ansB, ansC, ansD, question);
     ansA.classList.add('selected');
     confirmMesg.innerHTML = "Confirm 1 Team Selection";
     setTimeout(() => guessAnswer(ansA), 500);
 };
 ansB.onclick = () => {
-    addClassToElements('hidePrompt', ansA, ansC, ansD, question);
+    changeClassToElements("add", 'hidePrompt', ansA, ansC, ansD, question);
     ansB.classList.add('selected');
     confirmMesg.innerHTML = "Confirm 2 Team Selection";
     setTimeout(() => guessAnswer(ansB), 500);
 };
 ansC.onclick = () => {
-    addClassToElements('hidePrompt', ansA, ansB, ansD, question);
+    changeClassToElements("add", 'hidePrompt', ansA, ansB, ansD, question);
     ansC.classList.add('selected');
     confirmMesg.innerHTML = "Confirm 3 Team Selection";
     setTimeout(() => guessAnswer(ansC), 500);
 };
 ansD.onclick = () => {
-    addClassToElements('hidePrompt', ansA, ansB, ansC, question);
+    changeClassToElements("add", 'hidePrompt', ansA, ansB, ansC, question);
     ansD.classList.add('selected');
     confirmMesg.innerHTML = "Confirm 4 Team Selection";
     setTimeout(() => guessAnswer(ansD), 500);

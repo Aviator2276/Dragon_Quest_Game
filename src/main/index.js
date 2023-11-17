@@ -1,7 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-const isDev = process.env.NODE_ENV !== 'development';
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
@@ -16,15 +15,18 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
       contextIsolation: false,
+      devTools: !app.isPackaged,
     },
   });
 
   window.loadFile(path.join(__dirname, '../static/index.html'));
-  if (isDev) {
+  if (!app.isPackaged) {
     window.webContents.openDevTools();
+  } else {
+    window.setFullScreen(true)  //<--------------- UNCOMMENT BEFORE PRODUCTION
   }
   window.on("ready-to-show", window.show)
-  //window.setFullScreen(true)  //<--------------- UNCOMMENT BEFORE PRODUCTION
+  
 };
 
 app.on('ready', createWindow);
