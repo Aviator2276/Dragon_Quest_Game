@@ -72,11 +72,12 @@ function loadPage(pageLoad) {
 }
 
 function initializeGame() {
-  updateGame("startStage");
-  totalTeam = 1;
-  currentTeam = 1;
-  leaderboard = [0,0,0,0];
-  loadDatabase();
+    leavePage("startStage");
+    updateGame("teamSelectStage");
+    totalTeam = 1;
+    currentTeam = 1;
+    leaderboard = [0,0,0,0];
+    loadDatabase();
 }
 
 export function changeTotalTeam(changeTo) {
