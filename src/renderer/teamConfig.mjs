@@ -20,7 +20,6 @@ function changeClassToElements(change, className, ...elements) {
     } else {
         console.log("Error: Please use a correct change statement.")
     }
-    
 }
 
 export function onLoad() {
@@ -29,7 +28,7 @@ export function onLoad() {
     transition.classList.add('transLoadPage'); 
 }
 function nextPage() {
-    renderer.generateRandomDots(800)
+    renderer.generateRandomDots(400)
     setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 

@@ -487,15 +487,45 @@ border-radius: 5px;
 }
 
 .showAnswer {
+  font-family: Roboto;
   position: absolute;
-  z-index: 100;
+  z-index: 10;
+  color: white;
+  text-align: center;
+  font-size: 7.5vw;
+  pointer-events: none;
 }
 .correctAnswer {
-
+  position: absolute;
+  background-color: #265C92;
+  width: 100vw;
+  height: 100px;
+  line-height: 100px;
+  height: 66vh;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 .correct {
-
+  position: absolute;
+  width: 100vw;
+  height: 33vh;
+  bottom: 0;
 }
 .incorrect {
+  position: absolute;
+  width: 100vw;
+  height: 33vh;
+  bottom: 0;
+}
+@keyframes showAnswerSlide {
+  0% {
 
+  }
+  50% {
+
+  }
+  100% {
+
+  }
 }

@@ -38,7 +38,7 @@ export function onLoad() {
     correctAnswer.innerHTML = gameLogic.getAnswer();
 }
 function nextPage() {
-    renderer.generateRandomDots(800)
+    renderer.generateRandomDots(400)
     setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 
