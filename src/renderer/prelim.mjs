@@ -32,13 +32,8 @@ function getPrelimElement(elementClass) {
 }
 
 export function onLoad(firstTime) {
-    if (firstTime) {
-        transition.classList.add('transLoadPage');
-    } else {
-        correct.style.animation = 'correctRevealSlideOut .6s forwards';
-        incorrect.style.animation = 'correctRevealSlideOut .6s forwards';
-        showAnswer.style.animation = 'showAnswerSlideOut .6s forwards'; 
-    }
+    transition.classList.add('transLoadPage');
+
     let questionAndAnswers = gameLogic.currentQuestion();
     console.log(question);
     question.innerHTML = questionAndAnswers[0];
@@ -72,10 +67,10 @@ function guessAnswer(guess) {
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
         gameLogic.addPoints(1);
-        gameLogic.consoleLogGameInfo();
     } else {
         incorrect.classList.remove('hidden');
     }
+    gameLogic.consoleLogGameInfo();
 
     setTimeout(() => {
         resetPage();

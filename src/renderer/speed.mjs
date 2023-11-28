@@ -35,6 +35,7 @@ function getSpeedElement(elementClass) {
 export function onLoad(firstTime) {
     if (firstTime) {
         transition.classList.add('transLoadPage');
+        gameLogic.startTimer();
     } else {
         correct.style.animation = 'correctRevealSlideOut .6s forwards';
         incorrect.style.animation = 'correctRevealSlideOut .6s forwards';
@@ -73,16 +74,21 @@ function guessAnswer(guess) {
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
         gameLogic.addPoints(1);
-        gameLogic.consoleLogGameInfo();
     } else {
         incorrect.classList.remove('hidden');
     }
+
+    gameLogic.consoleLogGameInfo();
 
     setTimeout(() => {
         resetPage();
         gameLogic.nextSpeedQuestion();
         onLoad(false);
     }, 3000);
+}
+
+export function incrementTimer(timeLeft) {
+    timer.innerHTML = timeLeft + " seconds";
 }
 
 ansA.onclick = () => {

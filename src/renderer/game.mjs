@@ -65,7 +65,7 @@ export function updateGame(changeGameState) {
     } else if (gameStage === "speedStage") {
         leavePage("prelimStage");
         loadPage("speedStage");
-        speedStage.onLoad();
+        speedStage.onLoad(true);
     } else if (gameStage === "leaderboardStage") {
         leavePage("speedStage");
         loadPage("leaderboardStage");
@@ -178,4 +178,19 @@ export function getTeamScore(team) {
 
 function updateTeamDisplay() {
     score.innerHTML = "Score: " + getTeamScore(currentTeam);
+}
+
+//TIMER FUNCTIONS
+const timeLimit = 30;
+let timeLeft = timeLimit;
+
+export function startTimer() {
+    setInterval(() => {
+        timeLeft--;
+        speedStage.incrementTimer(timeLeft);
+
+        if (timeLeft === 0) {
+        timeIsUp();
+        }
+    }, 1000);
 }
