@@ -5,6 +5,7 @@ import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
 import * as prelimStage from "./prelim.mjs";
 import * as speedStage from "./speed.mjs";
+//import * as leaderboardStage from "./leaderboard.mjs"
 
 /*
 Stages in order:
@@ -65,7 +66,11 @@ export function updateGame(changeGameState) {
         leavePage("prelimStage");
         loadPage("speedStage");
         speedStage.onLoad();
-    } else {
+    } else if (gameStage === "leaderboardStage") {
+        leavePage("speedStage");
+        loadPage("leaderboardStage");
+        leaderboardStage.onLoad();
+    }  else {
         console.log("Error");
     }
     consoleLogGameInfo();
@@ -147,6 +152,8 @@ export function currentQuestion() {
     }
 }
 
+// TEAM Functions
+
 //SCORING
 
 const score = document.getElementById('score');
@@ -161,7 +168,7 @@ export function changeTeam(team) {
     updateTeamDisplay();
 }
 
-export function getTeam() {
+export function getTotalTeams() {
     return team;
 }
 
