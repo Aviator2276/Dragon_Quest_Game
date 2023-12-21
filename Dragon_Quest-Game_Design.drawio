@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-20T01:33:35.029Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="UyG-t4MuAPR4Tq_O0V-j" version="22.1.11" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-21T00:58:24.361Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0" etag="6CeRaci0EOhq4aiLOmVa" version="22.1.11" type="github">
   <diagram name="Page-1" id="7foYvIZqaCAXQgo33oqg">
-    <mxGraphModel dx="2155" dy="1224" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1195" dy="683" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -91,7 +91,7 @@
         <mxCell id="epwXTcX2LqCIAIg_7r54-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="epwXTcX2LqCIAIg_7r54-5" target="epwXTcX2LqCIAIg_7r54-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="epwXTcX2LqCIAIg_7r54-5" value="User selects the total amount of teams playing this game" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
+        <mxCell id="epwXTcX2LqCIAIg_7r54-5" value="&lt;div&gt;User selects the total amount&lt;/div&gt;&lt;div&gt;of teams playing this game&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
           <mxGeometry x="360" y="370" width="200" height="60" as="geometry" />
         </mxCell>
       </root>
