@@ -1,5 +1,10 @@
 #topGUI {
     position: absolute;
+    pointer-events: none;
+    text-align: center;
+    font-family: BebasNeue;
+    font-size: 6vw;
+    color: #48463B;
     z-index: 200;
     width: 100vw;
     height: 15vh;
@@ -15,6 +20,7 @@
     line-height: 10vh;
     background-color: white;
     border: black solid 4px;
+    border-radius: 0 0 20px 0;
     left: 0;
     top: 0;
   }
@@ -25,6 +31,7 @@
     line-height: 10vh;
     background-color: white;
     border: black solid 4px;
+    border-radius: 0 0 0 20px;
     right: 0;
     top: 0;
   }

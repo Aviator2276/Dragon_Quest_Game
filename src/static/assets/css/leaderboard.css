@@ -1,0 +1,42 @@
+#leaderboard {
+    column: 1;
+    margin: 10% auto;
+    z-index: 10;
+}
+
+.TeamCard {
+    font-family: Aldrich;
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 10px;
+    color: #48463B;
+    font-size: 4vw;
+    padding: 1% 5% 1% 5%;
+    margin: 1% auto;
+    max-width: 60%;
+    pointer-events: none;
+}
+.placePoints {
+    float: right;
+}
+
+.firstPlace {
+    animation-delay: .5s;
+    animation: rollLeaderboard 2.4s forwards;
+}
+.secondPlace {
+    animation-delay: 1.5s;
+    animation: rollLeaderboard 2.8s forwards;
+}
+.thirdPlace {
+    animation-delay: 2s;
+    animation: rollLeaderboard 3.2s forwards;
+}
+.fourthPlace {
+    animation-delay: 2.5s;
+    animation: rollLeaderboard 3.6s forwards;
+}
+@keyframes rollLeaderboard {
+    0% {transform: translateY(2000px);}
+    100% {transform: translateY(0);}
+}
