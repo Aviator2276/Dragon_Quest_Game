@@ -41,14 +41,16 @@ export function onLoad(firstTime) {
     ansB.innerHTML = questionAndAnswers[2];
     ansC.innerHTML = questionAndAnswers[3];
     ansD.innerHTML = questionAndAnswers[4];
-    correctAnswer.innerHTML = gameLogic.getAnswer(true);
+    setTimeout(() => {
+        correctAnswer.innerHTML = gameLogic.getAnswer(true);
+    }, 500);
 
     score.classList.remove("pageHide");
 }
 
 function nextPage() {
     renderer.generateRandomDots(400)
-    setTimeout(() => gameLogic.updateGame("speedStage"), 2200);
+    setTimeout(() => gameLogic.updateGame("questionStage"), 2200);
 }
 
 function resetPage() {
@@ -79,7 +81,7 @@ function guessAnswer(guess) {
     setTimeout(() => {
         resetPage();
         gameLogic.nextQuestion();
-        gameLogic.updateGame('speedStage')
+        gameLogic.updateGame('questionStage');
     }, 2300);
 }
 

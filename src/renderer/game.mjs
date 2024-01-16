@@ -163,7 +163,8 @@ function updateTeamDisplay() {
     score.innerHTML = "Score: " + getTeamScore(currentTeam);
 }
 
-//TIMER FUNCTIONS
+//TIMING
+
 const timeLimit = 30;
 let timeLeft = timeLimit;
 
