@@ -165,18 +165,20 @@ function updateTeamDisplay() {
 
 //TIMING
 
-const timeLimit = 30;
+const timeLimit = 30000;
 let timeLeft = timeLimit;
 
 export function startTimer() {
     setInterval(() => {
         timeLeft--;
-        speedStage.incrementTimer(timeLeft);
+        if (timeLeft % 1000 == 0) {
+            question.incrementTimer(timeLeft);
+        }
 
         if (timeLeft === 0) {
         timeIsUp();
         }
-    }, 1000);
+    }, 1);
 }
 
 //Clicks Enabled

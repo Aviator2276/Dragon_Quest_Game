@@ -18,6 +18,7 @@ const transition = getQuestionElement('transition');
 
 const topGUI = document.getElementById('topGUI');
 const score = document.getElementById('score');
+const timer = document.getElementById('time');
 
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
@@ -33,7 +34,9 @@ function getQuestionElement(elementClass) {
 
 export function onLoad(firstTime) {
     transition.classList.add('transLoadPage');
-
+    if (firstTime) {
+        gameLogic.startTimer();
+    }
     let questionAndAnswers = gameLogic.currentQuestion();
     console.log(question);
     question.innerHTML = questionAndAnswers[0];
@@ -44,7 +47,7 @@ export function onLoad(firstTime) {
     setTimeout(() => {
         correctAnswer.innerHTML = gameLogic.getAnswer(true);
         gameLogic.setClicksEnabled(true);
-    }, 300);
+    }, 400);
 
     score.classList.remove("pageHide");
 }
@@ -84,6 +87,10 @@ function guessAnswer(guess) {
         gameLogic.nextQuestion();
         gameLogic.updateGame('questionStage');
     }, 2300);
+}
+
+export function incrementTimer(timeLeft) {
+    timer.innerHTML = (timeLeft / 1000) + " seconds";
 }
 
 ansA.onclick = () => {
