@@ -43,7 +43,8 @@ export function onLoad(firstTime) {
     ansD.innerHTML = questionAndAnswers[4];
     setTimeout(() => {
         correctAnswer.innerHTML = gameLogic.getAnswer(true);
-    }, 500);
+        gameLogic.setClicksEnabled(true);
+    }, 300);
 
     score.classList.remove("pageHide");
 }
@@ -86,22 +87,34 @@ function guessAnswer(guess) {
 }
 
 ansA.onclick = () => {
-    addClassToElements('hidePrompt', ansB, ansC, ansD, question);
-    ansA.classList.add('selected');
-    setTimeout(() => guessAnswer(ansA), 200);
+    if (gameLogic.getClicksEnabled()) {
+        addClassToElements('hidePrompt', ansB, ansC, ansD, question);
+        ansA.classList.add('selected');
+        setTimeout(() => guessAnswer(ansA), 200);
+        gameLogic.setClicksEnabled(false);
+    }
 };
 ansB.onclick = () => {
-    addClassToElements('hidePrompt', ansA, ansC, ansD, question);
-    ansB.classList.add('selected');
-    setTimeout(() => guessAnswer(ansB), 200);
+    if (gameLogic.getClicksEnabled()) {
+        addClassToElements('hidePrompt', ansA, ansC, ansD, question);
+        ansB.classList.add('selected');
+        setTimeout(() => guessAnswer(ansB), 200);
+        gameLogic.setClicksEnabled(false);
+    }
 };
 ansC.onclick = () => {
-    addClassToElements('hidePrompt', ansA, ansB, ansD, question);
-    ansC.classList.add('selected');
-    setTimeout(() => guessAnswer(ansC), 200);
+    if (gameLogic.getClicksEnabled()) {
+        addClassToElements('hidePrompt', ansA, ansB, ansD, question);
+        ansC.classList.add('selected');
+        setTimeout(() => guessAnswer(ansC), 200);
+        gameLogic.setClicksEnabled(false);
+    }
 };
 ansD.onclick = () => {
-    addClassToElements('hidePrompt', ansA, ansB, ansC, question);
-    ansD.classList.add('selected');
-    setTimeout(() => guessAnswer(ansD), 200);
+    if (gameLogic.getClicksEnabled()) {
+        addClassToElements('hidePrompt', ansA, ansB, ansC, question);
+        ansD.classList.add('selected');
+        setTimeout(() => guessAnswer(ansD), 200);
+        gameLogic.setClicksEnabled(false);
+    }
 };

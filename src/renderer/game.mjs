@@ -178,3 +178,15 @@ export function startTimer() {
         }
     }, 1000);
 }
+
+//Clicks Enabled
+
+let clicksEnabled = true;
+
+export function getClicksEnabled() {
+    return clicksEnabled;
+}
+
+export function setClicksEnabled(value) {
+    clicksEnabled = value;
+}
