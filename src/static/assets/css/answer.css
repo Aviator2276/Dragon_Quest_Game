@@ -1,0 +1,128 @@
+/* CONFIRMATION MESSAGES */
+#confirmMesg, #confirmMesg2 {
+    z-index: 5;
+    margin-bottom: 40% !important;
+  }
+.confirmShow {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  animation: confirmShow .5s forwards;
+}
+.confirmButtonShow {
+  z-index: 4;
+  height: 100%;
+  width: 50%;
+  font-family: Aldrich;
+  background-color: white;
+  color: white;
+  text-align: center;
+  font-size: 6vw;
+  transition: .3s;
+}
+#confirmed, #confirmed2 {
+  background-color: #07a83a;
+}
+#notConfirmed, #notConfirmed {
+  background-color: #A81307;
+}
+@keyframes confirmShow {
+  0% {
+    transform: scale(.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* ANSWER CSS LOGIC */
+.showAnswer {
+  font-family: Roboto;
+  position: absolute;
+  z-index: 10;
+  color: white;
+  background-color: invisible;
+  text-align: center;
+  font-size: 7.5vw;
+  pointer-events: none;
+  height: 100vh;
+  width: 100vw;
+  line-height: normal;
+}
+.correctAnswer {
+  position: static;
+  background-color: #1D3557;
+  width: 100vw;
+  line-height: 70vh;
+  height: 70vh;
+  animation: showAnswerSlideIn 1s;
+  border-bottom: black solid 10px;
+}
+.correct {
+  position: static;
+  width: 100vw;
+  height: 30vh;
+  line-height: 30vh;
+  bottom: 0;
+  background-color: #07a83a;
+  border-top: black solid 10px;
+  animation: correctRevealSlideIn 1s;
+}
+.incorrect {
+  position: static;
+  width: 100vw;
+  height: 30vh;
+  line-height: 30vh;
+  bottom: 0;
+  border-top: black solid 10px;
+  background-color: #A81307;
+  animation: correctRevealSlideIn 1s;
+}
+@keyframes showAnswerSlideIn {
+  0% {
+    transform: translateY(-1500px);
+  }
+  80% {
+    transform: translateY(-1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes correctRevealSlideIn {
+  0% {
+    transform: translateY(1500px);
+  }
+  80% {
+    transform: translateY(1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes showAnswerSlideOut {
+  0% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-1000px);
+  }
+  100% {
+    transform: translateY(-1500px);
+  }
+}
+@keyframes correctRevealSlideOut {
+  0% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(1000px);
+  }
+  100% {
+    transform: translateY(1500px);
+  }
+}

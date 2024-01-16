@@ -1,10 +1,8 @@
-import * as renderer from "./renderer.mjs";
 import * as dbAccess from "./dbAccess.js";
 import * as startStage from "./startGame.mjs";
 import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
-import * as prelimStage from "./prelim.mjs";
-import * as speedStage from "./speed.mjs";
+import * as questionStage from "./question.mjs";
 //import * as leaderboardStage from "./leaderboard.mjs"
 
 /*
@@ -12,8 +10,7 @@ Stages in order:
 1. startStage
 2. teamConfigStage 
   3. teamSelectStage <In Loop>
-  4. prelimStage <In Loop>
-  5. speedStage <In Loop>
+  4. questionStage <In Loop>
   6. leaderboardStage <In Loop>
 7. winnerStage
 8. endStage
@@ -57,15 +54,11 @@ export function updateGame(changeGameState) {
         leavePage("teamConfigStage");
         loadPage("teamSelectStage");
         teamSelectStage.onLoad();
-    } else if (gameStage === "prelimStage") {
+    } else if (gameStage === "questionStage") {
         leavePage("teamSelectStage");
         loadPage('topGUI')
-        loadPage("prelimStage");
-        prelimStage.onLoad();
-    } else if (gameStage === "speedStage") {
-        leavePage("prelimStage");
-        loadPage("speedStage");
-        speedStage.onLoad(true);
+        loadPage("questionStage");
+        questionStage.onLoad();
     } else if (gameStage === "leaderboardStage") {
         leavePage("speedStage");
         loadPage("leaderboardStage");
@@ -89,8 +82,6 @@ export function teamLogic() {
 }
 
 function initializeGame() {
-    //leavePage("startStage");
-    //updateGame("teamSelectStage");
     updateGame("startStage");
     totalTeam = 1;
     currentTeam = 1;
@@ -110,7 +101,7 @@ export function consoleLogGameInfo() {
         "Game State: " + gameStage + "\n" +
         "Total Teams Registered: " + totalTeam + "\n" +
         "Current Team Selected: " + currentTeam + "\n" +
-        "Leaderborad: " + leaderboard + "\n" +
+        "Leaderboard: " + leaderboard + "\n" +
         "Connected to Internet: " + connected + "\n"
     );
 }
@@ -134,25 +125,17 @@ export function getAnswer(prelim) {
     }
 }
 
-export function nextSpeedQuestion() {
-    speedIndex++;
-}
-
-export function nextPrelimQuestion() {
+export function nextQuestion() {
     prelimIndex++;
 }
 
 export function currentQuestion() {
-    if (gameStage === "prelimStage") {
+    if (gameStage === "questionStage") {
         return prelimQuestions[prelimIndex];
-    } else if (gameStage === "speedStage") {
-        return speedQuestions[speedIndex];
     } else {
-        return(console.log("ERROR: not in prelim or speed stages"));
+        return(console.log("ERROR: not in correct stage stages"));
     }
 }
-
-// TEAM Functions
 
 //SCORING
 

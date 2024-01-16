@@ -1,0 +1,56 @@
+.prompt {
+  animation: promptInit 2.5s forwards !important;
+}
+.prompt {
+  font-family: Roboto;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 20px;
+  z-index: 1;
+  color: #48463B;
+  text-align: center;
+  font-size: 7.5vw;
+  padding: 2%;
+  margin: 0;
+  animation-delay: 1.4s;
+  animation: promptInit 3.5s forwards, promptInfinite 4s linear forwards;
+  pointer-events: none;
+}
+@keyframes promptInit {
+  0% {
+      transform: scale(.1);
+  }
+  5% {transform: scale(1.1);}
+  10% { transform: scale(1);}
+  30% { transform: scale(1);}
+  35% {transform: scale(1.1);}
+  40% { transform: scale(1);}
+  60% { transform: scale(1);}
+  65% {transform: scale(1.1);}
+  70% { transform: scale(1);}
+  80% {transform: scale(1);}
+  100% {
+      transform: scale(.5);
+  }
+}
+@keyframes promptInfinite {
+  0% {transform: scale(.5);}
+  5% {transform: scale(.55);}
+  10% { transform: scale(.5);}
+  15% {transform: scale(.5);}
+  20% {transform: scale(.55);}
+  25% { transform: scale(.5);}
+  30% {transform: scale(.5);}
+  35% {transform: scale(.55);}
+  40% { transform: scale(.5);}
+  50% {transform: scale(.5);}
+  55% {transform: scale(.55);}
+  60% { transform: scale(.5);}
+  65% {transform: scale(.5);}
+  70% {transform: scale(.55);}
+  75% { transform: scale(.5);}
+  80% {transform: scale(.5);}
+  85% {transform: scale(.55);}
+  90% { transform: scale(.5);}
+  100% {transform: scale(.5);}
+}

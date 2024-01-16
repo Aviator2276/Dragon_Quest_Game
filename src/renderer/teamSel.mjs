@@ -13,5 +13,5 @@ export function onLoad() {
     setTimeout(() => element.classList.add('infinite'), 2300);
     setTimeout(() => renderer.generateRandomDots(800), 5000);
     setTimeout(() => transition.classList.remove('transNextPage'), 7200);
-    setTimeout(() => gameLogic.updateGame("prelimStage"), 7200);
+    setTimeout(() => gameLogic.updateGame("questionStage"), 7200);
 }

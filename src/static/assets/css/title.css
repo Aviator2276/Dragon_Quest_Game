@@ -1,0 +1,120 @@
+#startGame {
+  position: absolute;
+  display: block;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  opacity: 0%;
+}
+.startMain {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 20%;
+}
+.description {
+  font-family: 'Aldrich';
+  font-size: 4vw;
+  padding: 8% 0%;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  color: white;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  text-transform: uppercase;
+  animation: wavyTextStartInit 4s;
+  animation-fill-mode: both;
+}
+.space {
+  padding: 3%;
+}
+.wavyTextStart span {
+  font-family: 'Aldrich';
+  font-size: 12vw;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  color: white;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: black;
+  text-transform: uppercase;
+  animation: wavyTextStartInit 1.5s, color-animation 3s linear infinite;
+  animation-fill-mode: both;
+  animation-delay: calc(.1s * var(--i));
+}
+.infiniteWave span {
+  animation: wavyTextStartInfinite 2s infinite, color-animation 3s linear infinite;
+  animation-delay: calc(.1s * var(--i));
+}
+.title-word-1 {
+  --color-1: #A81307;
+  --color-2: #E65428;
+  --color-3: #FCC601;
+  --color-4: #265C92;
+}
+.title-word-2 {
+  --color-1: #A81307;
+  --color-2: #E65428;
+  --color-3: #FCC601;
+  --color-4: #265C92;
+}
+.title-word-3 {
+  --color-1: #A81307;
+  --color-2: #E65428;
+  --color-3: #FCC601;
+  --color-4: #265C92;
+}
+.title-word-4 {
+  --color-1: #A81307;
+  --color-2: #E65428;
+  --color-3: #FCC601;
+  --color-4: #265C92;
+}
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  24%   {color: var(--color-1)}
+  25%   {color: var(--color-2)}
+  49%   {color: var(--color-2)}
+  50%   {color: var(--color-3)}
+  74%   {color: var(--color-3)}
+  75%  {color: var(--color-4)}
+  99%  {color: var(--color-4)}
+  100%  {color: var(--color-1)}
+}
+@keyframes wavyTextStartInit {
+  0% {
+      transform: translateY(2000px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+.wavyTextStart span {
+  padding-top: 10%;
+  font-family: 'Aldrich';
+  font-size: 12vw;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: black;
+  text-transform: uppercase;
+  animation: wavyTextStartInit 1.5s, color-animation 3s linear infinite;
+  animation-fill-mode: both;
+  animation-delay: calc(.1s * var(--i));
+}
+@keyframes wavyTextStartInfinite {
+  0%,70%,100% {
+      transform: translateY(0);
+  }
+  20% {
+      transform: translateY(-40px);
+  }
+  50% {
+      transform: translateY(20px);
+  }
+}

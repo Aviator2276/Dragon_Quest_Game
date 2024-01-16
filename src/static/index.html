@@ -3,7 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="assets/css/index.css">
+        <link rel="stylesheet" href="assets/css/background.css">
+        <link rel="stylesheet" href="assets/css/title.css">
+        <link rel="stylesheet" href="assets/css/prompt.css">
+        <link rel="stylesheet" href="assets/css/answer.css">
+        <link rel="stylesheet" href="assets/css/select.css">        
+        <link rel="stylesheet" href="assets/css/transitions.css">
+        <link rel="stylesheet" href="assets/css/topgui.css">
     </head>
     <body>
         <section class="startStage" id="startStage">
@@ -132,26 +139,7 @@
             </div> 
         </section>
 
-        <section class="pageHide" id="prelimStage">
-            <span class="transition"></span>
-            <span class="hyperSpace"></span>
-            <div class="selArea">
-                <button class="teamSel ansA" style="background-color: #A81307">1</button>
-                <button class="teamSel ansB" style="background-color: #E65428">2</button>
-                <button class="teamSel ansC" style="background-color: #FCC601">3</button>
-                <button class="teamSel ansD" style="background-color: #265C92">4</button>
-            </div>
-            <div class="showAnswer hidden">
-                <div class="correctAnswer"></div>
-                <div class="correct hidden">CORRECT!</div>
-                <div class="incorrect hidden">INCORRECT</div>
-            </div>
-            <main class = "teamConfigMain">
-                <h1 class = "question prompt">Insert Question Here</h1>       
-            </main>
-        </section>
-
-        <section class="pageHide" id="speedStage">
+        <section class="pageHide" id="questionStage">
             <span class="transition"></span>
             <span class="hyperSpace"></span>
             <div class="selArea">
@@ -183,10 +171,12 @@
                 <div class="second"></div>
                 <div class="third"></div>
                 <div class="fourth"></div>
+                <!--
                 <div id="buttons">
                   <button class="exit">Exit</button>
                   <button class="continue">Continue</button>
                 </div>
+                -->
               </div>
         </section>
 

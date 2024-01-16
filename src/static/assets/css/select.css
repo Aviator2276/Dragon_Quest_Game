@@ -1,0 +1,43 @@
+.selArea {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 100%;
+}
+.teamSel {
+  height: 50%;
+  width: 50%;
+  font-family: Aldrich;
+  background-color: white;
+  color: white;
+  text-align: center;
+  font-size: 6vw;
+  transition: .3s;
+}
+#oneTeam, #ansA {
+  background-color: #A81307;
+}
+#twoTeam, #ansB {
+  background-color: #E65428;
+}
+#threeTeam, #ansC {
+  background-color: #FCC601;
+}
+#fourTeam, #ansD {
+  background-color: #265C92;
+}
+.hidePrompt {
+  opacity: 0%;
+  width: 0%;
+  height: 0%;
+}
+.selected{
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 2;
+}

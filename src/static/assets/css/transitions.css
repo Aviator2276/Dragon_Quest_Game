@@ -1,0 +1,62 @@
+.transition {
+  z-index: 10;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+}
+.transNextPage {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 10;
+  animation: transitionOut 1.2s;
+}
+.transLoadPage {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  z-index: 2;
+  animation: transitionIn 1.2s forwards;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  animation: grow 2s forwards;
+  z-index: 10;
+}
+.line {
+  position: absolute;
+  transform-origin: 0% 50%;
+  width: 0;
+  height: 10px;
+  z-index: 10;
+  background-color: white;
+  border-radius: 5px;
+}
+@keyframes transitionIn {
+  0% {
+    transform: scale(2000, 2000);
+  }
+  60% {
+    transform: scale(50, 50);
+  }
+  100% {
+      transform: scale(0, 0);
+  }
+}
+@keyframes transitionOut {
+  0% {
+      transform: scale(0, 0);
+  }
+  40% {
+      transform: scale(50, 50);
+  }
+  100% {
+      transform: scale(2000, 2000);
+  }
+}

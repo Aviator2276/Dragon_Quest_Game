@@ -2,19 +2,19 @@ import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
 
 //import elements
-const prelimStage = document.getElementById("prelimStage");
-const question = getPrelimElement('question');
-const ansA = getPrelimElement('ansA');
-const ansB = getPrelimElement('ansB');
-const ansC = getPrelimElement('ansC');
-const ansD = getPrelimElement('ansD');
+const questionStage = document.getElementById("questionStage");
+const question = getQuestionElement('question');
+const ansA = getQuestionElement('ansA');
+const ansB = getQuestionElement('ansB');
+const ansC = getQuestionElement('ansC');
+const ansD = getQuestionElement('ansD');
 
-const showAnswer = getPrelimElement('showAnswer');
-const correctAnswer = getPrelimElement('correctAnswer');
-const correct = getPrelimElement('correct');
-const incorrect = getPrelimElement('incorrect');
+const showAnswer = getQuestionElement('showAnswer');
+const correctAnswer = getQuestionElement('correctAnswer');
+const correct = getQuestionElement('correct');
+const incorrect = getQuestionElement('incorrect');
 
-const transition = getPrelimElement('transition');
+const transition = getQuestionElement('transition');
 
 const topGUI = document.getElementById('topGUI');
 const score = document.getElementById('score');
@@ -27,8 +27,8 @@ function removeClassFromElements(className, ...elements) {
     elements.forEach(element => element.classList.remove(className));
 }
 
-function getPrelimElement(elementClass) {
-    return prelimStage.getElementsByClassName(elementClass)[0];
+function getQuestionElement(elementClass) {
+    return questionStage.getElementsByClassName(elementClass)[0];
 }
 
 export function onLoad(firstTime) {
@@ -55,14 +55,18 @@ function resetPage() {
     removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
     removeClassFromElements('transLoadPage', transition);
     removeClassFromElements('selected', ansA, ansB, ansC, ansD);
-    correct.style.animation = ''; 
-    incorrect.style.animation = ''; 
-    showAnswer.style.animation = ''; 
-    addClassToElements('hidden', showAnswer, correct, incorrect);
+    correct.style.animation = 'correctRevealSlideOut 1s forwards'; 
+    incorrect.style.animation = 'correctRevealSlideOut 1s forwards'; 
+    showAnswer.style.animation = 'showAnswerSlideOut 1s forwards'; 
+    setTimeout(() => {
+        addClassToElements('hidden', showAnswer, correct, incorrect);
+        correct.style.animation = ''; 
+        incorrect.style.animation = ''; 
+        showAnswer.style.animation = ''; 
+    }, 700);
 }
 
 function guessAnswer(guess) {
-    //showAnswer.classList.add('confirmShow');
     showAnswer.classList.remove('hidden');
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
@@ -74,28 +78,28 @@ function guessAnswer(guess) {
 
     setTimeout(() => {
         resetPage();
-        gameLogic.nextPrelimQuestion();
+        gameLogic.nextQuestion();
         gameLogic.updateGame('speedStage')
-    }, 3000);
+    }, 2300);
 }
 
 ansA.onclick = () => {
     addClassToElements('hidePrompt', ansB, ansC, ansD, question);
     ansA.classList.add('selected');
-    setTimeout(() => guessAnswer(ansA), 500);
+    setTimeout(() => guessAnswer(ansA), 200);
 };
 ansB.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansC, ansD, question);
     ansB.classList.add('selected');
-    setTimeout(() => guessAnswer(ansB), 500);
+    setTimeout(() => guessAnswer(ansB), 200);
 };
 ansC.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansB, ansD, question);
     ansC.classList.add('selected');
-    setTimeout(() => guessAnswer(ansC), 500);
+    setTimeout(() => guessAnswer(ansC), 200);
 };
 ansD.onclick = () => {
     addClassToElements('hidePrompt', ansA, ansB, ansC, question);
     ansD.classList.add('selected');
-    setTimeout(() => guessAnswer(ansD), 500);
+    setTimeout(() => guessAnswer(ansD), 200);
 };
