@@ -54,7 +54,7 @@
   line-height: normal;
 }
 .correctAnswer {
-  position: static;
+  position: absolute;
   background-color: #1D3557;
   width: 100vw;
   line-height: 70vh;
@@ -63,7 +63,7 @@
   border-bottom: black solid 10px;
 }
 .correct {
-  position: static;
+  position: absolute;
   width: 100vw;
   height: 30vh;
   line-height: 30vh;
@@ -73,7 +73,7 @@
   animation: correctRevealSlideIn 1s;
 }
 .incorrect {
-  position: static;
+  position: absolute;
   width: 100vw;
   height: 30vh;
   line-height: 30vh;

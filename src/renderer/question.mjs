@@ -18,7 +18,7 @@ const transition = getQuestionElement('transition');
 
 const topGUI = document.getElementById('topGUI');
 const score = document.getElementById('score');
-const timer = document.getElementById('time');
+const timer = document.getElementById("time");
 
 function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
@@ -52,18 +52,18 @@ export function onLoad(firstTime) {
     score.classList.remove("pageHide");
 }
 
-function nextPage() {
+export function nextPage() {
     renderer.generateRandomDots(400)
-    setTimeout(() => gameLogic.updateGame("questionStage"), 2200);
+    setTimeout(() => gameLogic.updateGame("leaderboardStage"), 2200);
 }
 
 function resetPage() {
     removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
     removeClassFromElements('transLoadPage', transition);
     removeClassFromElements('selected', ansA, ansB, ansC, ansD);
-    correct.style.animation = 'correctRevealSlideOut 1s forwards'; 
-    incorrect.style.animation = 'correctRevealSlideOut 1s forwards'; 
-    showAnswer.style.animation = 'showAnswerSlideOut 1s forwards'; 
+    correct.style.animation = 'correctRevealSlideOut 1s'; 
+    incorrect.style.animation = 'correctRevealSlideOut 1s'; 
+    showAnswer.style.animation = 'showAnswerSlideOut 1s'; 
     setTimeout(() => {
         addClassToElements('hidden', showAnswer, correct, incorrect);
         correct.style.animation = ''; 
@@ -89,8 +89,9 @@ function guessAnswer(guess) {
     }, 2300);
 }
 
-export function incrementTimer(timeLeft) {
-    timer.innerHTML = (timeLeft / 1000) + " seconds";
+export function incrementTimer(timeLeft) { 
+    console.log(timeLeft)
+    timer.innerHTML = timeLeft + " seconds";
 }
 
 ansA.onclick = () => {

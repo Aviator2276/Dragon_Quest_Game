@@ -58,9 +58,9 @@ export function updateGame(changeGameState) {
         leavePage("teamSelectStage");
         loadPage('topGUI')
         loadPage("questionStage");
-        questionStage.onLoad();
+        questionStage.onLoad(true);
     } else if (gameStage === "leaderboardStage") {
-        leavePage("speedStage");
+        leavePage("questionStage");
         loadPage("leaderboardStage");
         leaderboardStage.onLoad();
     }  else {
@@ -165,20 +165,24 @@ function updateTeamDisplay() {
 
 //TIMING
 
-const timeLimit = 30000;
+const timeLimit = 30;
 let timeLeft = timeLimit;
 
 export function startTimer() {
     setInterval(() => {
         timeLeft--;
-        if (timeLeft % 1000 == 0) {
-            question.incrementTimer(timeLeft);
+        if (timeLeft % 1 == 0) {
+            questionStage.incrementTimer(timeLeft);
         }
 
         if (timeLeft === 0) {
-        timeIsUp();
+            timeIsUp();
         }
-    }, 1);
+    }, 1000);
+}
+
+function timeIsUp() {
+    questionStage.nextPage();
 }
 
 //Clicks Enabled
