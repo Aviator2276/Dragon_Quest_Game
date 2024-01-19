@@ -47,6 +47,7 @@ export function onLoad(firstTime) {
     setTimeout(() => {
         correctAnswer.innerHTML = gameLogic.getAnswer(true);
         gameLogic.setClicksEnabled(true);
+        gameLogic.resumeTimer();
     }, 400);
     topGUI.classList.remove("pageHide");
 }
@@ -73,9 +74,14 @@ function guessAnswer(guess) {
     showAnswer.classList.remove('hidden');
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
-        gameLogic.addPoints(1);
+        setTimeout(() => {
+            gameLogic.addPoints(20);
+        }, 1000)
     } else {
         incorrect.classList.remove('hidden');
+        setTimeout(() => {
+            gameLogic.addPoints(-10);
+        }, 1000)
     }
     correct.style.animation = "correctRevealSlideIn 1s"; 
     incorrect.style.animation = "correctRevealSlideIn 1s"; 
@@ -106,6 +112,7 @@ ansA.onclick = () => {
         addClassToElements('hidePrompt', ansB, ansC, ansD, question);
         ansA.classList.add('selected');
         setTimeout(() => guessAnswer(ansA), 200);
+        gameLogic.pauseTimer();
         gameLogic.setClicksEnabled(false);
     }
 };
@@ -114,6 +121,7 @@ ansB.onclick = () => {
         addClassToElements('hidePrompt', ansA, ansC, ansD, question);
         ansB.classList.add('selected');
         setTimeout(() => guessAnswer(ansB), 200);
+        gameLogic.pauseTimer();
         gameLogic.setClicksEnabled(false);
     }
 };
@@ -122,6 +130,7 @@ ansC.onclick = () => {
         addClassToElements('hidePrompt', ansA, ansB, ansD, question);
         ansC.classList.add('selected');
         setTimeout(() => guessAnswer(ansC), 200);
+        gameLogic.pauseTimer();
         gameLogic.setClicksEnabled(false);
     }
 };
@@ -130,6 +139,7 @@ ansD.onclick = () => {
         addClassToElements('hidePrompt', ansA, ansB, ansC, question);
         ansD.classList.add('selected');
         setTimeout(() => guessAnswer(ansD), 200);
+        gameLogic.pauseTimer();
         gameLogic.setClicksEnabled(false);
     }
 };

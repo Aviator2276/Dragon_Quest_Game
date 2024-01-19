@@ -175,14 +175,14 @@ let timerActive = false;
 export function startTimer() {
     timerActive = true;
     setInterval(() => {
-        timeLeft--;
-        if (timeLeft % 100 == 0) {
-            if (timerActive) {
-                questionStage.incrementTimer(timeLeft / 100);
+        if (timerActive) {
+            timeLeft--;
+            if (timeLeft % 100 == 0) {
+                if (timerActive) {
+                    questionStage.incrementTimer(timeLeft / 100);
+                }
             }
         }
-
-
         if (timeLeft === 0) {
             timeIsUp();
         }
