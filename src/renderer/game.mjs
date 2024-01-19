@@ -181,9 +181,9 @@ export function startTimer() {
                 questionStage.incrementTimer((timeLeft / 100.0).toFixed(2));
             }
             
-        }
-        if (timeLeft === 0) {
-            timeIsUp();
+            if (timeLeft === 0) {
+                timeIsUp();
+            }
         }
     }, 10);
 }
