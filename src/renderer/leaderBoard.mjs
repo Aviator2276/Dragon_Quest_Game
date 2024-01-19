@@ -1,10 +1,7 @@
 import * as gameLogic from "./game.mjs";
 
 const leaderboardStage = document.getElementById("leaderboardStage");
-const first = getLeaderboardElement('first');
-const second = getLeaderboardElement('second');
-const third = getLeaderboardElement('third');
-const fourth = getLeaderboardElement('fourth');
+const leaderboard = document.getElementById("leaderboard");
 
 
 function addClassToElements(className, ...elements) {
@@ -19,7 +16,31 @@ function getLeaderboardElement(elementClass) {
     return leaderboardStage.getElementsByClassName(elementClass)[0];
 }
 
-export function onLoad() {
+/*
+<div class="firstPlace TeamCard">
+    <span id="firstPlaceTeam">
+        TEAM 1
+    </span>
+    <span id="firstPlacePoints" class="placePoints">
+        123 POINTS
+    </span>
+</div>
+*/
+
+function onLoad() {
+    for (let i = 1; i < gameLogic.getTotalTeams(); i++) {
+        leaderboard.innerHTML += `
+        <div class="firstPlace TeamCard">
+            <span id="firstPlaceTeam">
+                TEAM ` + gameLogic.getTeamScore(i) + `
+            </span>
+            <span id="firstPlacePoints" class="placePoints">
+                123 POINTS
+            </span>
+        </div>
+        `
+    }
+    /*
     first.classList.remove("hidden");
     if (gameLogic.getTotalTeams() >= 2) {
         second.classList.remove("hidden");
@@ -38,6 +59,7 @@ export function onLoad() {
     second.innerHTML = "2nd: " +gameLogic.getTeamScore(2);
     third.innerHTML = "3rd:" +gameLogic.getTeamScore(3);
     fourth.innerHTML = "4th" + gameLogic.getTeamScore(4);
+    */
 }
 
 function orderTeams() {
