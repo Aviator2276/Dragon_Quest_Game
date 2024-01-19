@@ -177,11 +177,10 @@ export function startTimer() {
     setInterval(() => {
         if (timerActive) {
             timeLeft--;
-            if (timeLeft % 100 == 0) {
-                if (timerActive) {
-                    questionStage.incrementTimer(timeLeft / 100);
-                }
+            if (timerActive) {
+                questionStage.incrementTimer((timeLeft / 100.0).toFixed(2));
             }
+            
         }
         if (timeLeft === 0) {
             timeIsUp();
