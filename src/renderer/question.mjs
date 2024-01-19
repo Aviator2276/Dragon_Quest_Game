@@ -103,7 +103,6 @@ function guessAnswer(guess) {
 }
 
 export function incrementTimer(timeLeft) { 
-    console.log(timeLeft)
     timer.innerHTML = timeLeft + " seconds";
 }
 
