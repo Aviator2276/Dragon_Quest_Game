@@ -118,7 +118,7 @@ function loadDatabase() {
     setTimeout(() => console.log(prelimQuestions), 5000);
 }
 
-//QUESTIONS
+//Questions
 
 export function getAnswer(prelim) {
     if (prelim) {
@@ -140,7 +140,7 @@ export function currentQuestion() {
     }
 }
 
-//SCORING
+//Scoring
 
 const score = document.getElementById('score');
 
@@ -166,7 +166,7 @@ function updateTeamDisplay() {
     score.innerHTML = "Score: " + getTeamScore(currentTeam);
 }
 
-//TIMING
+//Timing
 
 const timeLimit = 6000;
 let timeLeft = timeLimit;
@@ -204,7 +204,7 @@ function timeIsUp() {
     questionStage.nextPage();
 }
 
-//Clicks Enabled
+//Click Enable
 
 let clicksEnabled = true;
 
