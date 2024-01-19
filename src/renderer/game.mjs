@@ -26,6 +26,7 @@ let prelimQuestions;
 let speedQuestions;
 let prelimIndex = 0;
 let speedIndex = 0;
+let questionStageFirstRun = true;
 
 
 
@@ -54,11 +55,13 @@ export function updateGame(changeGameState) {
         leavePage("teamConfigStage");
         loadPage("teamSelectStage");
         teamSelectStage.onLoad();
+        questionStageFirstRun = true;
     } else if (gameStage === "questionStage") {
         leavePage("teamSelectStage");
         loadPage('topGUI')
         loadPage("questionStage");
-        questionStage.onLoad(true);
+        questionStage.onLoad(questionStageFirstRun);
+        questionStageFirstRun = false;
     } else if (gameStage === "leaderboardStage") {
         leavePage("questionStage");
         loadPage("leaderboardStage");
@@ -165,7 +168,7 @@ function updateTeamDisplay() {
 
 //TIMING
 
-const timeLimit = 30;
+const timeLimit = 60;
 let timeLeft = timeLimit;
 
 export function startTimer() {

@@ -48,11 +48,11 @@ export function onLoad(firstTime) {
         correctAnswer.innerHTML = gameLogic.getAnswer(true);
         gameLogic.setClicksEnabled(true);
     }, 400);
-
-    score.classList.remove("pageHide");
+    topGUI.classList.remove("pageHide");
 }
 
 export function nextPage() {
+    topGUI.classList.add("pageHide");
     renderer.generateRandomDots(400)
     setTimeout(() => gameLogic.updateGame("leaderboardStage"), 2200);
 }
@@ -61,14 +61,11 @@ function resetPage() {
     removeClassFromElements('hidePrompt', ansA, ansB, ansC, ansD, question);
     removeClassFromElements('transLoadPage', transition);
     removeClassFromElements('selected', ansA, ansB, ansC, ansD);
-    correct.style.animation = 'correctRevealSlideOut 1s'; 
-    incorrect.style.animation = 'correctRevealSlideOut 1s'; 
-    showAnswer.style.animation = 'showAnswerSlideOut 1s'; 
     setTimeout(() => {
         addClassToElements('hidden', showAnswer, correct, incorrect);
-        correct.style.animation = ''; 
-        incorrect.style.animation = ''; 
-        showAnswer.style.animation = ''; 
+        correct.style.animation = undefined; 
+        incorrect.style.animation = undefined; 
+        correctAnswer.style.animation = undefined; 
     }, 700);
 }
 
@@ -80,13 +77,23 @@ function guessAnswer(guess) {
     } else {
         incorrect.classList.remove('hidden');
     }
+    correct.style.animation = "correctRevealSlideIn 1s"; 
+    incorrect.style.animation = "correctRevealSlideIn 1s"; 
+    correctAnswer.style.animation = "showAnswerSlideIn 1s"; 
     gameLogic.consoleLogGameInfo();
-
     setTimeout(() => {
+        correct.style.animation = undefined; 
+        incorrect.style.animation = undefined; 
+        correctAnswer.style.animation = undefined; 
+    }, 1000);
+    setTimeout(() => {
+        correct.style.animation = "correctRevealSlideOut 1s"; 
+        incorrect.style.animation = "correctRevealSlideOut 1s"; 
+        correctAnswer.style.animation = "showAnswerSlideOut 1s"; 
         resetPage();
         gameLogic.nextQuestion();
         gameLogic.updateGame('questionStage');
-    }, 2300);
+    }, 2000);
 }
 
 export function incrementTimer(timeLeft) { 

@@ -39,7 +39,7 @@
     transform: scale(1);
   }
 }
-/* ANSWER CSS LOGIC */
+/* ANSWER CSS */
 .showAnswer {
   font-family: Roboto;
   position: absolute;
@@ -59,28 +59,25 @@
   width: 100vw;
   line-height: 70vh;
   height: 70vh;
-  animation: showAnswerSlideIn 1s;
   border-bottom: black solid 10px;
 }
 .correct {
   position: absolute;
+  bottom: 0;
   width: 100vw;
   height: 30vh;
   line-height: 30vh;
-  bottom: 0;
   background-color: #07a83a;
   border-top: black solid 10px;
-  animation: correctRevealSlideIn 1s;
 }
 .incorrect {
   position: absolute;
+  bottom: 0;
   width: 100vw;
   height: 30vh;
   line-height: 30vh;
-  bottom: 0;
   border-top: black solid 10px;
   background-color: #A81307;
-  animation: correctRevealSlideIn 1s;
 }
 @keyframes showAnswerSlideIn {
   0% {
@@ -117,7 +114,7 @@
 }
 @keyframes correctRevealSlideOut {
   0% {
-    transform: translateY(0);
+    transform: translateY(0px);
   }
   80% {
     transform: translateY(1000px);
