@@ -144,8 +144,15 @@ export function currentQuestion() {
 
 const score = document.getElementById('score');
 
-export function addPoints(points) {
-    leaderboard[currentTeam - 1] += points;
+export function addPoints() {
+    leaderboard[currentTeam - 1] += 20;
+    updateTeamDisplay();
+}
+
+export function removePoints() {
+    if (getTeamScore(currentTeam) >= 0) {
+        leaderboard[currentTeam - 1] -= 10;
+    }
     updateTeamDisplay();
 }
 
@@ -155,7 +162,7 @@ export function changeTeam(team) {
 }
 
 export function getTotalTeams() {
-    return team;
+    return totalTeam;
 }
 
 export function getTeamScore(team) {

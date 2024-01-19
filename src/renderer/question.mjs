@@ -75,12 +75,12 @@ function guessAnswer(guess) {
     if (guess.innerHTML === correctAnswer.innerHTML) {
         correct.classList.remove('hidden');
         setTimeout(() => {
-            gameLogic.addPoints(20);
+            gameLogic.addPoints();
         }, 1000)
     } else {
         incorrect.classList.remove('hidden');
         setTimeout(() => {
-            gameLogic.addPoints(-10);
+            gameLogic.removePoints();
         }, 1000)
     }
     correct.style.animation = "correctRevealSlideIn 1s"; 
