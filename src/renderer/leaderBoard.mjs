@@ -19,7 +19,7 @@ function getLeaderboardElement(elementClass) {
     return leaderboardStage.getElementsByClassName(elementClass)[0];
 }
 
-function onLoad() {
+export function onLoad() {
     first.classList.remove("hidden");
     if (gameLogic.getTotalTeams() >= 2) {
         second.classList.remove("hidden");

@@ -3,7 +3,7 @@ import * as startStage from "./startGame.mjs";
 import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
 import * as questionStage from "./question.mjs";
-//import * as leaderboardStage from "./leaderboard.mjs"
+import * as leaderboardStage from "./leaderBoard.mjs"
 
 /*
 Stages in order:
@@ -168,23 +168,39 @@ function updateTeamDisplay() {
 
 //TIMING
 
-const timeLimit = 60;
+const timeLimit = 6000;
 let timeLeft = timeLimit;
+let timerActive = false;
 
 export function startTimer() {
+    timerActive = true;
     setInterval(() => {
         timeLeft--;
-        if (timeLeft % 1 == 0) {
-            questionStage.incrementTimer(timeLeft);
+        if (timeLeft % 100 == 0) {
+            if (timerActive) {
+                questionStage.incrementTimer(timeLeft / 100);
+            }
         }
+
 
         if (timeLeft === 0) {
             timeIsUp();
         }
-    }, 1000);
+    }, 10);
 }
 
+export function pauseTimer() {
+    timerActive = false;
+}
+
+export function resumeTimer() {
+    timerActive = true;
+}
+
+
 function timeIsUp() {
+    timerActive = false;
+    clearInterval();
     questionStage.nextPage();
 }
 
