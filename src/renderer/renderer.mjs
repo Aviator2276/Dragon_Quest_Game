@@ -21,8 +21,8 @@ function transformDotToLine(dot) {
     dot.classList.remove('dot');
     dot.classList.add('line');
 
-	const hyperSpaceDiv = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('hyperSpace')[0];
-    const squareTrans = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
+	const hyperSpaceDiv = document.getElementById(gameLogic.getGameStage()).getElementsByClassName("hyperSpace")[0];
+    const squareTrans = document.getElementById(gameLogic.getGameStage()).getElementsByClassName("transition")[0];
 
     const dotX = parseFloat(dot.style.left) + 5;
     const dotY = parseFloat(dot.style.top) + 5;

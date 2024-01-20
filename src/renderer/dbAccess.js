@@ -2,8 +2,8 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const needle = require("needle");
 const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
-const database = './db/data.csv';
 const online = true;
+const database = './src/db/data.csv';
 
 async function isConnected() {
     let isConnected = !!await require('dns').promises.resolve('google.com').catch(()=>{});
@@ -79,7 +79,6 @@ export function randomizeQuestions(database, prelim) {
 
         questions[i] = temp;
     }
-
     return questions;
 }
 

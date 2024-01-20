@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="assets/css/transitions.css">
         <link rel="stylesheet" href="assets/css/topgui.css">
         <link rel="stylesheet" href="assets/css/leaderboard.css">
+        <link rel="stylesheet" href="assets/css/winner.css">
     </head>
     <body>
         <section class="startStage" id="startStage">
@@ -72,8 +73,8 @@
         </section>
 
         <section class="teamConfigStage pageHide" id="teamConfigStage">
-            <span id="transition" class="transition"></span>
-            <span id="hyperSpace" class="hyperSpace"></span>
+            <span class="transition"></span>
+            <span class="hyperSpace"></span>
             <div class="selArea" id="optionArea">
                 <button id="oneTeam" class="teamSel">1</button>
                 <button id="twoTeam" class="teamSel">2</button>
@@ -91,8 +92,8 @@
         </section>
 
         <section class="teamSelectStage pageHide" id="teamSelectStage">
-            <span id="transition" class="transition"></span>
-            <span id="hyperSpace" class="hyperSpace"></span>
+            <span class="transition"></span>
+            <span class="hyperSpace"></span>
             <div class="wavyTextStart" id="wavyTextStart">
                 <span style="--i:1" class="title-word title-word-1">T</span>
                 <span style="--i:2" class="title-word title-word-2">E</span>
@@ -141,8 +142,8 @@
         </section>
 
         <section class="pageHide" id="questionStage">
-            <span id="transition" class="transition"></span>
-            <span id="hyperSpace" class="hyperSpace"></span>
+            <span class="transition"></span>
+            <span class="hyperSpace"></span>
             <div class="selArea">
                 <button class="teamSel ansA" style="background-color: #A81307">1</button>
                 <button class="teamSel ansB" style="background-color: #E65428">2</button>
@@ -164,8 +165,8 @@
         </section>
 
         <section class="pageHide" id="leaderboardStage">
-            <span id="transition" class="transition"></span>
-            <span id="hyperSpace" class="hyperSpace"></span>
+            <span class="transition"></span>
+            <span class="hyperSpace"></span>
             <div id="leaderboard">
             </div>
             <div class="backwrap gradient">
@@ -207,9 +208,10 @@
         </section>
 
         <section class="pageHide" id="winnerStage">
-            <span id="transition" class="transition"></span>
-            <span id="hyperSpace" class="hyperSpace"></span>
-            <div id="leaderboard">
+            <span class="transition"></span>
+            <span class="hyperSpace"></span>
+            <button id="resetButton"></button>
+            <div id="podium">
             </div>
         </section>
 

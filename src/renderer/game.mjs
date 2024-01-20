@@ -43,7 +43,6 @@ export function updateGame(changeGameState) {
         loadPage("teamConfigStage");
         teamConfigStage.onLoad();
     } else if (gameStage === "teamSelectStage") {
-        setTeams();
         leavePage("teamConfigStage");
         leavePage("leaderboardStage");
         loadPage("teamSelectStage");
@@ -79,10 +78,6 @@ function loadPage(pageLoad) {
     document.getElementById(pageLoad).classList.remove('pageHide');
 }
 
-export function teamLogic() {
-    
-}
-
 function initializeGame() {
     updateGame("startStage");
     totalTeam = 1;
@@ -91,7 +86,7 @@ function initializeGame() {
     loadDatabase();
 }
 
-function setTeams() {
+export function setTeams() {
     for (let i = 0; i < totalTeam; i++) {
         leaderboard[i] = 0;
     }
@@ -120,7 +115,8 @@ function loadDatabase() {
         speedQuestions = dbAccess.randomizeQuestions(database, false);
         answerMap = dbAccess.getAnswerMap(database);
     });
-    setTimeout(() => console.log(prelimQuestions), 5000);
+    setTimeout(() => console.log(prelimQuestions.shift()), 5000);
+    // The .shift() was used to prevent the question that had other questions combined into it. This did not work.
 }
 
 //Questions
@@ -196,7 +192,7 @@ export function getCurrentTeam() {
 
 //Timing
 
-const timeLimit = 500;
+const timeLimit = 3000;
 let timeLeft;
 let timerActive = false;
 let timerCreated = false;

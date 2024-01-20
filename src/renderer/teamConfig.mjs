@@ -29,6 +29,7 @@ export function onLoad() {
 }
 function nextPage() {
     renderer.generateRandomDots(400)
+    gameLogic.setTeams();
     setTimeout(() => gameLogic.updateGame("teamSelectStage"), 2200);
 }
 

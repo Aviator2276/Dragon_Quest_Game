@@ -33,8 +33,8 @@ function getQuestionElement(elementClass) {
 }
 
 export function onLoad(firstTime) {
-    transition.classList.add('transLoadPage');
     if (firstTime) {
+        transition.classList.add('transLoadPage');
         gameLogic.startTimer();
     }
     let questionAndAnswers = gameLogic.currentQuestion();
@@ -50,12 +50,14 @@ export function onLoad(firstTime) {
         gameLogic.setClicksEnabled(true);
         gameLogic.resumeTimer();
     }, 400);
+    setTimeout(() => transition.classList.remove('transLoadPage'), 1200);
     topGUI.classList.remove("pageHide");
 }
 
 export function nextPage() {
     renderer.generateRandomDots(400);
     topGUI.classList.add("pageHide");
+    setTimeout(()=>transition.classList.add('transNextPage'),1200);
     setTimeout(() => gameLogic.updateGame("leaderboardStage"), 2200);
 }
 
@@ -84,9 +86,9 @@ function guessAnswer(guess) {
             gameLogic.removePoints();
         }, 1000)
     }
-    correct.style.animation = "correctRevealSlideIn 1s"; 
-    incorrect.style.animation = "correctRevealSlideIn 1s"; 
-    correctAnswer.style.animation = "showAnswerSlideIn 1s"; 
+    correct.style.animation = "correctRevealSlideIn .8s"; 
+    incorrect.style.animation = "correctRevealSlideIn .8s"; 
+    correctAnswer.style.animation = "showAnswerSlideIn .8s"; 
     gameLogic.consoleLogGameInfo();
     setTimeout(() => {
         correct.style.animation = undefined; 

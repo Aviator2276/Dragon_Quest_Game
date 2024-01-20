@@ -3,15 +3,7 @@ import * as renderer from "./renderer.mjs";
 
 const leaderboardStage = document.getElementById("leaderboardStage");
 const leaderboard = document.getElementById("leaderboard");
-
-
-function addClassToElements(className, ...elements) {
-    elements.forEach(element => element.classList.add(className));
-}
-
-function removeClassFromElements(className, ...elements) {
-    elements.forEach(element => element.classList.remove(className));
-}
+const transition = getLeaderboardElement('transition');
 
 function getLeaderboardElement(elementClass) {
     return leaderboardStage.getElementsByClassName(elementClass)[0];
@@ -19,6 +11,7 @@ function getLeaderboardElement(elementClass) {
 
 export function nextPage() {
     renderer.generateRandomDots(400);
+    setTimeout(() => transition.classList.remove('transLoadPage'), 1200);
     setTimeout(() => {
         gameLogic.incrementTeam();
         gameLogic.updateGame("teamSelectStage");
@@ -26,6 +19,8 @@ export function nextPage() {
 }
 
 export function onLoad() {
+    transition.classList.remove('transNextPage'); 
+    transition.classList.add('transLoadPage'); 
     leaderboard.innerHTML = '';
     for (let i = 0; i < gameLogic.getTotalTeams(); i++) {
         leaderboard.innerHTML += `
@@ -39,14 +34,7 @@ export function onLoad() {
         </div>
         `
     }
-    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
-    transition.classList.remove('transNextPage'); 
-    transition.classList.add('transLoadPage'); 
     setTimeout(() => {
         nextPage();
     }, 5000);
-}
-
-function orderTeams() {
-    leaderboardStage
 }

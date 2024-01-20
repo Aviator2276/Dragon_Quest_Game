@@ -1,7 +1,6 @@
 import * as gameLogic from "./game.mjs";
 import * as renderer from "./renderer.mjs";
 
-//gameLogic.initializeGame();
 export function onLoad() {
     const element = document.getElementById('wavyTextStart');
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
