@@ -1,5 +1,4 @@
 #leaderboard {
-    column: 1;
     margin: 10% auto;
     z-index: 10;
 }
@@ -11,6 +10,7 @@
     border-radius: 10px;
     color: #48463B;
     font-size: 4vw;
+    margin: 20% auto;
     padding: 1% 5% 1% 5%;
     margin: 1% auto;
     max-width: 60%;
@@ -20,19 +20,19 @@
     float: right;
 }
 
-.firstPlace {
+.team1Place {
     animation-delay: .5s;
     animation: rollLeaderboard 2.4s forwards;
 }
-.secondPlace {
+.team2Place {
     animation-delay: 1.5s;
     animation: rollLeaderboard 2.8s forwards;
 }
-.thirdPlace {
+.team3Place {
     animation-delay: 2s;
     animation: rollLeaderboard 3.2s forwards;
 }
-.fourthPlace {
+.team4Place {
     animation-delay: 2.5s;
     animation: rollLeaderboard 3.6s forwards;
 }

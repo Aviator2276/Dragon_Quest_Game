@@ -16,7 +16,7 @@
     <body>
         <section class="startStage" id="startStage">
             <span id="transition" class="transition"></span>
-            <span class="hyperSpace" id="hyperSpace"></span>
+            <span id="hyperSpace" class="hyperSpace"></span>
             <button id="startGame"></button>
             <main class="startMain">
                 <div class="wavyTextStart" id="wavyTextStart">
@@ -73,7 +73,7 @@
 
         <section class="teamConfigStage pageHide" id="teamConfigStage">
             <span id="transition" class="transition"></span>
-            <span class="hyperSpace" id="hyperSpace"></span>
+            <span id="hyperSpace" class="hyperSpace"></span>
             <div class="selArea" id="optionArea">
                 <button id="oneTeam" class="teamSel">1</button>
                 <button id="twoTeam" class="teamSel">2</button>
@@ -92,7 +92,7 @@
 
         <section class="teamSelectStage pageHide" id="teamSelectStage">
             <span id="transition" class="transition"></span>
-            <span class="hyperSpace" id="hyperSpace"></span>
+            <span id="hyperSpace" class="hyperSpace"></span>
             <div class="wavyTextStart" id="wavyTextStart">
                 <span style="--i:1" class="title-word title-word-1">T</span>
                 <span style="--i:2" class="title-word title-word-2">E</span>
@@ -141,8 +141,8 @@
         </section>
 
         <section class="pageHide" id="questionStage">
-            <span class="transition"></span>
-            <span class="hyperSpace"></span>
+            <span id="transition" class="transition"></span>
+            <span id="hyperSpace" class="hyperSpace"></span>
             <div class="selArea">
                 <button class="teamSel ansA" style="background-color: #A81307">1</button>
                 <button class="teamSel ansB" style="background-color: #E65428">2</button>
@@ -157,32 +157,16 @@
             <main class = "teamConfigMain">
                 <h1 class = "question prompt">Insert Question Here</h1>       
             </main>
-        </section>
-
-        <section class="pageHide" id="topGUI">
-            <div id="score">Score: 0</div>
-            <div id="time">60 SECONDS</div>
+            <section class="pageHide" id="topGUI">
+                <div id="score">Score: 0</div>
+                <div id="time">60 SECONDS</div>
+            </section>
         </section>
 
         <section class="pageHide" id="leaderboardStage">
-            <span class="transition"></span>
-            <span class="hyperSpace"></span>
+            <span id="transition" class="transition"></span>
+            <span id="hyperSpace" class="hyperSpace"></span>
             <div id="leaderboard">
-                <!--
-                For JS Code, setup as:
-                <div class="firstPlace TeamCard">
-                    <span id="firstPlaceTeam">
-                        TEAM 1
-                    </span>
-                    <span id="firstPlacePoints" class="placePoints">
-                        123 POINTS
-                    </span>
-                </div>
-                <div id="buttons">
-                  <button class="exit">Exit</button>
-                  <button class="continue">Continue</button>
-                </div>
-                -->
             </div>
             <div class="backwrap gradient">
                 <div class="back-shapes">
@@ -220,6 +204,13 @@
                     <span class="floating square" style="top:11.542390194075587%;left:91.51041666666667%;animation-delay:-0.1s;"></span>
                 </div>
             </div> 
+        </section>
+
+        <section class="pageHide" id="winnerStage">
+            <span id="transition" class="transition"></span>
+            <span id="hyperSpace" class="hyperSpace"></span>
+            <div id="leaderboard">
+            </div>
         </section>
 
         <script type="module" src="../renderer/game.mjs"></script>

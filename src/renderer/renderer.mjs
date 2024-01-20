@@ -31,7 +31,6 @@ function transformDotToLine(dot) {
     const centerY = window.innerHeight / 2;
     
     const angle = Math.atan2(centerY - dotY, centerX - dotX) + Math.PI;
-    //const distance = Math.sqrt(Math.pow(centerX - dotX, 2) + Math.pow(centerY - dotY, 2)) + 1000;Z
     
     const line = document.createElement('div');
     line.classList.add('line');
@@ -59,12 +58,12 @@ export function addClassToElements(className, ...elements) {
     elements.forEach(element => element.classList.add(className));
 }
 
-var maxParticleCount = 100; //set max confetti count
-var particleSpeed = 1; //set the particle animation speed
-export var startConfetti; //call to start confetti animation
-var stopConfetti; //call to stop adding confetti
-var toggleConfetti; //call to start or stop the confetti animation depending on whether it's already running
-var removeConfetti; //call to stop the confetti animation and remove all confetti immediately
+var maxParticleCount = 100;
+var particleSpeed = 1;
+export var startConfetti;
+var stopConfetti;
+var toggleConfetti;
+var removeConfetti;
 
 (function() {
 	startConfetti = startConfettiInner;
@@ -105,7 +104,7 @@ var removeConfetti; //call to stop the confetti animation and remove all confett
 		if (canvas === null) {
 			canvas = document.createElement("canvas");
 			canvas.setAttribute("id", "confetti-canvas");
-			canvas.setAttribute("style", "display:block;z-index:-3;pointer-events:none;position: absolute;top: 0;");
+			canvas.setAttribute("style", "display:block;z-index:90;pointer-events:none;position: absolute;top: 0;");
 			document.body.appendChild(canvas);
 			canvas.width = width;
 			canvas.height = height;

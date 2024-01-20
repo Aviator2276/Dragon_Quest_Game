@@ -17,17 +17,6 @@ function getLeaderboardElement(elementClass) {
     return leaderboardStage.getElementsByClassName(elementClass)[0];
 }
 
-/*
-<div class="firstPlace TeamCard">
-    <span id="firstPlaceTeam">
-        TEAM 1
-    </span>
-    <span id="firstPlacePoints" class="placePoints">
-        123 POINTS
-    </span>
-</div>
-*/
-
 export function nextPage() {
     renderer.generateRandomDots(400);
     setTimeout(() => {
@@ -37,41 +26,25 @@ export function nextPage() {
 }
 
 export function onLoad() {
-    setTimeout(() => {
-        nextPage();
-    }, 5000);
-    for (let i = 1; i < gameLogic.getTotalTeams(); i++) {
+    leaderboard.innerHTML = '';
+    for (let i = 0; i < gameLogic.getTotalTeams(); i++) {
         leaderboard.innerHTML += `
-        <div class="firstPlace TeamCard">
+        <div class="team` + (i + 1) + `Place TeamCard">
             <span id="firstPlaceTeam">
-                TEAM ` + gameLogic.getTeamScore(i) + `
+                TEAM ` + gameLogic.getLeaderboard("team", i) + `
             </span>
             <span id="firstPlacePoints" class="placePoints">
-                123 POINTS
+                ` + gameLogic.getLeaderboard("score", i) + ` POINTS
             </span>
         </div>
         `
     }
-    /*
-    first.classList.remove("hidden");
-    if (gameLogic.getTotalTeams() >= 2) {
-        second.classList.remove("hidden");
-        
-        if (gameLogic.getTotalTeams() >= 3) {
-            third.classList.remove("hidden");
-            
-            if (gameLogic.getTotalTeams() >= 4) {
-                fourth.classList.remove("hidden");
-            }
-        }
-    }
-    
-    
-    first.innerHTML = "1st: " +gameLogic.getTeamScore(1);
-    second.innerHTML = "2nd: " +gameLogic.getTeamScore(2);
-    third.innerHTML = "3rd:" +gameLogic.getTeamScore(3);
-    fourth.innerHTML = "4th" + gameLogic.getTeamScore(4);
-    */
+    const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
+    transition.classList.remove('transNextPage'); 
+    transition.classList.add('transLoadPage'); 
+    setTimeout(() => {
+        nextPage();
+    }, 5000);
 }
 
 function orderTeams() {

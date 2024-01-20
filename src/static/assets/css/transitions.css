@@ -10,14 +10,14 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(1px);
-  z-index: 10;
+  z-index: 100;
   animation: transitionOut 1.2s;
 }
 .transLoadPage {
   position: absolute;
   border-radius: 50%;
   filter: blur(1px);
-  z-index: 2;
+  z-index: 100;
   animation: transitionIn 1.2s forwards;
 }
 .dot {
@@ -27,14 +27,14 @@
   border-radius: 50%;
   position: absolute;
   animation: grow 2s forwards;
-  z-index: 10;
+  z-index: 100;
 }
 .line {
   position: absolute;
   transform-origin: 0% 50%;
   width: 0;
   height: 10px;
-  z-index: 10;
+  z-index: 100;
   background-color: white;
   border-radius: 5px;
 }

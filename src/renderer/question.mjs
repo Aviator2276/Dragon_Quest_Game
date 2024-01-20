@@ -54,8 +54,8 @@ export function onLoad(firstTime) {
 }
 
 export function nextPage() {
+    renderer.generateRandomDots(400);
     topGUI.classList.add("pageHide");
-    renderer.generateRandomDots(400)
     setTimeout(() => gameLogic.updateGame("leaderboardStage"), 2200);
 }
 

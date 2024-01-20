@@ -28,19 +28,9 @@ let prelimIndex = 0;
 let speedIndex = 0;
 let questionStageFirstQuestion = true;
 
-
-
-//console.log(dbAccess.callDatabase(0));
-//console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
-//console.log(dbAccess.callDatabase(0));
-//console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
-
-
 initializeGame();
 
 export function updateGame(changeGameState) {
-    //console.log(dbAccess.callDatabase(0));
-    //console.log(dbAccess.checkCorrect("prelimQuestion1", "this isn't an answer"));
     if (changeGameState != "no") {
         gameStage = changeGameState;
     }
@@ -52,6 +42,7 @@ export function updateGame(changeGameState) {
         loadPage("teamConfigStage");
         teamConfigStage.onLoad();
     } else if (gameStage === "teamSelectStage") {
+        setTeams();
         leavePage("teamConfigStage");
         leavePage("leaderboardStage");
         loadPage("teamSelectStage");
@@ -95,8 +86,14 @@ function initializeGame() {
     updateGame("startStage");
     totalTeam = 1;
     currentTeam = 1;
-    leaderboard = [0,0,0,0];
+    leaderboard = [-100,-100,-100,-100];
     loadDatabase();
+}
+
+function setTeams() {
+    for (let i = 0; i < totalTeam; i++) {
+        leaderboard[i] = 0;
+    }
 }
 
 export function changeTotalTeam(changeTo) {
@@ -175,6 +172,19 @@ export function getTeamScore(team) {
     return leaderboard[team - 1]
 }
 
+export function getLeaderboard(type, rank) {
+    let teamsScore = leaderboard.map((score, index) => ({ team: index + 1, score }));
+    teamsScore.sort((a, b) => b.score - a.score);
+    console.log(teamsScore);
+    if (type == "team") {
+        return teamsScore[rank].team;
+    } else if (type == "score") {
+        return teamsScore[rank].score;
+    } else {
+        return "Error";
+    }
+}
+
 export function updateTeamDisplay() {
     score.innerHTML = "Score: " + getTeamScore(currentTeam);
 }
@@ -185,7 +195,7 @@ export function getCurrentTeam() {
 
 //Timing
 
-const timeLimit = 600;
+const timeLimit = 500;
 let timeLeft;
 let timerActive = false;
 let timerCreated = false;
