@@ -4,6 +4,7 @@ import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
 import * as questionStage from "./question.mjs";
 import * as leaderboardStage from "./leaderBoard.mjs";
+import * as winnerStage from "./winner.mjs";
 
 /*
 Stages in order:
@@ -57,8 +58,8 @@ export function updateGame(changeGameState) {
     } else if (gameStage === "leaderboardStage") {
         leavePage("questionStage");
         if (currentTeam == totalTeam) {
-            loadPage("wonStage");
-            wonStage.onLoad();
+            loadPage("winnerStage");
+            winnerStage.onLoad();
         }
         else {
             loadPage("leaderboardStage");
