@@ -3,7 +3,7 @@ import * as startStage from "./startGame.mjs";
 import * as teamConfigStage from "./teamConfig.mjs";
 import * as teamSelectStage from "./teamSel.mjs";
 import * as questionStage from "./question.mjs";
-import * as leaderboardStage from "./leaderBoard.mjs"
+import * as leaderboardStage from "./leaderBoard.mjs";
 
 /*
 Stages in order:
@@ -26,7 +26,7 @@ let prelimQuestions;
 let speedQuestions;
 let prelimIndex = 0;
 let speedIndex = 0;
-let questionStageFirstRun = true;
+let questionStageFirstQuestion = true;
 
 
 
@@ -53,19 +53,26 @@ export function updateGame(changeGameState) {
         teamConfigStage.onLoad();
     } else if (gameStage === "teamSelectStage") {
         leavePage("teamConfigStage");
+        leavePage("leaderboardStage");
         loadPage("teamSelectStage");
         teamSelectStage.onLoad();
-        questionStageFirstRun = true;
+        questionStageFirstQuestion = true;
     } else if (gameStage === "questionStage") {
         leavePage("teamSelectStage");
         loadPage('topGUI')
         loadPage("questionStage");
-        questionStage.onLoad(questionStageFirstRun);
-        questionStageFirstRun = false;
+        questionStage.onLoad(questionStageFirstQuestion);
+        questionStageFirstQuestion = false;
     } else if (gameStage === "leaderboardStage") {
         leavePage("questionStage");
-        loadPage("leaderboardStage");
-        leaderboardStage.onLoad();
+        if (currentTeam == totalTeam) {
+            loadPage("wonStage");
+            wonStage.onLoad();
+        }
+        else {
+            loadPage("leaderboardStage");
+            leaderboardStage.onLoad();
+        }
     }  else {
         console.log("Error");
     }
@@ -156,9 +163,8 @@ export function removePoints() {
     updateTeamDisplay();
 }
 
-export function changeTeam(team) {
-    currentTeam = team;
-    updateTeamDisplay();
+export function incrementTeam(team) {
+    currentTeam += 1;
 }
 
 export function getTotalTeams() {
@@ -169,30 +175,41 @@ export function getTeamScore(team) {
     return leaderboard[team - 1]
 }
 
-function updateTeamDisplay() {
+export function updateTeamDisplay() {
     score.innerHTML = "Score: " + getTeamScore(currentTeam);
+}
+
+export function getCurrentTeam() {
+    return currentTeam;
 }
 
 //Timing
 
-const timeLimit = 6000;
-let timeLeft = timeLimit;
+const timeLimit = 600;
+let timeLeft;
 let timerActive = false;
+let timerCreated = false;
 
 export function startTimer() {
+    timeLeft = timeLimit;
     timerActive = true;
-    setInterval(() => {
-        if (timerActive) {
-            timeLeft--;
+    if (!timerCreated) {
+        timerCreated = true;
+        setInterval(() => {
             if (timerActive) {
-                questionStage.incrementTimer((timeLeft / 100.0).toFixed(2));
+                timeLeft--;
+                if (timerActive) {
+                    questionStage.incrementTimer((timeLeft / 100.0).toFixed(2));
+                }
+                
             }
-            
-            if (timeLeft === 0) {
-                timeIsUp();
+            if (timeLeft <= 0) {
+                timeLeft = timeLimit;
+                pauseTimer();
+                questionStage.nextPage()
             }
-        }
-    }, 10);
+        }, 10);
+    }
 }
 
 export function pauseTimer() {
@@ -205,8 +222,8 @@ export function resumeTimer() {
 
 
 function timeIsUp() {
+    setClicksEnabled(false);
     timerActive = false;
-    clearInterval();
     questionStage.nextPage();
 }
 

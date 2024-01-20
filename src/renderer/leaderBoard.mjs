@@ -1,4 +1,5 @@
 import * as gameLogic from "./game.mjs";
+import * as renderer from "./renderer.mjs";
 
 const leaderboardStage = document.getElementById("leaderboardStage");
 const leaderboard = document.getElementById("leaderboard");
@@ -27,7 +28,18 @@ function getLeaderboardElement(elementClass) {
 </div>
 */
 
-function onLoad() {
+export function nextPage() {
+    renderer.generateRandomDots(400);
+    setTimeout(() => {
+        gameLogic.incrementTeam();
+        gameLogic.updateGame("teamSelectStage");
+    }, 2200);
+}
+
+export function onLoad() {
+    setTimeout(() => {
+        nextPage();
+    }, 5000);
     for (let i = 1; i < gameLogic.getTotalTeams(); i++) {
         leaderboard.innerHTML += `
         <div class="firstPlace TeamCard">

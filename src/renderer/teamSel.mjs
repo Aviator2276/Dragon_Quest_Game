@@ -8,6 +8,8 @@ const startGame = document.querySelector("#startGame");
 export function onLoad() {
     const element = document.getElementById('wavyTextStart');
     const transition = document.getElementById(gameLogic.getGameStage()).getElementsByClassName('transition')[0];
+    const teamNum = document.getElementById('teamNum');
+    teamNum.innerHTML = gameLogic.getCurrentTeam();
     transition.classList.add('transLoadPage');
     setTimeout(() => transition.classList.remove('transLoadPage'), 2300);
     setTimeout(() => element.classList.add('infinite'), 2300);

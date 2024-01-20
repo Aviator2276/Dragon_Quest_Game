@@ -44,6 +44,7 @@ export function onLoad(firstTime) {
     ansB.innerHTML = questionAndAnswers[2];
     ansC.innerHTML = questionAndAnswers[3];
     ansD.innerHTML = questionAndAnswers[4];
+    gameLogic.updateTeamDisplay();
     setTimeout(() => {
         correctAnswer.innerHTML = gameLogic.getAnswer(true);
         gameLogic.setClicksEnabled(true);
