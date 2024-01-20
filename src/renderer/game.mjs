@@ -115,7 +115,7 @@ function loadDatabase() {
         speedQuestions = dbAccess.randomizeQuestions(database, false);
         answerMap = dbAccess.getAnswerMap(database);
     });
-    setTimeout(() => console.log(prelimQuestions.shift()), 5000);
+    //setTimeout(() => console.log(prelimQuestions.shift()), 5000);
     // The .shift() was used to prevent the question that had other questions combined into it. This did not work.
 }
 
