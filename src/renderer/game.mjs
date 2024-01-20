@@ -205,6 +205,7 @@ export function startTimer() {
             }
             if (timeLeft <= 0) {
                 timeLeft = timeLimit;
+                setClicksEnabled(false);
                 pauseTimer();
                 questionStage.nextPage()
             }
