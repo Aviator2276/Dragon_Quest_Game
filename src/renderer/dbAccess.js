@@ -3,6 +3,7 @@ const csv = require('csv-parser');
 const needle = require("needle");
 const urlDatabase = "https://docs.google.com/spreadsheets/d/1gnjt-bU31ZbAc9wa5b57nI-_Gfnv3ac6sD9JPOQHCHs/gviz/tq?tqx=out:csv&sheet=answerKey1";
 const database = './db/data.csv';
+const online = true;
 
 async function isConnected() {
     let isConnected = !!await require('dns').promises.resolve('google.com').catch(()=>{});
@@ -16,7 +17,7 @@ export function getConnectionState() {
 }
 
 export async function getDatabase() {
-    /*if (await isConnected()) {
+    if (online) {
         console.log("Trying Online Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];
@@ -33,8 +34,8 @@ export async function getDatabase() {
             }).on("end", function () {
                 console.log("Online Database Success");
             })
-        });*/
-    //} else {
+        });
+    } else {
         console.log("Unable to Connect. Reverting to Local Database.");
         return new Promise((resolve, reject) => {
             let answerKeyRaw = [];
@@ -50,7 +51,7 @@ export async function getDatabase() {
             })
         });
     }
-  //}
+  }
 
 const numPrelimQuestions = 50;
 const numSpeedQuestions = 50;

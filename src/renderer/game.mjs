@@ -218,7 +218,8 @@ export function startTimer() {
                 timeLeft = timeLimit;
                 setClicksEnabled(false);
                 pauseTimer();
-                questionStage.nextPage()
+                nextQuestion();
+                questionStage.nextPage();
             }
         }, 10);
     }
