@@ -9,13 +9,18 @@ const ansB = getQuestionElement('ansB');
 const ansC = getQuestionElement('ansC');
 const ansD = getQuestionElement('ansD');
 
+const correctSound = new Audio('../static/assets/sound/correct.mp3');
+const incorrectSound = new Audio('../static/assets/sound/incorrect.mp3');
+correctSound.volume = 0.8;
+incorrectSound.volume = 0.1;
+
 const showAnswer = getQuestionElement('showAnswer');
 const correctAnswer = getQuestionElement('correctAnswer');
 const correct = getQuestionElement('correct');
 const incorrect = getQuestionElement('incorrect');
 
 const transition = getQuestionElement('transition');
-
+3
 const topGUI = document.getElementById('topGUI');
 const score = document.getElementById('score');
 const timer = document.getElementById("time");
@@ -76,11 +81,13 @@ function resetPage() {
 function guessAnswer(guess) {
     showAnswer.classList.remove('hidden');
     if (guess.innerHTML === correctAnswer.innerHTML) {
+        correctSound.play();
         correct.classList.remove('hidden');
         setTimeout(() => {
             gameLogic.addPoints();
         }, 1000)
     } else {
+        incorrectSound.play();
         incorrect.classList.remove('hidden');
         setTimeout(() => {
             gameLogic.removePoints();

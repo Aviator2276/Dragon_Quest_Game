@@ -5,6 +5,7 @@ const winnerStage = document.getElementById("winnerStage");
 const podium = document.getElementById("podium");
 const reset = document.getElementById('resetButton');
 const transition = getWinnerElement('transition');
+const winSound = new Audio('../static/assets/sound/win.wav');
 
 function getWinnerElement(elementClass) {
     return winnerStage.getElementsByClassName(elementClass)[0];
@@ -32,6 +33,7 @@ export function onLoad() {
     }
     setTimeout(() => transition.classList.remove('transLoadPage'), 1000);
     setTimeout(() => {
+        winSound.play()
         renderer.startConfetti();
     }, 7000);
     setTimeout(() => {

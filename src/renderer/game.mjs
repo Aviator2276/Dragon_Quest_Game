@@ -99,7 +99,7 @@ export function getGameStage() {
     return gameStage;
 }
 export function consoleLogGameInfo() {
-    let connected = setTimeout(() => dbAccess.getConnectionState(), 500);
+    const connected = dbAccess.getConnectionState()
     console.log(
         "Game State: " + gameStage + "\n" +
         "Total Teams Registered: " + totalTeam + "\n" +
